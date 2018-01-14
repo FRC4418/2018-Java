@@ -16,8 +16,7 @@ import edu.wpi.first.wpilibj.drive.DifferentialDrive;
  */
 public class DriveTrainSubsystem extends Subsystem {
 
-    // Put methods for controlling this subsystem
-    // here. Call these from Commands.
+    // Create objects for the drive train subsystem
 	WPI_TalonSRX leftTalonSRXA = new WPI_TalonSRX(RobotMap.leftTalonSRXAID),
 			leftTalonSRXB = new WPI_TalonSRX(RobotMap.leftTalonSRXBID),
 			leftTalonSRXC = new WPI_TalonSRX(RobotMap.leftTalonSRXCID),
@@ -26,33 +25,46 @@ public class DriveTrainSubsystem extends Subsystem {
 			rightTalonSRXC = new WPI_TalonSRX(RobotMap.rightTalonSRXCID);
 	DifferentialDrive driveTrain = new DifferentialDrive(leftTalonSRXA, rightTalonSRXA);
 	
+	// Create variables for the drive train subsystem
 	private double joystickDeadzone = 0.05;
 	
+	// Tank drive control with added features
 	public void tankDrive(Joystick driverJoystick) {
-		double leftValue = driverJoystick.getRawAxis(1);
-		double rightValue = driverJoystick.getRawAxis(5);
+		// Apply a custom curve to the joystick's values and apply a deadzone
+		double leftValue = inputMap(driverJoystick.getRawAxis(1));
+		double rightValue = inputMap(driverJoystick.getRawAxis(5));
 		
+		// Enable breaking if the joystick value for a side is within the deadzone
 		leftTalonSRXA.setNeutralMode(NeutralMode.Brake);
 		rightTalonSRXA.setNeutralMode(NeutralMode.Brake);
 		
+		// Tank drive using the values previously calculated 
+		// and disabling squared inputs since the curve was already applied
 		driveTrain.tankDrive(leftValue, rightValue, false);
 	}
 	
+	// Stop the drive train from receiving input
 	public void stopDrive() {
 		driveTrain.curvatureDrive(0, 0, false);
 	}
 	
+	//Apply a custom curve to joystick values and apply a deadzone
 	public double inputMap(double value) {
+		// Apply the custom curve
+		// Square the inputs
 		value = Math.signum(value)*value*value;
-		return value >= joystickDeadzone ? value : 0;
+		
+		// Apply the deadzone if the value is within 0 +/- the value of joystickDeadzone
+		return Math.abs(value) >= joystickDeadzone ? value : 0;
 	}
 	
     public void initDefaultCommand() {
-        // Set the default command for a subsystem here.
-        //setDefaultCommand(new MySpecialCommand());
+        // Set the default command to teleop driving
     	setDefaultCommand(new TeleopDriveCommand());
     }
     
+    // Override the default constructor to allow for talons B and C of both sides
+    // to be set to slaves of the talon A on their side
     public DriveTrainSubsystem() {
 		super();
 		leftTalonSRXB.follow(leftTalonSRXA);

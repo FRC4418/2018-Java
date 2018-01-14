@@ -10,14 +10,16 @@ import edu.wpi.first.wpilibj.command.Command;
 public class StartCompressorCommand extends Command {
 
     public StartCompressorCommand() {
-        // Use requires() here to declare subsystem dependencies
-        // eg. requires(chassis);
+        // Initialize the start compressor command
     	super("StartCompressor");
+    	
+    	// Set required subsystems
     	requires(Robot.compressor);
     }
 
     // Called just before this Command runs the first time
     protected void initialize() {
+    	// Enable the compressor
     	Robot.compressor.enableCompressor();
     }
 
@@ -32,12 +34,14 @@ public class StartCompressorCommand extends Command {
 
     // Called once after isFinished returns true
     protected void end() {
+    	// Disable the compressor
     	Robot.compressor.disableCompressor();
     }
 
     // Called when another command which requires one or more of the same
     // subsystems is scheduled to run
     protected void interrupted() {
+    	// Ensure that if the compressor is interrupted it disables
     	end();
     }
 }

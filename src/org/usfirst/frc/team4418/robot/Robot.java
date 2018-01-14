@@ -24,6 +24,7 @@ import org.usfirst.frc.team4418.robot.subsystems.DriveTrainSubsystem;
  * project.
  */
 public class Robot extends TimedRobot {
+	// Create objects for each subsystem
 	public static final DriveTrainSubsystem driveTrain = new DriveTrainSubsystem();
 	public static final CompressorSubsystem compressor = new CompressorSubsystem();
 	public static OI m_oi;
