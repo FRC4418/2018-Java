@@ -7,6 +7,8 @@
 
 package org.usfirst.frc.team4418.robot;
 
+import org.usfirst.frc.team4418.robot.commands.GearShiftCommand;
+
 import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.buttons.*;
 
@@ -49,8 +51,12 @@ public class OI {
 	}
 	
 	private static Button gearShiftButton = new JoystickButton(joystick0,RobotMap.gearShift); //GearShift Button
-	public static Button getGearShiftButton() {
+	/*public static Button getGearShiftButton() {
 		return gearShiftButton;
+	}*/
+	
+	public OI() {
+		gearShiftButton.whenPressed(new GearShiftCommand());
 	}
 	
 }
