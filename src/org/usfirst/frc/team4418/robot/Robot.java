@@ -27,8 +27,6 @@ import org.usfirst.frc.team4418.robot.subsystems.DriveTrainSubsystem;
 public class Robot extends TimedRobot {
 	public static final DriveTrainSubsystem driveTrain = new DriveTrainSubsystem(); //Create public DriveTrain
 	public static final CompressorSubsystem compressor = new CompressorSubsystem(); //Create public Compressor
-	public static DoubleSolenoid gearShifterLeftSolenoid = new DoubleSolenoid(RobotMap.gearShiftLeftHigh,RobotMap.gearShiftLeftLow);
-	public static DoubleSolenoid gearShifterRightSolenoid = new DoubleSolenoid(RobotMap.gearShiftRightHigh,RobotMap.gearShiftRightLow);
 	
 	public static OI m_oi;
 
