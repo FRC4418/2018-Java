@@ -7,7 +7,6 @@
 
 package org.usfirst.frc.team4418.robot;
 
-import edu.wpi.first.wpilibj.DoubleSolenoid;
 import edu.wpi.first.wpilibj.TimedRobot;
 import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.command.Scheduler;
@@ -16,6 +15,7 @@ import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
 import org.usfirst.frc.team4418.robot.subsystems.CompressorSubsystem;
 import org.usfirst.frc.team4418.robot.subsystems.DriveTrainSubsystem;
+import org.usfirst.frc.team4418.robot.subsystems.GearShiftSubsystem;
 
 /**
  * The VM is configured to automatically run this class, and to call the
@@ -27,6 +27,7 @@ import org.usfirst.frc.team4418.robot.subsystems.DriveTrainSubsystem;
 public class Robot extends TimedRobot {
 	public static final DriveTrainSubsystem driveTrain = new DriveTrainSubsystem(); //Create public DriveTrain
 	public static final CompressorSubsystem compressor = new CompressorSubsystem(); //Create public Compressor
+	public static final GearShiftSubsystem gearShifter = new GearShiftSubsystem(); //Create public GearShifter
 	
 	public static OI m_oi;
 

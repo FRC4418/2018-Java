@@ -30,7 +30,8 @@ public class RobotMap {
 	public static int mainJoystick = 0,
 			secondaryJoystick = 1;
 	
-	public static int gearShiftHigh = 1,
+	public static int gearShift = 1,
+			gearShiftHigh = 1,
 			gearShiftLow = 2;
 
 	// If you are using multiple modules, make sure to define both the port
