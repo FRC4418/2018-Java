@@ -18,12 +18,21 @@ public class RobotMap {
 	// following variables to use with your drivetrain subsystem.
 	// public static int leftMotor = 1;
 	// public static int rightMotor = 2;
+	
+	//Declare Talon SRX IDs
 	public static int leftTalonSRXAID = 10,
 			leftTalonSRXBID = 11,
 			leftTalonSRXCID = 12,
 			rightTalonSRXAID = 20,
 			rightTalonSRXBID = 21,
 			rightTalonSRXCID = 22;
+	
+	public static int mainJoystick = 0,
+			secondaryJoystick = 1;
+	
+	public static int gearShift = 1,
+			gearShiftHigh = 1,
+			gearShiftLow = 0;
 
 	// If you are using multiple modules, make sure to define both the port
 	// number and the module. For example you with a rangefinder:
