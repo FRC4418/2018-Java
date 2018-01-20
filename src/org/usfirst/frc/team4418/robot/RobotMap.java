@@ -32,7 +32,7 @@ public class RobotMap {
 	
 	public static int gearShift = 1,
 			gearShiftHigh = 1,
-			gearShiftLow = 2;
+			gearShiftLow = 0;
 
 	// If you are using multiple modules, make sure to define both the port
 	// number and the module. For example you with a rangefinder:
