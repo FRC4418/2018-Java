@@ -26,16 +26,11 @@ import org.usfirst.frc.team4418.robot.subsystems.GearShiftSubsystem;
  * project.
  */
 public class Robot extends TimedRobot {
-<<<<<<< HEAD
 	// Create objects for each subsystem
-	public static final DriveTrainSubsystem driveTrain = new DriveTrainSubsystem();
-	public static final CompressorSubsystem compressor = new CompressorSubsystem();
-=======
 	public static final DriveTrainSubsystem driveTrain = new DriveTrainSubsystem(); //Create public DriveTrain
 	public static final CompressorSubsystem compressor = new CompressorSubsystem(); //Create public Compressor
 	public static final GearShiftSubsystem gearShifter = new GearShiftSubsystem(); //Create public GearShifter
 	
->>>>>>> origin/add-gear-shift
 	public static OI m_oi;
 
 	Command m_autonomousCommand;
