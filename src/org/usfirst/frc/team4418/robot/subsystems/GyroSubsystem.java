@@ -4,7 +4,6 @@ import org.usfirst.frc.team4418.robot.RobotMap;
 import org.usfirst.frc.team4418.robot.commands.GyroDisplay;
 
 import edu.wpi.first.wpilibj.AnalogGyro;
-import edu.wpi.first.wpilibj.AnalogInput;
 import edu.wpi.first.wpilibj.command.Subsystem;
 import edu.wpi.first.wpilibj.interfaces.Gyro;
 
