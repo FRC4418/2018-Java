@@ -52,6 +52,7 @@ public class Robot extends TimedRobot {
 		
 		// Initialize camera server
 		CameraServer.getInstance().startAutomaticCapture();
+		gyroSys.calibrate();
 	}
 
 	/**
