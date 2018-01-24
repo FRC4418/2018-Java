@@ -28,5 +28,15 @@ public class GyroSubsystem extends Subsystem {
         //setDefaultCommand(new MySpecialCommand());
     	setDefaultCommand(new GyroDisplay());
     }
+
+	public void clear() {
+		// TODO Auto-generated method stub
+		gyro.reset();
+	}
+
+	public void calibrate() {
+		// TODO Auto-generated method stub
+		gyro.calibrate();
+	}
 }
 
