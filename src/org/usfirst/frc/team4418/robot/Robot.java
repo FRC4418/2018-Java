@@ -17,6 +17,7 @@ import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import org.usfirst.frc.team4418.robot.subsystems.CompressorSubsystem;
 import org.usfirst.frc.team4418.robot.subsystems.DriveTrainSubsystem;
 import org.usfirst.frc.team4418.robot.subsystems.GearShiftSubsystem;
+import org.usfirst.frc.team4418.robot.subsystems.UltrasonicSubsystem;
 
 /**
  * The VM is configured to automatically run this class, and to call the
@@ -30,6 +31,7 @@ public class Robot extends TimedRobot {
 	public static final DriveTrainSubsystem driveTrain = new DriveTrainSubsystem(); //Create public DriveTrain
 	public static final CompressorSubsystem compressor = new CompressorSubsystem(); //Create public Compressor
 	public static final GearShiftSubsystem gearShifter = new GearShiftSubsystem(); //Create public GearShifter
+	public static final UltrasonicSubsystem ultrasonic = new UltrasonicSubsystem(); //Create public Ultrasonic
 	
 	public static OI m_oi;
 
