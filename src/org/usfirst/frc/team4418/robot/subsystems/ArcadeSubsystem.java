@@ -1,7 +1,6 @@
 package org.usfirst.frc.team4418.robot.subsystems;
 
 import org.usfirst.frc.team4418.robot.RobotMap;
-import org.usfirst.frc.team4418.robot.commands.ArcadeDriveCommand;
 import org.usfirst.frc.team4418.robot.commands.TeleopDriveCommand;
 
 import com.ctre.phoenix.motorcontrol.NeutralMode;
@@ -14,7 +13,7 @@ import edu.wpi.first.wpilibj.drive.DifferentialDrive;
 /**
  *
  */
-public class DriveTrainSubsystem extends Subsystem {
+public class ArcadeSubsystem extends Subsystem {
 
     // Create objects for the drive train subsystem
 	WPI_TalonSRX leftTalonSRXA = new WPI_TalonSRX(RobotMap.leftTalonSRXAID),
@@ -38,25 +37,10 @@ public class DriveTrainSubsystem extends Subsystem {
 		leftTalonSRXA.setNeutralMode(NeutralMode.Brake);
 		rightTalonSRXA.setNeutralMode(NeutralMode.Brake);
 		
-		// Tank drive using the values previously calculated 
-		// and disabling squared inputs since the curve was already applied
-		driveTrain.tankDrive(leftValue, rightValue, false);
-	}
-	
-	public void arcadeDrive(Joystick driverJoystick) {
-		// Apply a custom curve to the joystick's values and apply a deadzone
-		double speed = inputMap(driverJoystick.getRawAxis(1));
-		double rotation = inputMap(driverJoystick.getRawAxis(0));
-		
-		// Enable breaking if the joystick value for a side is within the deadzone
-		leftTalonSRXA.setNeutralMode(NeutralMode.Brake);
-		rightTalonSRXA.setNeutralMode(NeutralMode.Brake);
-		
 		// Arcade drive using the values previously calculated 
 		// and disabling squared inputs since the curve was already applied
-		driveTrain.arcadeDrive(speed, rotation);
+		driveTrain.arcadeDrive(leftValue, rightValue);
 	}
-	
 	
 	// Stop the drive train from receiving input
 	public void stopDrive() {
@@ -75,17 +59,12 @@ public class DriveTrainSubsystem extends Subsystem {
 	
     public void initDefaultCommand() {
         // Set the default command to teleop driving
-    	
-    	if (RobotMap.tankDrive) {
-    		setDefaultCommand(new TeleopDriveCommand());
-    	} else {
-    		setDefaultCommand(new ArcadeDriveCommand());
-    	}
+    	setDefaultCommand(new TeleopDriveCommand());
     }
     
     // Override the default constructor to allow for talons B and C of both sides
     // to be set to slaves of the talon A on their side
-    public DriveTrainSubsystem() {
+    public ArcadeSubsystem() {
 		super();
 		leftTalonSRXB.follow(leftTalonSRXA);
 		leftTalonSRXC.follow(leftTalonSRXA);
