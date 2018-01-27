@@ -18,14 +18,85 @@ public class EncoderSubsystem extends Subsystem {
     // here. Call these from Commands.
 	public EncoderSubsystem() {
 		//Actually set the values
-		double rpp = ( (1/RobotMap.ticksPerRevolution) / RobotMap.gearRatio );
-		double dpp =  rpp * (Math.PI * RobotMap.wheelDiameter);
+		double rpp = ( (1/RobotMap.ticksPerRevolution) / RobotMap.gearRatio ); //Math for revolutions per pulse
+		double dpp =  rpp * (Math.PI * RobotMap.wheelDiameter); //Math for distance per pulse
+		//Set distances per pulse for each encoder
 		leftEnc.setDistancePerPulse(dpp);
 		rightEnc.setDistancePerPulse(dpp);
+		//Set time between pulses before robot is considered stopped
+		leftEnc.setMaxPeriod(.1);
+		rightEnc.setMaxPeriod(.1);
 	}
-
+	
+	//Helper function to convert units for getters
+	//Meant for private use, but why not expose it to the public for other applications?
+	public double convertUnitsFromInches(String units,double inches) {
+		switch(units) {
+			case "in":
+				return inches;
+			case "ft":
+				return inches/12;
+			case "mm":
+				return inches * 25.4;
+			case "cm":
+				return inches * 2.54;
+			case "m":
+				return inches * 0.0254;
+			default:
+				return inches;
+		}
+	}
+	
+	//Get the left encoder value in the specified units (optional)
+	public double getLeftEncoder(String units) {
+		double inches = leftEnc.getDistance();
+		return convertUnitsFromInches(units,inches);
+	}
 	public double getLeftEncoder() {
-		
+		double inches = leftEnc.getDistance();
+		return convertUnitsFromInches("in",inches);
+	}
+	
+	//Get the right encoder value in the specified units (optional)
+	public double getRightEncoder(String units) {
+		double inches = rightEnc.getDistance();
+		return convertUnitsFromInches(units,inches);
+	}
+	public double getRightEncoder() {
+		double inches = rightEnc.getDistance();
+		return convertUnitsFromInches("in",inches);
+	}
+	
+	//Get the average of the encoder values in the specified units (optional)
+	public double getAvgEncoder(String units) {
+		double leftInches = leftEnc.getDistance();
+		double rightInches = rightEnc.getDistance();
+		return convertUnitsFromInches(units,(leftInches + rightInches) / 2);
+	}
+	public double getAvgEncoder() {
+		double leftInches = leftEnc.getDistance();
+		double rightInches = rightEnc.getDistance();
+		return convertUnitsFromInches("in",(leftInches + rightInches) / 2);
+	}
+	
+	//Reset the (optionally specific) encoder distance to zero
+	public void reset(String encoder) {
+		switch(encoder) {
+			case "left":
+				leftEnc.reset();
+				break;
+			case "right":
+				rightEnc.reset();
+				break;
+			default:
+				leftEnc.reset();
+				rightEnc.reset();
+				break;
+		}
+	}
+	public void reset() {
+		leftEnc.reset();
+		rightEnc.reset();
 	}
 	
     public void initDefaultCommand() {
