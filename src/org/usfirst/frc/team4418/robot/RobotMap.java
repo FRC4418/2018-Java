@@ -18,27 +18,35 @@ public class RobotMap {
 	// following variables to use with your drivetrain subsystem.
 	// public static int leftMotor = 1;
 	// public static int rightMotor = 2;
-	
+
 	//Declare Talon SRX IDs
-	public static int leftTalonSRXAID = 10, //CAN
+	public static final int
+			leftTalonSRXAID = 10, //CAN
 			leftTalonSRXBID = 11,
 			leftTalonSRXCID = 12,
 			rightTalonSRXAID = 20,
 			rightTalonSRXBID = 21,
 			rightTalonSRXCID = 22;
 	
-	public static int mainJoystick = 0, //DS USB
+	public static final int
+			mainJoystick = 0, //DS USB
 			secondaryJoystick = 1;
 	
-	public static int gearShift = 1, //PCM
+	public static final int
+			gearShift = 1, //PCM
 			gearShiftHigh = 1,
 			gearShiftLow = 0;
 	
-	public static int leftEncoderA = 0, //DIO
+	public static final int
+			leftEncoderA = 0, //DIO
 			leftEncoderB = 1,
 			rightEncoderA = 2,
 			rightEncoderB = 3;
-
+	public static final double
+			gearRatio = 5.4, //Drive shaft to encoder (NOT THE OTHER WAY AROUND)
+			ticksPerRevolution = 256,
+			wheelDiameter = 4; //inches
+	
 	// If you are using multiple modules, make sure to define both the port
 	// number and the module. For example you with a rangefinder:
 	// public static int rangefinderPort = 1;
