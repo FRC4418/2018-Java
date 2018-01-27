@@ -11,18 +11,13 @@ import edu.wpi.first.wpilibj.CameraServer;
 import edu.wpi.first.wpilibj.TimedRobot;
 import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.command.Scheduler;
-//import edu.wpi.first.wpilibj.command.Subsystem;
 import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
 import org.usfirst.frc.team4418.robot.subsystems.CompressorSubsystem;
 import org.usfirst.frc.team4418.robot.subsystems.DriveTrainSubsystem;
 import org.usfirst.frc.team4418.robot.subsystems.GearShiftSubsystem;
-<<<<<<< HEAD
 import org.usfirst.frc.team4418.robot.subsystems.InfraRedSubsystem;
-=======
-import org.usfirst.frc.team4418.robot.subsystems.GyroSubsystem;
->>>>>>> master
 
 /**
  * The VM is configured to automatically run this class, and to call the
@@ -36,11 +31,7 @@ public class Robot extends TimedRobot {
 	public static final DriveTrainSubsystem driveTrain = new DriveTrainSubsystem(); //Create public DriveTrain
 	public static final CompressorSubsystem compressor = new CompressorSubsystem(); //Create public Compressor
 	public static final GearShiftSubsystem gearShifter = new GearShiftSubsystem(); //Create public GearShifter
-<<<<<<< HEAD
 	public static final InfraRedSubsystem infraRed = new InfraRedSubsystem();
-=======
-	public static final GyroSubsystem gyroSys = new GyroSubsystem(); //Create public gyroscope
->>>>>>> master
 	
 	public static OI m_oi;
 
@@ -60,7 +51,6 @@ public class Robot extends TimedRobot {
 		
 		// Initialize camera server
 		CameraServer.getInstance().startAutomaticCapture();
-		gyroSys.calibrate();
 	}
 
 	/**

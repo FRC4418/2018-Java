@@ -12,7 +12,6 @@ import org.usfirst.frc.team4418.robot.commands.GearShiftCommand;
 import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.buttons.Button;
 import edu.wpi.first.wpilibj.buttons.JoystickButton;
-import edu.wpi.first.wpilibj.buttons.*;
 
 /**
  * This class is the glue that binds the controls on the physical operator
@@ -33,6 +32,7 @@ public class OI {
 	/*public static Button getGearShiftButton() {
 		return gearShiftButton;
 	}*/
+	
 	
 	public OI() {
 		gearShiftButton.whenPressed(new GearShiftCommand());

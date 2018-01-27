@@ -33,6 +33,7 @@ public class RobotMap {
 	public static int gearShift = 1,
 			gearShiftHigh = 1,
 			gearShiftLow = 0;
+	public static int gyroPort = 0;
 
 	
 	public static int irPort = 3;
