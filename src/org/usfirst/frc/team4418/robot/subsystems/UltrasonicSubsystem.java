@@ -1,5 +1,6 @@
 package org.usfirst.frc.team4418.robot.subsystems;
 
+import org.usfirst.frc.team4418.robot.RobotMap;
 import org.usfirst.frc.team4418.robot.commands.UltrasonicCommand;
 
 import edu.wpi.first.wpilibj.Ultrasonic;
@@ -9,7 +10,7 @@ import edu.wpi.first.wpilibj.command.Subsystem;
  *
  */
 public class UltrasonicSubsystem extends Subsystem {
-		Ultrasonic ultra = new Ultrasonic(4,5);
+		Ultrasonic ultra = new Ultrasonic(RobotMap.us1Ping, RobotMap.us1Echo);
 		
 		
 		public void setAutomaticMode(boolean enabling){
