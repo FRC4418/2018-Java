@@ -17,6 +17,7 @@ import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
 import org.usfirst.frc.team4418.robot.subsystems.CompressorSubsystem;
 import org.usfirst.frc.team4418.robot.subsystems.DriveTrainSubsystem;
+import org.usfirst.frc.team4418.robot.subsystems.FeedCylinderSubsystem;
 import org.usfirst.frc.team4418.robot.subsystems.GearShiftSubsystem;
 import org.usfirst.frc.team4418.robot.subsystems.InfraRedSubsystem;
 import org.usfirst.frc.team4418.robot.subsystems.GyroSubsystem;
@@ -33,8 +34,9 @@ public class Robot extends TimedRobot {
 	public static final DriveTrainSubsystem driveTrain = new DriveTrainSubsystem(); //Create public DriveTrain
 	public static final CompressorSubsystem compressor = new CompressorSubsystem(); //Create public Compressor
 	public static final GearShiftSubsystem gearShifter = new GearShiftSubsystem(); //Create public GearShifter
-	public static final InfraRedSubsystem infraRed = new InfraRedSubsystem();
-	public static final GyroSubsystem gyroSys = new GyroSubsystem(); //Create public gyroscope
+	public static final InfraRedSubsystem infraRed = new InfraRedSubsystem(); //Create public InfraRed
+	public static final GyroSubsystem gyroSys = new GyroSubsystem(); //Create public GyroScope
+	public static final FeedCylinderSubsystem feedCylinder = new FeedCylinderSubsystem(); //Create public FeedCylinder
 	
 	public static OI m_oi;
 
