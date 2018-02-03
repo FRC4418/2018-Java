@@ -10,6 +10,8 @@ import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
  */
 public class UltrasonicCommand extends Command {
 
+	public double u_value = 0;
+	
     public UltrasonicCommand() {
         // Use requires() here to declare subsystem dependencies
         // eg. requires(chassis);
@@ -23,7 +25,9 @@ public class UltrasonicCommand extends Command {
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
-    	double u_value = Robot.ultrasonic.getRangeInch();
+    	if(Robot.ultrasonic.getRangeInch() != 0) {
+    		u_value = Robot.ultrasonic.getRangeInch();
+    	}
     	SmartDashboard.putNumber("Range", u_value);
     }
 
