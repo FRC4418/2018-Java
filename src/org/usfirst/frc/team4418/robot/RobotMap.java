@@ -34,6 +34,10 @@ public class RobotMap {
 			gearShiftHigh = 1,
 			gearShiftLow = 0;
 	public static int gyroPort = 0;
+	
+	public static int intakeButton = 3,
+			intakeIn = 2,
+			intakeOut = 3;
 
 	// If you are using multiple modules, make sure to define both the port
 	// number and the module. For example you with a rangefinder:

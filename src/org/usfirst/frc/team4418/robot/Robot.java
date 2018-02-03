@@ -19,6 +19,7 @@ import org.usfirst.frc.team4418.robot.subsystems.CompressorSubsystem;
 import org.usfirst.frc.team4418.robot.subsystems.DriveTrainSubsystem;
 import org.usfirst.frc.team4418.robot.subsystems.GearShiftSubsystem;
 import org.usfirst.frc.team4418.robot.subsystems.GyroSubsystem;
+import org.usfirst.frc.team4418.robot.subsystems.IntakeSubsystem;
 
 /**
  * The VM is configured to automatically run this class, and to call the
@@ -33,6 +34,7 @@ public class Robot extends TimedRobot {
 	public static final CompressorSubsystem compressor = new CompressorSubsystem(); //Create public Compressor
 	public static final GearShiftSubsystem gearShifter = new GearShiftSubsystem(); //Create public GearShifter
 	public static final GyroSubsystem gyroSys = new GyroSubsystem(); //Create public gyroscope
+	public static final IntakeSubsystem intake = new IntakeSubsystem(); //Create public Intake
 	
 	public static OI m_oi;
 
