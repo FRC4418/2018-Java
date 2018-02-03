@@ -26,6 +26,7 @@ public class OI {
 		return joystick0;
 	}
 	
+	public static Joystick joystick1 = new Joystick(1);
 	// Create buttons
 	
 	private static Button gearShiftButton = new JoystickButton(joystick0,RobotMap.gearShift); //GearShift Button
