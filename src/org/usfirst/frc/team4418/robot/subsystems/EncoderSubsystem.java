@@ -1,10 +1,12 @@
 package org.usfirst.frc.team4418.robot.subsystems;
 
+import org.usfirst.frc.team4418.robot.Robot;
 import org.usfirst.frc.team4418.robot.RobotMap;
 import org.usfirst.frc.team4418.robot.commands.EncoderShuffleboardCommand;
 
 import edu.wpi.first.wpilibj.Encoder;
 import edu.wpi.first.wpilibj.command.Subsystem;
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
 /**
  * Do not require this subsystem! We wish to report values to shuffleboard and link the encoder properties to the gear shifts so that they are always accurate
@@ -20,6 +22,7 @@ public class EncoderSubsystem extends Subsystem {
 		//Actually set the values
 		double rpp = ( (1/RobotMap.ticksPerRevolution) / RobotMap.gearRatio ); //Math for revolutions per pulse
 		double dpp =  rpp * (Math.PI * RobotMap.wheelDiameter); //Math for distance per pulse
+		SmartDashboard.putNumber("distance per pulse", dpp);
 		//Set distances per pulse for each encoder
 		leftEnc.setDistancePerPulse(dpp);
 		rightEnc.setDistancePerPulse(dpp);
@@ -31,7 +34,7 @@ public class EncoderSubsystem extends Subsystem {
 	//Helper function to convert units for getters
 	//Meant for private use, but why not expose it to the public for other applications?
 	public double convertUnitsFromInches(String units,double inches) {
-		switch(units) {
+		switch(units.toLowerCase()) {
 			case "in":
 				return inches;
 			case "ft":
@@ -53,8 +56,7 @@ public class EncoderSubsystem extends Subsystem {
 		return convertUnitsFromInches(units,inches);
 	}
 	public double getLeftEncoder() {
-		double inches = leftEnc.getDistance();
-		return convertUnitsFromInches("in",inches);
+		return leftEnc.getDistance();
 	}
 	
 	//Get the right encoder value in the specified units (optional)
@@ -63,8 +65,7 @@ public class EncoderSubsystem extends Subsystem {
 		return convertUnitsFromInches(units,inches);
 	}
 	public double getRightEncoder() {
-		double inches = rightEnc.getDistance();
-		return convertUnitsFromInches("in",inches);
+		return rightEnc.getDistance();
 	}
 	
 	//Get the average of the encoder values in the specified units (optional)
@@ -76,7 +77,7 @@ public class EncoderSubsystem extends Subsystem {
 	public double getAvgEncoder() {
 		double leftInches = leftEnc.getDistance();
 		double rightInches = rightEnc.getDistance();
-		return convertUnitsFromInches("in",(leftInches + rightInches) / 2);
+		return (leftInches + rightInches) / 2;
 	}
 	
 	//Reset the (optionally specific) encoder distance to zero
