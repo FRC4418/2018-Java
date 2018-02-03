@@ -2,9 +2,6 @@ package org.usfirst.frc.team4418.robot.commands;
 
 import org.usfirst.frc.team4418.robot.OI;
 import org.usfirst.frc.team4418.robot.Robot;
-import org.usfirst.frc.team4418.robot.RobotMap;
-
-import com.ctre.phoenix.motorcontrol.can.WPI_TalonSRX;
 
 import edu.wpi.first.wpilibj.command.Command;
 
@@ -15,9 +12,11 @@ public class ArcadeDriveCommand extends Command {
 	
 	
 
-    public void ArcadeDrive() {
-        // Use requires() here to declare subsystem dependencies
-        // eg. requires(chassis);
+    public ArcadeDriveCommand() {
+    	super("ArcadeDrive");
+    	
+    	// Set required subsystems
+    	requires(Robot.arcadeDriveTrain);
     }
 
     // Called just before this Command runs the first time
@@ -26,7 +25,7 @@ public class ArcadeDriveCommand extends Command {
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
-    	Robot.driveTrain.arcadeDrive(OI.getDriverJoystick());
+    	Robot.driveTrain.arcadeDrive(OI.joystick1);
     }
 
     // Make this return true when this Command no longer needs to run execute()

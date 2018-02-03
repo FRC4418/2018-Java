@@ -32,7 +32,7 @@ import org.usfirst.frc.team4418.robot.subsystems.GyroSubsystem;
 public class Robot extends TimedRobot {
 	// Create objects for each subsystem
 	public static final DriveTrainSubsystem driveTrain = new DriveTrainSubsystem(); //Create public DriveTrain
-	//public static final ArcadeSubsystem arcadeDriveTrain = new ArcadeSubsystem(); //Create public arcadeDriveTrain
+	public static final ArcadeSubsystem arcadeDriveTrain = new ArcadeSubsystem(); //Create public arcadeDriveTrain
 	public static final CompressorSubsystem compressor = new CompressorSubsystem(); //Create public Compressor
 	public static final GearShiftSubsystem gearShifter = new GearShiftSubsystem(); //Create public GearShifter
 	public static final GyroSubsystem gyroSys = new GyroSubsystem(); //Create public gyroscope

@@ -75,12 +75,7 @@ public class DriveTrainSubsystem extends Subsystem {
 	
     public void initDefaultCommand() {
         // Set the default command to teleop driving
-    	
-    	if (RobotMap.tankDrive) {
     		setDefaultCommand(new TeleopDriveCommand());
-    	} else {
-    		setDefaultCommand(new ArcadeDriveCommand());
-    	}
     }
     
     // Override the default constructor to allow for talons B and C of both sides

@@ -1,8 +1,7 @@
 package org.usfirst.frc.team4418.robot.subsystems;
 
 import org.usfirst.frc.team4418.robot.RobotMap;
-import org.usfirst.frc.team4418.robot.commands.TeleopDriveCommand;
-
+import org.usfirst.frc.team4418.robot.commands.ArcadeDriveCommand;
 import com.ctre.phoenix.motorcontrol.NeutralMode;
 import com.ctre.phoenix.motorcontrol.can.WPI_TalonSRX;
 
@@ -59,7 +58,7 @@ public class ArcadeSubsystem extends Subsystem {
 	
     public void initDefaultCommand() {
         // Set the default command to teleop driving
-    	setDefaultCommand(new TeleopDriveCommand());
+    	setDefaultCommand(new ArcadeDriveCommand());
     }
     
     // Override the default constructor to allow for talons B and C of both sides
