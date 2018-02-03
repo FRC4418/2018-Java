@@ -54,7 +54,7 @@ public class DriveTrainSubsystem extends Subsystem {
 		
 		// Arcade drive using the values previously calculated 
 		// and disabling squared inputs since the curve was already applied
-		driveTrain.arcadeDrive(speed, rotation);
+		driveTrain.arcadeDrive(speed, -rotation);
 	}
 	
 	
