@@ -15,12 +15,14 @@ import edu.wpi.first.wpilibj.command.Scheduler;
 import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
+import org.usfirst.frc.team4418.robot.commands.AutonomousCommands;
 import org.usfirst.frc.team4418.robot.subsystems.ArcadeSubsystem;
 import org.usfirst.frc.team4418.robot.subsystems.CompressorSubsystem;
 import org.usfirst.frc.team4418.robot.subsystems.DriveTrainSubsystem;
 import org.usfirst.frc.team4418.robot.subsystems.GearShiftSubsystem;
 import org.usfirst.frc.team4418.robot.subsystems.InfraRedSubsystem;
 import org.usfirst.frc.team4418.robot.subsystems.GyroSubsystem;
+import org.usfirst.frc.team4418.robot.subsystems.GyroToAnglePID;
 
 /**
  * The VM is configured to automatically run this class, and to call the
@@ -38,10 +40,11 @@ public class Robot extends TimedRobot {
 	public static final GearShiftSubsystem gearShifter = new GearShiftSubsystem(); //Create public GearShifter
 	public static final InfraRedSubsystem infraRed = new InfraRedSubsystem();
 	public static final GyroSubsystem gyroSys = new GyroSubsystem(); //Create public gyroscope
+	public static final GyroToAnglePID gyroPID = new GyroToAnglePID();
 	
 	public static OI m_oi;
 
-	Command m_autonomousCommand;
+	Command autoCommand;
 	SendableChooser<Command> m_chooser = new SendableChooser<>();
 
 	/**
@@ -58,6 +61,7 @@ public class Robot extends TimedRobot {
 		// Initialize camera server
 		CameraServer.getInstance().startAutomaticCapture();
 		gyroSys.calibrate();
+		autoCommand = new AutonomousCommands();
 	}
 
 	/**
@@ -87,9 +91,7 @@ public class Robot extends TimedRobot {
 	 * to the switch structure below with additional strings & commands.
 	 */
 	@Override
-	public void autonomousInit() {
-		m_autonomousCommand = m_chooser.getSelected();
-
+	public void autonomousInit() {		
 		/*
 		 * String autoSelected = SmartDashboard.getString("Auto Selector",
 		 * "Default"); switch(autoSelected) { case "My Auto": autonomousCommand
@@ -98,8 +100,8 @@ public class Robot extends TimedRobot {
 		 */
 
 		// schedule the autonomous command (example)
-		if (m_autonomousCommand != null) {
-			m_autonomousCommand.start();
+		if(autoCommand!=null) {
+			autoCommand.start();
 		}
 	}
 
@@ -117,8 +119,8 @@ public class Robot extends TimedRobot {
 		// teleop starts running. If you want the autonomous to
 		// continue until interrupted by another command, remove
 		// this line or comment it out.
-		if (m_autonomousCommand != null) {
-			m_autonomousCommand.cancel();
+		if (autoCommand != null) {
+			autoCommand.cancel();
 		}
 	}
 
