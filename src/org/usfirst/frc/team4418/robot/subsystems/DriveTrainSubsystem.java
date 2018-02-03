@@ -31,12 +31,12 @@ public class DriveTrainSubsystem extends Subsystem {
 	// Tank drive control with added features
 	public void tankDrive(Joystick driverJoystick) {
 		// Apply a custom curve to the joystick's values and apply a deadzone
-		double leftValue = inputMap(driverJoystick.getRawAxis(1));
-		double rightValue = inputMap(driverJoystick.getRawAxis(5));
+		double leftValue = inputMap(driverJoystick.getRawAxis(RobotMap.leftWheelAxis));
+		double rightValue = inputMap(driverJoystick.getRawAxis(RobotMap.rightWheelAxis));
 		
 		// Enable breaking if the joystick value for a side is within the deadzone
-		leftTalonSRXA.setNeutralMode(NeutralMode.Brake);
-		rightTalonSRXA.setNeutralMode(NeutralMode.Brake);
+		leftTalonSRXA.setNeutralMode(leftValue == 0 ? NeutralMode.Brake : NeutralMode.Coast);
+		rightTalonSRXA.setNeutralMode(rightValue == 0 ? NeutralMode.Brake : NeutralMode.Coast);
 		
 		// Tank drive using the values previously calculated 
 		// and disabling squared inputs since the curve was already applied
@@ -52,7 +52,7 @@ public class DriveTrainSubsystem extends Subsystem {
 	public double inputMap(double value) {
 		// Apply the custom curve
 		// Square the inputs
-		value = Math.signum(value)*value*value;
+		//value = Math.signum(value)*value*value;
 		
 		// Apply the deadzone if the value is within 0 +/- the value of joystickDeadzone
 		return Math.abs(value) >= joystickDeadzone ? value : 0;

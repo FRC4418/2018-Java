@@ -20,7 +20,7 @@ public class RobotMap {
 	// public static int rightMotor = 2;
 
 	//Declare Talon SRX IDs
-	public static final int
+	public static int
 			leftTalonSRXAID = 10, //CAN
 			leftTalonSRXBID = 11,
 			leftTalonSRXCID = 12,
@@ -30,7 +30,9 @@ public class RobotMap {
 	
 	public static final int
 			mainJoystick = 0, //DS USB
-			secondaryJoystick = 1;
+			secondaryJoystick = 1,
+			rightWheelAxis = 3, //5
+			leftWheelAxis = 1; //1
 	
 	public static final int
 			gearShift = 1, //PCM
