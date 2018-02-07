@@ -17,8 +17,9 @@ public class AutoToAngle extends Command {
     // Called just before this Command runs the first time
     protected void initialize() {
     	Robot.gyroPID.setSetpointRelative(90.0);
-    	Robot.gyroPID.enable();
+    	Robot.gyroPID.getPIDController().reset();
     	Robot.driveTrain.brake();
+    	Robot.gyroPID.enable();
     }
 
     // Called repeatedly when this Command is scheduled to run
@@ -28,7 +29,7 @@ public class AutoToAngle extends Command {
 
     // Make this return true when this Command no longer needs to run execute()
     protected boolean isFinished() {
-        return Robot.gyroPID.onTarget();
+        return false;//Robot.gyroPID.getPIDController().onTarget();
     }
 
     // Called once after isFinished returns true

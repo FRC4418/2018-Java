@@ -8,6 +8,7 @@ import com.ctre.phoenix.motorcontrol.can.WPI_TalonSRX;
 import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.command.Subsystem;
 import edu.wpi.first.wpilibj.drive.DifferentialDrive;
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
 /**
  *
@@ -31,6 +32,8 @@ public class DriveTrainSubsystem extends Subsystem {
 		// Apply a custom curve to the joystick's values and apply a deadzone
 		double leftValue = inputMap(driverJoystick.getRawAxis(1));
 		double rightValue = inputMap(driverJoystick.getRawAxis(5));
+		SmartDashboard.putNumber( "Left Motor out: ", leftValue);
+		SmartDashboard.putNumber( "Right Motor out: ", rightValue);
 		
 		// Enable breaking if the joystick value for a side is within the deadzone
 		leftTalonSRXA.setNeutralMode(leftValue==0 ? NeutralMode.Brake : NeutralMode.Coast);

@@ -12,11 +12,10 @@ public class GyroToAnglePID extends PIDSubsystem {
 
     // Initialize your subsystem here
     public GyroToAnglePID() {
-    	super("GyroToAnglePID", 0.1, 0.1, 0.1);
-    	Robot.gyroSys.clear();
-    	setAbsoluteTolerance(5);
-    	getPIDController().setInputRange(-180.0f, 180.0f);
-    	getPIDController().setOutputRange(-1, 1);
+    	super("GyroToAnglePID", 2.0, 0.0, 0.0);
+    	setAbsoluteTolerance(1);
+    	//getPIDController().setInputRange(-180.0f, 180.0f);
+    	getPIDController().setOutputRange(-100.0f, 100.0f);
     	getPIDController().setContinuous(false);
         // Use these to get going:
         // setSetpoint() -  Sets where the PID controller should move the system
@@ -37,14 +36,19 @@ public class GyroToAnglePID extends PIDSubsystem {
     }
 
     protected void usePIDOutput(double output) {
-    	Robot.driveTrain.leftTalonSRXA.set(-output);
-    	Robot.driveTrain.rightTalonSRXA.set(-output);
+    	Robot.driveTrain.leftTalonSRXA.set(-output/100.0f);
+    	Robot.driveTrain.rightTalonSRXA.set(-output/100.0f);
     	SmartDashboard.putBoolean("On Target? ", onTarget());
     	SmartDashboard.putNumber("P: ", getPIDController().getP());
     	SmartDashboard.putNumber("I: ", getPIDController().getI());
     	SmartDashboard.putNumber("D: ", getPIDController().getD());
     	SmartDashboard.putNumber("Setpoint: ", getPIDController().getSetpoint());
-    	SmartDashboard.putNumber("Output: ", output);
+    	SmartDashboard.putNumber("Output: ", output/100f);
+/*    	if(onTarget()) {
+    		getPIDController().disable();
+    		getPIDController().reset();
+    	}
+    	*/
         // Use output to drive your system, like a motor
         // e.g. yourMotor.set(output);
     }
