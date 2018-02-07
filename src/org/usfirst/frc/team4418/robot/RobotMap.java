@@ -35,6 +35,9 @@ public class RobotMap {
 			gearShiftLow = 0;
 	public static int gyroPort = 0;
 
+	public static int motorButton = 5,
+			motorPort1 = 0,
+			motorPort2 = 0;
 	
 	public static int irPort = 3;
 	// If you are using multiple modules, make sure to define both the port

@@ -8,6 +8,7 @@
 package org.usfirst.frc.team4418.robot;
 
 import org.usfirst.frc.team4418.robot.commands.GearShiftCommand;
+import org.usfirst.frc.team4418.robot.commands.IntakeMotorsCommand;
 
 import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.buttons.Button;
@@ -20,22 +21,23 @@ import edu.wpi.first.wpilibj.buttons.JoystickButton;
 public class OI {
 	// Create the joysticks to be used for controlling the robot
 	private static Joystick joystick0 = new Joystick(0);
-	
+
 	// Create the methods to get joysticks for other parts of the robot
 	public static Joystick getDriverJoystick() {
 		return joystick0;
 	}
-	
+
 	public static Joystick joystick1 = new Joystick(1);
 	// Create buttons
-	
-	private static Button gearShiftButton = new JoystickButton(joystick0,RobotMap.gearShift); //GearShift Button
-	/*public static Button getGearShiftButton() {
-		return gearShiftButton;
-	}*/
-	
+
+	private static Button gearShiftButton = new JoystickButton(joystick0, RobotMap.gearShift); // GearShift Button
+	/*
+	 * public static Button getGearShiftButton() { return gearShiftButton; }
+	 */
+	private static Button intakeMotorsButton = new JoystickButton(joystick0, RobotMap.motorButton);
 	
 	public OI() {
 		gearShiftButton.whenPressed(new GearShiftCommand());
+		intakeMotorsButton.whileHeld(new IntakeMotorsCommand());
 	}
 }

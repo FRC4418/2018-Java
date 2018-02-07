@@ -20,6 +20,7 @@ import org.usfirst.frc.team4418.robot.subsystems.CompressorSubsystem;
 import org.usfirst.frc.team4418.robot.subsystems.DriveTrainSubsystem;
 import org.usfirst.frc.team4418.robot.subsystems.GearShiftSubsystem;
 import org.usfirst.frc.team4418.robot.subsystems.InfraRedSubsystem;
+import org.usfirst.frc.team4418.robot.subsystems.IntakeMotorsSubsystem;
 import org.usfirst.frc.team4418.robot.subsystems.GyroSubsystem;
 
 /**
@@ -36,8 +37,9 @@ public class Robot extends TimedRobot {
 	public static final ArcadeSubsystem arcadeDriveTrain = new ArcadeSubsystem(); //Create public arcadeDriveTrain
 	public static final CompressorSubsystem compressor = new CompressorSubsystem(); //Create public Compressor
 	public static final GearShiftSubsystem gearShifter = new GearShiftSubsystem(); //Create public GearShifter
-	public static final InfraRedSubsystem infraRed = new InfraRedSubsystem();
+	public static final InfraRedSubsystem infraRed = new InfraRedSubsystem(); //Create public Infrared
 	public static final GyroSubsystem gyroSys = new GyroSubsystem(); //Create public gyroscope
+	public static final IntakeMotorsSubsystem intakeMotors = new IntakeMotorsSubsystem(); //Create public intakeMotors.
 	
 	public static OI m_oi;
 
