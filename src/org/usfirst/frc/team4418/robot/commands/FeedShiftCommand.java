@@ -18,8 +18,8 @@ public class FeedShiftCommand extends Command {
     public boolean isFinished = false;
     // Called just before this Command runs the first time
     protected void initialize() {
-    	if (Robot.feedCylinder.isShoot()) {
-    		Robot.feedCylinder.Default();
+    	if (Robot.feedCylinder.isDefault()) {
+    		Robot.feedCylinder.Shoot();
     	} else {
     		Robot.feedCylinder.Default();
     	}
