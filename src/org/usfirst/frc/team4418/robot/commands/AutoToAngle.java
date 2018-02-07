@@ -29,17 +29,17 @@ public class AutoToAngle extends Command {
 
     // Make this return true when this Command no longer needs to run execute()
     protected boolean isFinished() {
-        return false;//Robot.gyroPID.getPIDController().onTarget();
+        return Robot.gyroPID.getPIDController().onTarget();
     }
 
     // Called once after isFinished returns true
     protected void end() {
-    	//Robot.gyroPID.disable();
+    	Robot.gyroPID.disable();
     }
 
     // Called when another command which requires one or more of the same
     // subsystems is scheduled to run
     protected void interrupted() {
-    	//end();
+    	end();
     }
 }
