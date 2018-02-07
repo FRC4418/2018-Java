@@ -12,9 +12,10 @@ public class GyroToAnglePID extends PIDSubsystem {
 
     // Initialize your subsystem here
     public GyroToAnglePID() {
-    	super("GyroToAnglePID", .5, 0, 0);
+    	super("GyroToAnglePID", 0.1, 0.1, 0.1);
     	Robot.gyroSys.clear();
-    	setAbsoluteTolerance(.5);
+    	setAbsoluteTolerance(5);
+    	getPIDController().setInputRange(-180.0f, 180.0f);
     	getPIDController().setOutputRange(-1, 1);
     	getPIDController().setContinuous(false);
         // Use these to get going:
@@ -43,6 +44,7 @@ public class GyroToAnglePID extends PIDSubsystem {
     	SmartDashboard.putNumber("I: ", getPIDController().getI());
     	SmartDashboard.putNumber("D: ", getPIDController().getD());
     	SmartDashboard.putNumber("Setpoint: ", getPIDController().getSetpoint());
+    	SmartDashboard.putNumber("Output: ", output);
         // Use output to drive your system, like a motor
         // e.g. yourMotor.set(output);
     }
