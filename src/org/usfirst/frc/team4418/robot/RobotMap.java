@@ -34,6 +34,10 @@ public class RobotMap {
 			gearShiftHigh = 1,
 			gearShiftLow = 0;
 	public static int gyroPort = 0;
+	
+	public static int intakeButton = 3,
+			intakeIn = 0,
+			intakeOut = 1;
 
 	public static int feedChange = 3,
 			feedShoot = 2,
