@@ -39,6 +39,9 @@ public class RobotMap {
 			intakeIn = 0,
 			intakeOut = 1;
 
+	public static int feedChange = 3,
+			feedShoot = 2,
+			feedDefault = 3;
 	
 	public static int irPort = 3;
 	// If you are using multiple modules, make sure to define both the port
