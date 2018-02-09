@@ -31,8 +31,8 @@ public class RobotMap {
 	public static final int
 			mainJoystick = 0, //DS USB
 			secondaryJoystick = 1,
-			rightWheelAxis = 3, //5
-			leftWheelAxis = 1; //1
+			rightWheelAxis = 5,
+			leftWheelAxis = 1;
 	
 	public static final int
 			gearShift = 1, //PCM
