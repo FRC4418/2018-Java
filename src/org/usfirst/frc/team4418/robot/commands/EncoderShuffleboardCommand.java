@@ -25,9 +25,6 @@ public class EncoderShuffleboardCommand extends Command {
     	//double[] encoderValues = {,Robot.encoders.getRightEncoder()}; //Store encoder values to an array
     	SmartDashboard.putNumber("Left Encoder", Robot.encoders.getLeftEncoder()); //Send encoder values array to shuffleboard
     	SmartDashboard.putNumber("Right Encoder", Robot.encoders.getRightEncoder()); //Send encoder values array to shuffleboard
-    	System.out.println("running");
-    	System.out.println(Robot.encoders.getRightEncoder());
-    	System.out.println(Robot.encoders.getLeftEncoder());
     }
 
     // Make this return true when this Command no longer needs to run execute()
@@ -37,12 +34,10 @@ public class EncoderShuffleboardCommand extends Command {
 
     // Called once after isFinished returns true
     protected void end() {
-    	System.out.println("stop");
     }
 
     // Called when another command which requires one or more of the same
     // subsystems is scheduled to run
     protected void interrupted() {
-    	System.out.println("interupted");
     }
 }

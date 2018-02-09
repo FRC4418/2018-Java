@@ -55,7 +55,6 @@ public class EncoderSubsystem extends Subsystem {
 		return convertUnitsFromInches(units,inches);
 	}
 	public double getLeftEncoder() {
-		System.out.println(leftEnc.getDistance());
 		return leftEnc.getDistance()*Math.PI;
 	}
 	
@@ -65,7 +64,6 @@ public class EncoderSubsystem extends Subsystem {
 		return convertUnitsFromInches(units,inches);
 	}
 	public double getRightEncoder() {
-		System.out.println(rightEnc.getDistance());
 		return rightEnc.getDistance()*Math.PI;
 	}
 	
