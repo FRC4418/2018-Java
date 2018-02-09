@@ -19,16 +19,14 @@ import org.usfirst.frc.team4418.robot.commands.AutonomousCommands;
 import org.usfirst.frc.team4418.robot.commands.TeleopCommands;
 import org.usfirst.frc.team4418.robot.subsystems.CompressorSubsystem;
 import org.usfirst.frc.team4418.robot.subsystems.DriveTrainSubsystem;
-<<<<<<< HEAD
-import org.usfirst.frc.team4418.robot.subsystems.EncoderSubsystem;
-=======
-import org.usfirst.frc.team4418.robot.subsystems.FeedCylinderSubsystem;
->>>>>>> master
 import org.usfirst.frc.team4418.robot.subsystems.GearShiftSubsystem;
 import org.usfirst.frc.team4418.robot.subsystems.InfraRedSubsystem;
 import org.usfirst.frc.team4418.robot.subsystems.GyroSubsystem;
+<<<<<<< HEAD
 import org.usfirst.frc.team4418.robot.subsystems.IntakeSubsystem;
+=======
 import org.usfirst.frc.team4418.robot.subsystems.GyroToAnglePID;
+>>>>>>> PID-Gyro
 
 /**
  * The VM is configured to automatically run this class, and to call the
@@ -43,15 +41,13 @@ public class Robot extends TimedRobot {
 	public static final DriveTrainSubsystem driveTrain = new DriveTrainSubsystem(); //Create public DriveTrain
 	public static final CompressorSubsystem compressor = new CompressorSubsystem(); //Create public Compressor
 	public static final GearShiftSubsystem gearShifter = new GearShiftSubsystem(); //Create public GearShifter
+	public static final InfraRedSubsystem infraRed = new InfraRedSubsystem();
+	public static final GyroSubsystem gyroSys = new GyroSubsystem(); //Create public gyroscope
 <<<<<<< HEAD
-	public static final EncoderSubsystem encoders = new EncoderSubsystem(); //Create public encoders
-=======
-	public static final InfraRedSubsystem infraRed = new InfraRedSubsystem(); //Create public InfraRed
-	public static final GyroSubsystem gyroSys = new GyroSubsystem(); //Create public GyroScope
-	public static final FeedCylinderSubsystem feedCylinder = new FeedCylinderSubsystem(); //Create public FeedCylinder
 	public static final IntakeSubsystem intake = new IntakeSubsystem(); //Create public Intake
+=======
 	public static final GyroToAnglePID gyroPID = new GyroToAnglePID();
->>>>>>> master
+>>>>>>> PID-Gyro
 	
 	public static OI m_oi;
 	Command teleCommand;

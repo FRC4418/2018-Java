@@ -38,6 +38,7 @@ public class RobotMap {
 			gearShift = 1, //PCM
 			gearShiftHigh = 1,
 			gearShiftLow = 0;
+<<<<<<< HEAD
 	
 	public static final int
 			leftEncoderA = 0, //DIO
@@ -49,6 +50,19 @@ public class RobotMap {
 			ticksPerRevolution = 256,
 			wheelDiameter = 4; //inches
 	
+=======
+	public static int gyroPort = 0;
+	
+	public static int intakeButton = 3,
+			intakeIn = 0,
+			intakeOut = 1;
+
+	public static int feedChange = 3,
+			feedShoot = 2,
+			feedDefault = 3;
+	
+	public static int irPort = 3;
+>>>>>>> master
 	// If you are using multiple modules, make sure to define both the port
 	// number and the module. For example you with a rangefinder:
 	// public static int rangefinderPort = 1;
