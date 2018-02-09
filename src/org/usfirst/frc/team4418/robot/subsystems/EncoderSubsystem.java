@@ -1,6 +1,5 @@
 package org.usfirst.frc.team4418.robot.subsystems;
 
-import org.usfirst.frc.team4418.robot.Robot;
 import org.usfirst.frc.team4418.robot.RobotMap;
 import org.usfirst.frc.team4418.robot.commands.EncoderShuffleboardCommand;
 
