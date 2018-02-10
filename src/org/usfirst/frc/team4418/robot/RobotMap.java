@@ -33,9 +33,7 @@ public class RobotMap {
 			leftWheelAxis = 1;
 	
 	public static final int
-			gearShift = 1, //PCM
-			gearShiftHigh = 1,
-			gearShiftLow = 0;
+			gearShift = 0;
 
 	public static int us1Ping = 8,
 			us1Echo = 9;

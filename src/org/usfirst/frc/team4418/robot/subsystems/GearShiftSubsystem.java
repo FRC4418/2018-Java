@@ -3,6 +3,7 @@ package org.usfirst.frc.team4418.robot.subsystems;
 import org.usfirst.frc.team4418.robot.RobotMap;
 import edu.wpi.first.wpilibj.DoubleSolenoid;
 import edu.wpi.first.wpilibj.DoubleSolenoid.Value;
+import edu.wpi.first.wpilibj.Solenoid;
 import edu.wpi.first.wpilibj.command.Subsystem;
 
 /**
@@ -11,30 +12,30 @@ import edu.wpi.first.wpilibj.command.Subsystem;
 public class GearShiftSubsystem extends Subsystem {
 	public GearShiftSubsystem() {
 		super();
-		gearShifterSolenoid.set(DoubleSolenoid.Value.kOff);
+		gearShifterSolenoid.set(false);
 	}
 	
-	public static DoubleSolenoid gearShifterSolenoid = new DoubleSolenoid(RobotMap.gearShiftHigh,RobotMap.gearShiftLow);
+	public static Solenoid gearShifterSolenoid = new Solenoid(RobotMap.gearShift);
 	
 
-	public Value getGear() {
+	public boolean getGear() {
     	return gearShifterSolenoid.get();
     }
 	
 	public boolean isHighGear() {
-		return getGear()==DoubleSolenoid.Value.kForward;
+		return getGear()==true;
 	}
     
 	public boolean isLowGear() {
-		return getGear()==DoubleSolenoid.Value.kReverse;
+		return getGear()==false;
 	}
 	
     public void highGear() {
-    	gearShifterSolenoid.set(DoubleSolenoid.Value.kForward);
+    	gearShifterSolenoid.set(true);
     }
     
     public void lowGear() {
-    	gearShifterSolenoid.set(DoubleSolenoid.Value.kReverse);
+    	gearShifterSolenoid.set(false);
     }
 
     public void initDefaultCommand() {
