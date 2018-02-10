@@ -38,6 +38,9 @@ public class RobotMap {
 			gearShift = 1, //PCM
 			gearShiftHigh = 1,
 			gearShiftLow = 0;
+
+	public static int us1Ping = 8,
+			us1Echo = 9;
 	
 	public static final int
 			leftEncoderA = 0, //DIO
