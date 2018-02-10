@@ -26,6 +26,7 @@ import org.usfirst.frc.team4418.robot.subsystems.UltrasonicSubsystem;
 import org.usfirst.frc.team4418.robot.subsystems.InfraRedSubsystem;
 import org.usfirst.frc.team4418.robot.subsystems.GyroSubsystem;
 import org.usfirst.frc.team4418.robot.subsystems.IntakeSubsystem;
+import org.usfirst.frc.team4418.robot.subsystems.ShooterAngle;
 import org.usfirst.frc.team4418.robot.subsystems.GyroToAnglePID;
 
 /**
@@ -48,6 +49,7 @@ public class Robot extends TimedRobot {
 	public static final FeedCylinderSubsystem feedCylinder = new FeedCylinderSubsystem(); //Create public FeedCylinder
 	public static final IntakeSubsystem intake = new IntakeSubsystem(); //Create public Intake
 	public static final GyroToAnglePID gyroPID = new GyroToAnglePID();
+	public static final ShooterAngle shootAngle = new ShooterAngle();
 	
 	public static OI m_oi;
 	Command teleCommand;
