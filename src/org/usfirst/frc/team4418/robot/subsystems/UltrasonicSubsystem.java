@@ -10,15 +10,21 @@ import edu.wpi.first.wpilibj.command.Subsystem;
  *
  */
 public class UltrasonicSubsystem extends Subsystem {
-		Ultrasonic ultra = new Ultrasonic(RobotMap.us1Ping, RobotMap.us1Echo);
+	Ultrasonic ultra = new Ultrasonic(RobotMap.us1Ping, RobotMap.us1Echo);
+	
 		
-		
-		public void setAutomaticMode(boolean enabling){
+	public UltrasonicSubsystem() {
+		super();
+		ultra.setEnabled(true);
+		ultra.setAutomaticMode(true);
+	}
+	
+	public void setAutomaticMode(boolean enabling){
 		ultra.setAutomaticMode(enabling);
 		
 		
 	}
-	public double getRangeInch() {
+	public double getRangeInch() {	
 		return ultra.getRangeInches();
 	}
     // Put methods for controlling this subsystem
