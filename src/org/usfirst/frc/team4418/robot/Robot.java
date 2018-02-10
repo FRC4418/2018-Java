@@ -11,13 +11,22 @@ import edu.wpi.first.wpilibj.CameraServer;
 import edu.wpi.first.wpilibj.TimedRobot;
 import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.command.Scheduler;
+//import edu.wpi.first.wpilibj.command.Subsystem;
 import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
+import org.usfirst.frc.team4418.robot.commands.AutonomousCommands;
+import org.usfirst.frc.team4418.robot.commands.TeleopCommands;
 import org.usfirst.frc.team4418.robot.subsystems.CompressorSubsystem;
 import org.usfirst.frc.team4418.robot.subsystems.DriveTrainSubsystem;
+import org.usfirst.frc.team4418.robot.subsystems.EncoderSubsystem;
+import org.usfirst.frc.team4418.robot.subsystems.FeedCylinderSubsystem;
 import org.usfirst.frc.team4418.robot.subsystems.GearShiftSubsystem;
 import org.usfirst.frc.team4418.robot.subsystems.UltrasonicSubsystem;
+import org.usfirst.frc.team4418.robot.subsystems.InfraRedSubsystem;
+import org.usfirst.frc.team4418.robot.subsystems.GyroSubsystem;
+import org.usfirst.frc.team4418.robot.subsystems.IntakeSubsystem;
+import org.usfirst.frc.team4418.robot.subsystems.GyroToAnglePID;
 
 /**
  * The VM is configured to automatically run this class, and to call the
@@ -26,16 +35,23 @@ import org.usfirst.frc.team4418.robot.subsystems.UltrasonicSubsystem;
  * creating this project, you must also update the build.properties file in the
  * project.
  */
+
 public class Robot extends TimedRobot {
 	// Create objects for each subsystem
 	public static final DriveTrainSubsystem driveTrain = new DriveTrainSubsystem(); //Create public DriveTrain
 	public static final CompressorSubsystem compressor = new CompressorSubsystem(); //Create public Compressor
 	public static final GearShiftSubsystem gearShifter = new GearShiftSubsystem(); //Create public GearShifter
 	public static final UltrasonicSubsystem ultrasonic = new UltrasonicSubsystem(); //Create public Ultrasonic
+	public static final EncoderSubsystem encoders = new EncoderSubsystem(); //Create public encoders
+	public static final InfraRedSubsystem infraRed = new InfraRedSubsystem(); //Create public InfraRed
+	public static final GyroSubsystem gyroSys = new GyroSubsystem(); //Create public GyroScope
+	public static final FeedCylinderSubsystem feedCylinder = new FeedCylinderSubsystem(); //Create public FeedCylinder
+	public static final IntakeSubsystem intake = new IntakeSubsystem(); //Create public Intake
+	public static final GyroToAnglePID gyroPID = new GyroToAnglePID();
 	
 	public static OI m_oi;
-
-	Command m_autonomousCommand;
+	Command teleCommand;
+	Command autoCommand;
 	SendableChooser<Command> m_chooser = new SendableChooser<>();
 
 	/**
@@ -51,6 +67,10 @@ public class Robot extends TimedRobot {
 		
 		// Initialize camera server
 		CameraServer.getInstance().startAutomaticCapture();
+		gyroSys.calibrate();
+		autoCommand = new AutonomousCommands();
+		teleCommand = new TeleopCommands();
+		//driveTrain.coast();
 	}
 
 	/**
@@ -60,7 +80,7 @@ public class Robot extends TimedRobot {
 	 */
 	@Override
 	public void disabledInit() {
-
+		
 	}
 
 	@Override
@@ -80,9 +100,7 @@ public class Robot extends TimedRobot {
 	 * to the switch structure below with additional strings & commands.
 	 */
 	@Override
-	public void autonomousInit() {
-		m_autonomousCommand = m_chooser.getSelected();
-
+	public void autonomousInit() {		
 		/*
 		 * String autoSelected = SmartDashboard.getString("Auto Selector",
 		 * "Default"); switch(autoSelected) { case "My Auto": autonomousCommand
@@ -91,8 +109,11 @@ public class Robot extends TimedRobot {
 		 */
 
 		// schedule the autonomous command (example)
-		if (m_autonomousCommand != null) {
-			m_autonomousCommand.start();
+		if(teleCommand!=null) {
+			teleCommand.cancel();
+		}
+		if(autoCommand!=null) {
+			autoCommand.start();
 		}
 	}
 
@@ -110,8 +131,11 @@ public class Robot extends TimedRobot {
 		// teleop starts running. If you want the autonomous to
 		// continue until interrupted by another command, remove
 		// this line or comment it out.
-		if (m_autonomousCommand != null) {
-			m_autonomousCommand.cancel();
+		if (autoCommand != null) {
+			autoCommand.cancel();
+		}
+		if(teleCommand != null) {
+			teleCommand.start();
 		}
 	}
 
@@ -120,6 +144,7 @@ public class Robot extends TimedRobot {
 	 */
 	@Override
 	public void teleopPeriodic() {
+		
 		Scheduler.getInstance().run();
 	}
 
