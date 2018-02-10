@@ -55,14 +55,17 @@ public class RobotMap {
 	public static int gyroPort = 0;
 	
 	public static int intakeButton = 3,
-			intakeIn = 0,
-			intakeOut = 1;
+			intakeIn = 4,
+			intakeOut = 5;
 
 	public static int feedChange = 3,
 			feedShoot = 2,
 			feedDefault = 3;
 	
 	public static int irPort = 3;
+	
+	public static int shootUp = 6,
+			shootDown = 7;
 	// If you are using multiple modules, make sure to define both the port
 	// number and the module. For example you with a rangefinder:
 	// public static int rangefinderPort = 1;
