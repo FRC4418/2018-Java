@@ -19,6 +19,7 @@ import org.usfirst.frc.team4418.robot.commands.AutonomousCommands;
 import org.usfirst.frc.team4418.robot.commands.TeleopCommands;
 import org.usfirst.frc.team4418.robot.subsystems.CompressorSubsystem;
 import org.usfirst.frc.team4418.robot.subsystems.DriveTrainSubsystem;
+import org.usfirst.frc.team4418.robot.subsystems.EncoderPID;
 import org.usfirst.frc.team4418.robot.subsystems.EncoderSubsystem;
 import org.usfirst.frc.team4418.robot.subsystems.FeedCylinderSubsystem;
 import org.usfirst.frc.team4418.robot.subsystems.GearShiftSubsystem;
@@ -52,6 +53,7 @@ public class Robot extends TimedRobot {
 	public static final GyroToAnglePID gyroPID = new GyroToAnglePID();
 	public static final ShooterAngle shootAngle = new ShooterAngle();
 	public static final UltrasonicSubsystem2 ultrasonic2 = new UltrasonicSubsystem2();
+	public static final EncoderPID encoderPID = new EncoderPID();
 	
 	public static OI m_oi;
 	Command teleCommand;
