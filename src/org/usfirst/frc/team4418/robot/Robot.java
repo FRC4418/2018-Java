@@ -76,7 +76,7 @@ public class Robot extends TimedRobot {
 		gyroSys.calibrate();
 		autoCommand = new AutonomousCommands();
 		teleCommand = new TeleopCommands();
-		//driveTrain.coast();
+		driveTrain.brake();
 	}
 
 	/**

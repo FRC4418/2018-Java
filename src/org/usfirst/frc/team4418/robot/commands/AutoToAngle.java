@@ -18,7 +18,7 @@ public class AutoToAngle extends Command {
     protected void initialize() {
     	Robot.gyroPID.setSetpointRelative(90.0);
     	Robot.gyroPID.getPIDController().reset();
-    	Robot.driveTrain.brake();
+    	//Robot.driveTrain.brake();
     	Robot.gyroPID.enable();
     }
 

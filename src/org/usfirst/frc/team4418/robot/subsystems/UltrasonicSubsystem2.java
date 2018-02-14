@@ -16,7 +16,7 @@ public class UltrasonicSubsystem2 extends Subsystem {
 	public UltrasonicSubsystem2() {
 		super();
 		ultra2.setEnabled(true);
-		ultra2.setAutomaticMode(true);
+		ultra2.setAutomaticMode(false);
 	}
 	
 	public void setAutomaticMode(boolean enabling){

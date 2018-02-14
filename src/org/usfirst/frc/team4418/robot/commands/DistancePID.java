@@ -14,7 +14,7 @@ public class DistancePID extends Command {
         // eg. requires(chassis);
     	Robot.encoderPID.setSetpointRelative(24.0);
     	Robot.encoderPID.getPIDController().reset();
-    	Robot.driveTrain.brake();
+    	//Robot.driveTrain.brake();
     	Robot.encoderPID.enable();
     }
 
