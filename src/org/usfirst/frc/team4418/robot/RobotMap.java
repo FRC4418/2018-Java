@@ -35,13 +35,12 @@ public class RobotMap {
 			gearShiftLow = 0;
 	public static int gyroPort = 0;
 
-	public static int launcherButton = 0,
-			leftLaunchA = 0,
-			leftLaunchB = 0,
-			leftLaunchC = 0,
-			rightLaunchA = 0,
-			rightLaunchB = 0,
-			rightLaunchC = 0;
+	public static int launcherButton = 3,
+			leftLaunchA = 30,
+			leftLaunchB = 31,
+			rightLaunchA = 33,
+			rightLaunchB = 32;
+			
 	
 	public static int irPort = 3;
 	// If you are using multiple modules, make sure to define both the port

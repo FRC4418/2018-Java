@@ -1,6 +1,7 @@
 package org.usfirst.frc.team4418.robot.commands;
 
-import org.usfirst.frc.team4418.robot.Robot;
+//import org.usfirst.frc.team4418.robot.Robot;
+import org.usfirst.frc.team4418.robot.subsystems.LauncherSubsystem;
 
 import edu.wpi.first.wpilibj.command.Command;
 
@@ -20,7 +21,9 @@ public class LauncherCommand extends Command {
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
-    	Robot.launcher.leftLaunchA.set(1);
+    	System.out.println(LauncherSubsystem.leftLaunchA.getMotorOutputPercent());
+    	LauncherSubsystem.leftLaunchA.set(1);
+    	System.out.println(LauncherSubsystem.leftLaunchA.get());
     	
     }
 
@@ -31,10 +34,14 @@ public class LauncherCommand extends Command {
 
     // Called once after isFinished returns true
     protected void end() {
+    	
+    	LauncherSubsystem.leftLaunchA.set(0);
+    	System.out.println(LauncherSubsystem.leftLaunchA.get());
     }
 
     // Called when another command which requires one or more of the same
     // subsystems is scheduled to run
     protected void interrupted() {
+    	end();
     }
 }
