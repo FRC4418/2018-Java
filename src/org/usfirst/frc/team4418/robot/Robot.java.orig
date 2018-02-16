@@ -55,9 +55,12 @@ public class Robot extends TimedRobot {
 	public static final GyroToAnglePID gyroPID = new GyroToAnglePID();
 	public static final ShooterAngle shootAngle = new ShooterAngle();
 	public static final UltrasonicSubsystem2 ultrasonic2 = new UltrasonicSubsystem2();
+<<<<<<< HEAD
 	public static final EncoderPID encoderPID = new EncoderPID();
+=======
 	public static final UltrasonicPIDLeft leftBackPID = new UltrasonicPIDLeft();
 	public static final UltrasonicPIDRight rightBackPID = new UltrasonicPIDRight();
+>>>>>>> ultrasonic-pid
 	
 	public static OI m_oi;
 	Command teleCommand;
