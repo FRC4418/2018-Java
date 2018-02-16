@@ -35,10 +35,10 @@ public class RobotMap {
 			gearShiftLow = 0;
 	public static int gyroPort = 0;
 
-	public static int launcherButton = 3,
-			leftLaunchA = 30,
-			leftLaunchB = 31,
-			rightLaunchA = 33,
+	public static int launcherButton = 2,
+			leftLaunchA = 31,
+			leftLaunchB = 11,
+			//rightLaunchA = 33,
 			rightLaunchB = 32;
 			
 	

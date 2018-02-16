@@ -19,16 +19,16 @@ public class LauncherSubsystem extends Subsystem {
 		
 		leftLaunchB.follow(leftLaunchA);
 		//leftLaunchC.follow(leftLaunchA);
-		rightLaunchB.follow(leftLaunchA);
+		//rightLaunchB.follow(leftLaunchA);
 		//rightLaunchC.follow(leftLaunchA);
-		rightLaunchA.follow(leftLaunchA);
+		//rightLaunchA.follow(rightLaunchB);
 	
 	}
 	
 	public static WPI_TalonSRX leftLaunchA = new WPI_TalonSRX(RobotMap.leftLaunchA);
 	public static WPI_TalonSRX leftLaunchB = new WPI_TalonSRX(RobotMap.leftLaunchB);
 	//public WPI_TalonSRX leftLaunchC = new WPI_TalonSRX(RobotMap.leftLaunchC);
-	public static WPI_TalonSRX rightLaunchA = new WPI_TalonSRX(RobotMap.rightLaunchA);
+	//public static WPI_TalonSRX rightLaunchA = new WPI_TalonSRX(RobotMap.rightLaunchA);
 	public static WPI_TalonSRX rightLaunchB = new WPI_TalonSRX(RobotMap.rightLaunchB);
 	//public WPI_TalonSRX rightLaunchC = new WPI_TalonSRX(RobotMap.rightLaunchC);
 

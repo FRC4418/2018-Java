@@ -21,9 +21,10 @@ public class LauncherCommand extends Command {
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
-    	System.out.println(LauncherSubsystem.leftLaunchA.getMotorOutputPercent());
+    	
     	LauncherSubsystem.leftLaunchA.set(1);
-    	System.out.println(LauncherSubsystem.leftLaunchA.get());
+    	LauncherSubsystem.rightLaunchB.set(-1);
+    	
     	
     }
 
@@ -36,7 +37,8 @@ public class LauncherCommand extends Command {
     protected void end() {
     	
     	LauncherSubsystem.leftLaunchA.set(0);
-    	System.out.println(LauncherSubsystem.leftLaunchA.get());
+    	LauncherSubsystem.rightLaunchB.set(0);
+    	
     }
 
     // Called when another command which requires one or more of the same

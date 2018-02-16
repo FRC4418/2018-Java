@@ -16,7 +16,7 @@ public class ArcadeDriveCommand extends Command {
     	super("ArcadeDrive");
     	
     	// Set required subsystems
-    	requires(Robot.arcadeDriveTrain);
+    	requires(Robot.driveTrain);
     }
 
     // Called just before this Command runs the first time
