@@ -7,6 +7,7 @@
 
 package org.usfirst.frc.team4418.robot;
 
+import org.usfirst.frc.team4418.robot.commands.ClimberCommand;
 import org.usfirst.frc.team4418.robot.commands.FeedShiftCommand;
 import org.usfirst.frc.team4418.robot.commands.GearShiftCommand;
 import org.usfirst.frc.team4418.robot.commands.IntakeCommand;
@@ -33,6 +34,7 @@ public class OI {
 	private static Button feedCylinderButton = new JoystickButton(joystick0,RobotMap.feedChange);
 	private static Button gearShiftButton = new JoystickButton(joystick0,RobotMap.gearShift); //GearShift Button
 	private static Button intakeButton = new JoystickButton(joystick0,RobotMap.intakeButton);
+	private static Button climbButton = new JoystickButton(joystick0,RobotMap.climbButton);
 	/*public static Button getGearShiftButton() {
 		return gearShiftButton;
 	}*/
@@ -41,5 +43,6 @@ public class OI {
 		gearShiftButton.whenPressed(new GearShiftCommand());
 		intakeButton.whenPressed(new IntakeCommand());
 		feedCylinderButton.whenPressed(new FeedShiftCommand());
+		climbButton.whenPressed(new ClimberCommand());
 	}
 }

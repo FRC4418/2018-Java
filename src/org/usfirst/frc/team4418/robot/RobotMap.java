@@ -69,6 +69,8 @@ public class RobotMap {
 	
 	public static int us2Ping = 6, 
 			us2Echo = 7;
+	
+	public static int climbButton = 4;
 	// If you are using multiple modules, make sure to define both the port
 	// number and the module. For example you with a rangefinder:
 	// public static int rangefinderPort = 1;
