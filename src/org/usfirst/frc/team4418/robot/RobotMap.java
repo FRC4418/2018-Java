@@ -23,10 +23,8 @@ public class RobotMap {
 	public static int
 			leftTalonSRXAID = 10, //CAN
 			leftTalonSRXBID = 11,
-			leftTalonSRXCID = 12,
 			rightTalonSRXAID = 20,
-			rightTalonSRXBID = 21,
-			rightTalonSRXCID = 22;
+			rightTalonSRXBID = 21;
 	
 	public static final int
 			mainJoystick = 0, //DS USB
@@ -35,9 +33,7 @@ public class RobotMap {
 			leftWheelAxis = 1;
 	
 	public static final int
-			gearShift = 1, //PCM
-			gearShiftHigh = 1,
-			gearShiftLow = 0;
+			gearShift = 0;
 
 	public static int us1Ping = 8,
 			us1Echo = 9;
@@ -47,6 +43,7 @@ public class RobotMap {
 			leftEncoderB = 1,
 			rightEncoderA = 2,
 			rightEncoderB = 3;
+	
 	public static final double
 			gearRatio = 5.4, //Drive shaft to encoder (NOT THE OTHER WAY AROUND)
 			ticksPerRevolution = 256,

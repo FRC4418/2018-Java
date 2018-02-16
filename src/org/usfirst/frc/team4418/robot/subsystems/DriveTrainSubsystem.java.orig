@@ -18,12 +18,15 @@ public class DriveTrainSubsystem extends Subsystem {
     // Create objects for the drive train subsystem
 	WPI_TalonSRX leftTalonSRXA = new WPI_TalonSRX(RobotMap.leftTalonSRXAID),
 			leftTalonSRXB = new WPI_TalonSRX(RobotMap.leftTalonSRXBID),
+<<<<<<< HEAD
 			//leftTalonSRXC = new WPI_TalonSRX(RobotMap.leftTalonSRXCID),
 			rightTalonSRXA = new WPI_TalonSRX(RobotMap.rightTalonSRXAID),
 			rightTalonSRXB = new WPI_TalonSRX(RobotMap.rightTalonSRXBID);
 			//rightTalonSRXC = new WPI_TalonSRX(RobotMap.rightTalonSRXCID);
+=======
 			rightTalonSRXA = new WPI_TalonSRX(RobotMap.rightTalonSRXAID),
 			rightTalonSRXB = new WPI_TalonSRX(RobotMap.rightTalonSRXBID);
+>>>>>>> sync-with-electronic-sheet
 	DifferentialDrive driveTrain = new DifferentialDrive(leftTalonSRXA, rightTalonSRXA);
 	
 	// Create variables for the drive train subsystem
@@ -46,9 +49,13 @@ public class DriveTrainSubsystem extends Subsystem {
 		rightTalonSRXA.setNeutralMode(rightValue==0 ? NeutralMode.Brake : NeutralMode.Coast);
 		leftTalonSRXB.setNeutralMode(leftValue==0 ? NeutralMode.Brake : NeutralMode.Coast);
 		rightTalonSRXB.setNeutralMode(rightValue==0 ? NeutralMode.Brake : NeutralMode.Coast);
+<<<<<<< HEAD
 		leftTalonSRXC.setNeutralMode(leftValue==0 ? NeutralMode.Brake : NeutralMode.Coast);
 		rightTalonSRXC.setNeutralMode(rightValue==0 ? NeutralMode.Brake : NeutralMode.Coast);
-		*/		
+		*/
+=======
+		
+>>>>>>> sync-with-electronic-sheet
 		// Tank drive using the values previously calculated 
 		// and disabling squared inputs since the curve was already applied
 		driveTrain.tankDrive(leftValue, rightValue, false);
@@ -59,8 +66,11 @@ public class DriveTrainSubsystem extends Subsystem {
 		rightTalonSRXA.setNeutralMode(NeutralMode.Brake);
 		leftTalonSRXB.setNeutralMode(NeutralMode.Brake);
 		rightTalonSRXB.setNeutralMode(NeutralMode.Brake);
+<<<<<<< HEAD
 		//leftTalonSRXC.setNeutralMode(NeutralMode.Brake);
 		//rightTalonSRXC.setNeutralMode(NeutralMode.Brake);
+=======
+>>>>>>> sync-with-electronic-sheet
 	}
 	
 	public void coast() {
@@ -68,8 +78,11 @@ public class DriveTrainSubsystem extends Subsystem {
 		rightTalonSRXA.setNeutralMode(NeutralMode.Coast);
 		leftTalonSRXB.setNeutralMode(NeutralMode.Coast);
 		rightTalonSRXB.setNeutralMode(NeutralMode.Coast);
+<<<<<<< HEAD
 		//leftTalonSRXC.setNeutralMode(NeutralMode.Coast);
 		//rightTalonSRXC.setNeutralMode(NeutralMode.Coast);
+=======
+>>>>>>> sync-with-electronic-sheet
 	}
 	/*
 	public void arcadeDrive(Joystick driverJoystick) {
@@ -111,10 +124,13 @@ public class DriveTrainSubsystem extends Subsystem {
     public DriveTrainSubsystem() {
 		super();
 		leftTalonSRXB.follow(leftTalonSRXA);
+<<<<<<< HEAD
 		//leftTalonSRXC.follow(leftTalonSRXA);
 		rightTalonSRXB.follow(rightTalonSRXA);
 		//rightTalonSRXC.follow(rightTalonSRXA);
+=======
 		rightTalonSRXB.follow(rightTalonSRXA);
+>>>>>>> sync-with-electronic-sheet
 	}
 }
 
