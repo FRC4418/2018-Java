@@ -59,10 +59,16 @@ public class Robot extends TimedRobot {
 	public static final UltrasonicPIDLeft leftBackPID = new UltrasonicPIDLeft();
 	public static final UltrasonicPIDRight rightBackPID = new UltrasonicPIDRight();
 	
+	public static SendableChooser autoChooser = new SendableChooser();
+	
 	public static OI m_oi;
 	Command teleCommand;
 	Command autoCommand;
-	SendableChooser<Command> m_chooser = new SendableChooser<>();
+	
+	public static String driverPos;
+	public static String gameData;
+	
+	//SendableChooser<Command> m_chooser = new SendableChooser<>();
 
 	/**
 	 * This function is run when the robot is first started up and should be
@@ -73,11 +79,22 @@ public class Robot extends TimedRobot {
 		m_oi = new OI();
 		//m_chooser.addDefault("Default Auto", new ExampleCommand());
 		// chooser.addObject("My Auto", new MyAutoCommand());
-		SmartDashboard.putData("Auto mode", m_chooser);
+		//SmartDashboard.putData("Auto mode", m_chooser);
 		
 		// Initialize camera server
 		CameraServer.getInstance().startAutomaticCapture();
 		gyroSys.calibrate();
+		String straight = "Straight";
+    	String posOne = "Position One (left)";
+    	String posTwo = "Position Two (middle)";
+    	String posThr = "Position Three (right";
+    	
+    	
+    	autoChooser.addDefault("Straight", straight);
+    	autoChooser.addObject("Position One (left)", posOne);
+    	autoChooser.addObject("Position Two (middle)", posTwo);
+    	autoChooser.addObject("Position Three (right)", posThr);
+    	SmartDashboard.putData(autoChooser);
 		autoCommand = new AutonomousCommands();
 		teleCommand = new TeleopCommands();
 		driveTrain.brake();
@@ -117,7 +134,6 @@ public class Robot extends TimedRobot {
 		 * = new MyAutoCommand(); break; case "Default Auto": default:
 		 * autonomousCommand = new ExampleCommand(); break; }
 		 */
-
 		// schedule the autonomous command (example)
 		if(teleCommand!=null) {
 			teleCommand.cancel();

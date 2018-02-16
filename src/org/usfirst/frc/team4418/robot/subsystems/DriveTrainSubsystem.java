@@ -21,9 +21,6 @@ public class DriveTrainSubsystem extends Subsystem {
 			//leftTalonSRXC = new WPI_TalonSRX(RobotMap.leftTalonSRXCID),
 			rightTalonSRXA = new WPI_TalonSRX(RobotMap.rightTalonSRXAID),
 			rightTalonSRXB = new WPI_TalonSRX(RobotMap.rightTalonSRXBID);
-			//rightTalonSRXC = new WPI_TalonSRX(RobotMap.rightTalonSRXCID);
-			rightTalonSRXA = new WPI_TalonSRX(RobotMap.rightTalonSRXAID),
-			rightTalonSRXB = new WPI_TalonSRX(RobotMap.rightTalonSRXBID);
 	DifferentialDrive driveTrain = new DifferentialDrive(leftTalonSRXA, rightTalonSRXA);
 	
 	// Create variables for the drive train subsystem
