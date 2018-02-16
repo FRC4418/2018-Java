@@ -12,6 +12,7 @@ public class DistancePID extends Command {
     public DistancePID() {
         // Use requires() here to declare subsystem dependencies
         // eg. requires(chassis);
+    	Robot.encoders.reset();
     	Robot.encoderPID.setSetpointRelative(24.0);
     	Robot.encoderPID.getPIDController().reset();
     	//Robot.driveTrain.brake();

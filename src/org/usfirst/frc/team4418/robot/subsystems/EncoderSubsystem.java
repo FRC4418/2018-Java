@@ -74,8 +74,8 @@ public class EncoderSubsystem extends Subsystem {
 		return convertUnitsFromInches(units,(leftInches + rightInches) / 2);
 	}
 	public double getAvgEncoder() {
-		double leftInches = leftEnc.getDistance();
-		double rightInches = rightEnc.getDistance();
+		double leftInches = leftEnc.getDistance()*Math.PI;
+		double rightInches = rightEnc.getDistance()*Math.PI;
 		return (leftInches + rightInches) / 2;
 	}
 	
