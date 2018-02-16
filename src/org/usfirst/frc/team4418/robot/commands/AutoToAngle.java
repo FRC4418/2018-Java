@@ -9,14 +9,14 @@ import edu.wpi.first.wpilibj.command.Command;
  */
 public class AutoToAngle extends Command {
 
-    public AutoToAngle() {
+    public AutoToAngle(double setpoint) {
+    	Robot.gyroPID.setSetpointRelative(setpoint);
         // Use requires() here to declare subsystem dependencies
         // eg. requires(chassis);
     }
 
     // Called just before this Command runs the first time
     protected void initialize() {
-    	Robot.gyroPID.setSetpointRelative(90.0);
     	Robot.gyroPID.getPIDController().reset();
     	//Robot.driveTrain.brake();
     	Robot.gyroPID.enable();

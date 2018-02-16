@@ -22,12 +22,14 @@ public class FMSCall extends Command {
     protected void initialize() {
     	Robot.driverPos = (String) Robot.autoChooser.getSelected();
     	Robot.gameData = DriverStation.getInstance().getGameSpecificMessage();
+    	Robot.switchOrScale = (String) Robot.switchChooser.getSelected();
     }
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
     	SmartDashboard.putString("Driver Position: ", Robot.driverPos);
     	SmartDashboard.putString("Game Message: ", Robot.gameData);
+    	SmartDashboard.putString("Switch or Scale: ", Robot.switchOrScale);
     }
 
     // Make this return true when this Command no longer needs to run execute()

@@ -60,6 +60,7 @@ public class Robot extends TimedRobot {
 	public static final UltrasonicPIDRight rightBackPID = new UltrasonicPIDRight();
 	
 	public static SendableChooser autoChooser = new SendableChooser();
+	public static SendableChooser switchChooser = new SendableChooser();
 	
 	public static OI m_oi;
 	Command teleCommand;
@@ -67,6 +68,7 @@ public class Robot extends TimedRobot {
 	
 	public static String driverPos;
 	public static String gameData;
+	public static String switchOrScale;
 	
 	//SendableChooser<Command> m_chooser = new SendableChooser<>();
 
@@ -87,14 +89,20 @@ public class Robot extends TimedRobot {
 		String straight = "Straight";
     	String posOne = "Position One (left)";
     	String posTwo = "Position Two (middle)";
-    	String posThr = "Position Three (right";
+    	String posThr = "Position Three (right)";
     	
     	
     	autoChooser.addDefault("Straight", straight);
     	autoChooser.addObject("Position One (left)", posOne);
     	autoChooser.addObject("Position Two (middle)", posTwo);
     	autoChooser.addObject("Position Three (right)", posThr);
+    	
+    	switchChooser.addDefault("Switch", "Switch");
+    	switchChooser.addObject("Scale", "Scale");
+    	
     	SmartDashboard.putData(autoChooser);
+    	SmartDashboard.putData(switchChooser);
+    	
 		autoCommand = new AutonomousCommands();
 		teleCommand = new TeleopCommands();
 		driveTrain.brake();

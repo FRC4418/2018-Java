@@ -9,12 +9,12 @@ import edu.wpi.first.wpilibj.command.Command;
  */
 public class DistancePID extends Command {
 
-    public DistancePID() {
+    public DistancePID(double setpoint) {
         // Use requires() here to declare subsystem dependencies
         // eg. requires(chassis);
     	Robot.encoders.reset();
-    	Robot.encoderPID.setSetpointRelative(24.0);
     	Robot.encoderPID.getPIDController().reset();
+    	Robot.encoderPID.setSetpointRelative(setpoint);
     	//Robot.driveTrain.brake();
     	Robot.encoderPID.enable();
     }

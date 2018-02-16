@@ -31,24 +31,64 @@ public class AutonomousCommands extends CommandGroup {
         // a CommandGroup containing them would require both the chassis and the
         // arm.
     	addSequential(new FMSCall());
-    	/*if(FMSCall.gameData.length() > 0) {
-    		if(gameData.charAt(0)=='L') {
-    			if(driverPos==1) {
-    				
-    			}else if(driverPos == 2) {
-    				
-    			}else if(driverPos == 3) {
-    				
-    			}
-    		}else {
-	    		if(driverPos==1) {
-					
-				}else if(driverPos == 2) {
-					
-				}else if(driverPos == 3) {
-					
-				}
+    	if(Robot.gameData.length() > 0) {
+    		if(Robot.switchOrScale=="Switch") {
+	    		if(Robot.gameData.charAt(0)=='L') {
+	    			if(Robot.driverPos=="Straight") {
+	    				addSequential(new DistancePID(250.0));
+	    			}else if(Robot.driverPos == "Position One (left)") {
+	    				addSequential(new DistancePID(299.0));
+	    				addSequential(new AutoToAngle(90.0));
+	    				addSequential(new BackupPID());
+	    				//Shoot
+	    			}else if(Robot.driverPos == "Position Two (middle)") {
+	    				addSequential(new DistancePID(149.5));
+	    				addSequential(new AutoToAngle(-90.0));
+	    				addSequential(new DistancePID(80.0));
+	    				addSequential(new AutoToAngle(90));
+	    				addSequential(new DistancePID(149.5));
+	    				addSequential(new AutoToAngle(90.0));
+	    				addSequential(new BackupPID());
+	    				//Shoot
+	    			}else if(Robot.driverPos=="Position Three (right)") {
+	    				addSequential(new DistancePID(350.0));
+	    				addSequential(new AutoToAngle(-90.0));
+	    				addSequential(new DistancePID(160.0));
+	    				addSequential(new AutoToAngle(-90.0));
+	    				addSequential(new DistancePID(51.0));
+	    				addSequential(new AutoToAngle(-90.0));
+	    				addSequential(new BackupPID());
+	    				//Shoot
+	    			}
+	    		}else {
+	    			if(Robot.driverPos=="Straight") {
+	    				addSequential(new DistancePID(250.0));
+	    			}else if(Robot.driverPos == "Position One (left)") {
+	    				addSequential(new DistancePID(350.0));
+	    				addSequential(new AutoToAngle(90.0));
+	    				addSequential(new DistancePID(160.0));
+	    				addSequential(new AutoToAngle(90.0));
+	    				addSequential(new DistancePID(51.0));
+	    				addSequential(new AutoToAngle(90.0));
+	    				addSequential(new BackupPID());
+	    				//Shoot
+	    			}else if(Robot.driverPos == "Position Two (middle)") {
+	    				addSequential(new DistancePID(149.5));
+	    				addSequential(new AutoToAngle(90.0));
+	    				addSequential(new DistancePID(80.0));
+	    				addSequential(new AutoToAngle(-90));
+	    				addSequential(new DistancePID(149.5));
+	    				addSequential(new AutoToAngle(-90.0));
+	    				addSequential(new BackupPID());
+	    				//Shoot
+	    			}else if(Robot.driverPos=="Position Three (right)") {
+	    				addSequential(new DistancePID(299.0));
+	    				addSequential(new AutoToAngle(-90.0));
+	    				addSequential(new BackupPID());
+	    				//Shoot
+	    			}
+	    		}
     		}
-    	}*/
+    	}
     }
 }
