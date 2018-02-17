@@ -55,7 +55,7 @@ public class EncoderSubsystem extends Subsystem {
 		return convertUnitsFromInches(units,inches);
 	}
 	public double getLeftEncoder() {
-		return leftEnc.getDistance()*Math.PI;
+		return leftEnc.getDistance();
 	}
 	
 	//Get the right encoder value in the specified units (optional)
@@ -64,7 +64,7 @@ public class EncoderSubsystem extends Subsystem {
 		return convertUnitsFromInches(units,inches);
 	}
 	public double getRightEncoder() {
-		return rightEnc.getDistance()*Math.PI;
+		return rightEnc.getDistance();
 	}
 	
 	//Get the average of the encoder values in the specified units (optional)
@@ -74,8 +74,8 @@ public class EncoderSubsystem extends Subsystem {
 		return convertUnitsFromInches(units,(leftInches + rightInches) / 2);
 	}
 	public double getAvgEncoder() {
-		double leftInches = leftEnc.getDistance()*Math.PI;
-		double rightInches = rightEnc.getDistance()*Math.PI;
+		double leftInches = leftEnc.getDistance();
+		double rightInches = rightEnc.getDistance();
 		return (leftInches + rightInches) / 2;
 	}
 	

@@ -1,6 +1,8 @@
 package org.usfirst.frc.team4418.robot.commands;
 
 
+import org.usfirst.frc.team4418.robot.Robot;
+
 import edu.wpi.first.wpilibj.command.CommandGroup;
 
 /**
@@ -26,7 +28,8 @@ public class AutonomousCommands extends CommandGroup {
         // a CommandGroup containing them would require both the chassis and the
         // arm.
     	addSequential(new FMSCall());
-    	addSequential(new DistancePID(100000.0));
+    	addSequential(new DistancePID(210.0));
+    	addSequential(new AutoToAngle(90.0));
     	/*if(Robot.gameData.length() > 0) {
     		if(Robot.switchOrScale=="Switch") {
 	    		if(Robot.gameData.charAt(0)=='L') {

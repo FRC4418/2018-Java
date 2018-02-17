@@ -101,7 +101,7 @@ public class Robot extends TimedRobot {
     	
 		autoCommand = new AutonomousCommands();
 		teleCommand = new TeleopCommands();
-		driveTrain.coast();
+		driveTrain.brake();
 		gyroPID.disable();
 		encoderPID.disable();
 		leftBackPID.disable();

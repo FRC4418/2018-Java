@@ -21,7 +21,7 @@ public class EncoderPID extends PIDSubsystem {
     	getPIDController().setOutputRange(-100.0f, 100.0f);
     	getPIDController().setContinuous(false);
     	Robot.gyroSys.clear();
-    	Robot.driveTrain.coast();
+    	Robot.driveTrain.brake();
     }
 
     public void initDefaultCommand() {
@@ -41,7 +41,7 @@ public class EncoderPID extends PIDSubsystem {
         // e.g. yourMotor.set(output)
     	if(output>1) {
     		output=1;
-    	}else if(output<-1) {
+    	}else if(output <-1) {
     		output=-1;
     	}
     	double anglePct = Robot.gyroSys.getAngle()/90;
