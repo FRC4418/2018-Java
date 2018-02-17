@@ -6,12 +6,14 @@ import org.usfirst.frc.team4418.robot.commands.PhotoElectricDisplay;
 
 import edu.wpi.first.wpilibj.AnalogInput;
 import edu.wpi.first.wpilibj.command.Subsystem;
-
 public class PhotoElectricSubsystem extends Subsystem {
-	AnalogInput photoElectric = new AnalogInput(RobotMap.irPort);
+	public PhotoElectricSubsystem() {
+		super();
+	}
+	AnalogInput photoElectric = new AnalogInput(RobotMap.photoElectric);
 	public double getPhotoElectric () {
 		return (photoElectric.getVoltage());
-	}
+		}
     // Put methods for controlling this subsystem
     // here. Call these from Commands.
 
