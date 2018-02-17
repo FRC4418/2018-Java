@@ -20,7 +20,7 @@ public class BackupPID extends Command {
     	Robot.leftBackPID.getPIDController().reset();
     	Robot.rightBackPID.setSetpoint(4.0);
     	Robot.rightBackPID.getPIDController().reset();
-    	Robot.driveTrain.brake();
+    	//Robot.driveTrain.brake();
     	Robot.leftBackPID.enable();
     	Robot.rightBackPID.enable();
     }

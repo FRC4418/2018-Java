@@ -33,7 +33,7 @@ public class RobotMap {
 			leftWheelAxis = 1;
 	
 	public static final int
-			gearShift = 0;
+			gearShift = 1;
 
 	public static int us1Ping = 8,
 			us1Echo = 9;
@@ -55,7 +55,7 @@ public class RobotMap {
 			intakeIn = 4,
 			intakeOut = 5;
 
-	public static int feedChange = 3,
+	public static int feedChange = 2,
 			feedShoot = 2,
 			feedDefault = 3;
 	

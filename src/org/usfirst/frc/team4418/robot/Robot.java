@@ -59,8 +59,8 @@ public class Robot extends TimedRobot {
 	public static final UltrasonicPIDLeft leftBackPID = new UltrasonicPIDLeft();
 	public static final UltrasonicPIDRight rightBackPID = new UltrasonicPIDRight();
 	
-	public static SendableChooser autoChooser = new SendableChooser();
-	public static SendableChooser switchChooser = new SendableChooser();
+	public static SendableChooser<String> autoChooser = new SendableChooser<String>();
+	public static SendableChooser<String> switchChooser = new SendableChooser<String>();
 	
 	public static OI m_oi;
 	Command teleCommand;
@@ -86,26 +86,26 @@ public class Robot extends TimedRobot {
 		// Initialize camera server
 		CameraServer.getInstance().startAutomaticCapture();
 		gyroSys.calibrate();
-		String straight = "Straight";
-    	String posOne = "Position One (left)";
-    	String posTwo = "Position Two (middle)";
-    	String posThr = "Position Three (right)";
     	
-    	
-    	autoChooser.addDefault("Straight", straight);
-    	autoChooser.addObject("Position One (left)", posOne);
-    	autoChooser.addObject("Position Two (middle)", posTwo);
-    	autoChooser.addObject("Position Three (right)", posThr);
+    	autoChooser.addDefault("Straight", "Straight");
+    	autoChooser.addObject("Position One (left)", "Position One (left)");
+    	autoChooser.addObject("Position Two (middle)", "Position Two (middle)");
+    	autoChooser.addObject("Position Three (right)", "Position Three (right)");
     	
     	switchChooser.addDefault("Switch", "Switch");
     	switchChooser.addObject("Scale", "Scale");
     	
-    	SmartDashboard.putData(autoChooser);
-    	SmartDashboard.putData(switchChooser);
+    	SmartDashboard.putData("1", autoChooser);
+    	SmartDashboard.putData("2", switchChooser);
+    	
     	
 		autoCommand = new AutonomousCommands();
 		teleCommand = new TeleopCommands();
-		driveTrain.brake();
+		driveTrain.coast();
+		gyroPID.disable();
+		encoderPID.disable();
+		leftBackPID.disable();
+		rightBackPID.disable();
 	}
 
 	/**
@@ -144,6 +144,10 @@ public class Robot extends TimedRobot {
 		 */
 		// schedule the autonomous command (example)
 		if(teleCommand!=null) {
+	    	/*Robot.encoderPID.disable();
+	    	Robot.gyroPID.disable();
+	    	Robot.leftBackPID.disable();
+	    	Robot.rightBackPID.disable();*/
 			teleCommand.cancel();
 		}
 		if(autoCommand!=null) {
@@ -157,6 +161,7 @@ public class Robot extends TimedRobot {
 	@Override
 	public void autonomousPeriodic() {
 		Scheduler.getInstance().run();
+		//System.out.println("Running auto");
 	}
 
 	@Override
@@ -167,6 +172,10 @@ public class Robot extends TimedRobot {
 		// this line or comment it out.
 		if (autoCommand != null) {
 			autoCommand.cancel();
+	    	/*Robot.encoderPID.disable();
+	    	Robot.gyroPID.disable();
+	    	Robot.leftBackPID.disable();
+	    	Robot.rightBackPID.disable();*/
 		}
 		if(teleCommand != null) {
 			teleCommand.start();

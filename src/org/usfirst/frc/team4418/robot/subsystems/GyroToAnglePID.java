@@ -3,7 +3,6 @@ package org.usfirst.frc.team4418.robot.subsystems;
 import org.usfirst.frc.team4418.robot.Robot;
 
 import edu.wpi.first.wpilibj.command.PIDSubsystem;
-import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
 /**
  *
@@ -36,14 +35,14 @@ public class GyroToAnglePID extends PIDSubsystem {
     }
 
     protected void usePIDOutput(double output) {
-    	Robot.driveTrain.leftTalonSRXA.set(-output/100.0f);
-    	Robot.driveTrain.rightTalonSRXA.set(-output/100.0f);
-    	SmartDashboard.putBoolean("On Target? ", onTarget());
+    	Robot.driveTrain.left.set(-output/100.0f);
+    	Robot.driveTrain.right.set(-output/100.0f);
+    	/*SmartDashboard.putBoolean("On Target? ", onTarget());
     	SmartDashboard.putNumber("P: ", getPIDController().getP());
     	SmartDashboard.putNumber("I: ", getPIDController().getI());
     	SmartDashboard.putNumber("D: ", getPIDController().getD());
     	SmartDashboard.putNumber("Setpoint: ", getPIDController().getSetpoint());
-    	SmartDashboard.putNumber("Output: ", output/100f);
+    	SmartDashboard.putNumber("Output: ", output/100f);*/
 /*    	if(onTarget()) {
     		getPIDController().disable();
     		getPIDController().reset();

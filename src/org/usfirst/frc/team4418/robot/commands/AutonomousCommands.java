@@ -1,12 +1,7 @@
 package org.usfirst.frc.team4418.robot.commands;
 
-import org.usfirst.frc.team4418.robot.Robot;
 
-import edu.wpi.first.wpilibj.DriverStation;
-import edu.wpi.first.wpilibj.Sendable;
 import edu.wpi.first.wpilibj.command.CommandGroup;
-import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
-import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
 /**
  *
@@ -31,7 +26,8 @@ public class AutonomousCommands extends CommandGroup {
         // a CommandGroup containing them would require both the chassis and the
         // arm.
     	addSequential(new FMSCall());
-    	if(Robot.gameData.length() > 0) {
+    	addSequential(new DistancePID(100000.0));
+    	/*if(Robot.gameData.length() > 0) {
     		if(Robot.switchOrScale=="Switch") {
 	    		if(Robot.gameData.charAt(0)=='L') {
 	    			if(Robot.driverPos=="Straight") {
@@ -89,6 +85,6 @@ public class AutonomousCommands extends CommandGroup {
 	    			}
 	    		}
     		}
-    	}
+    	}*/
     }
 }

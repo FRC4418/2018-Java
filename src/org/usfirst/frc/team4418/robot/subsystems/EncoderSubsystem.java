@@ -13,7 +13,7 @@ import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 public class EncoderSubsystem extends Subsystem {
 
 	static Encoder leftEnc = new Encoder(RobotMap.leftEncoderA,RobotMap.leftEncoderB);
-	static Encoder rightEnc = new Encoder(RobotMap.rightEncoderA,RobotMap.rightEncoderB,true);
+	static Encoder rightEnc = new Encoder(RobotMap.rightEncoderA,RobotMap.rightEncoderB, true);
 	
     // Put methods for controlling this subsystem
     // here. Call these from Commands.

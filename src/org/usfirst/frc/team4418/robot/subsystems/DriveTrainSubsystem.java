@@ -6,6 +6,7 @@ import com.ctre.phoenix.motorcontrol.NeutralMode;
 import com.ctre.phoenix.motorcontrol.can.WPI_TalonSRX;
 
 import edu.wpi.first.wpilibj.Joystick;
+import edu.wpi.first.wpilibj.SpeedControllerGroup;
 import edu.wpi.first.wpilibj.command.Subsystem;
 import edu.wpi.first.wpilibj.drive.DifferentialDrive;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
@@ -21,7 +22,9 @@ public class DriveTrainSubsystem extends Subsystem {
 			//leftTalonSRXC = new WPI_TalonSRX(RobotMap.leftTalonSRXCID),
 			rightTalonSRXA = new WPI_TalonSRX(RobotMap.rightTalonSRXAID),
 			rightTalonSRXB = new WPI_TalonSRX(RobotMap.rightTalonSRXBID);
-	DifferentialDrive driveTrain = new DifferentialDrive(leftTalonSRXA, rightTalonSRXA);
+	SpeedControllerGroup left = new SpeedControllerGroup(leftTalonSRXA, leftTalonSRXB);
+	SpeedControllerGroup right = new SpeedControllerGroup(rightTalonSRXA, rightTalonSRXB);
+	DifferentialDrive driveTrain = new DifferentialDrive(left, right);
 	
 	// Create variables for the drive train subsystem
 	private double joystickDeadzone = 0.05;
@@ -37,6 +40,10 @@ public class DriveTrainSubsystem extends Subsystem {
 		rightTalonSRXA.setNeutralMode(rightValue == 0 ? NeutralMode.Brake : NeutralMode.Coast);*/
 		SmartDashboard.putNumber( "Left Motor out: ", leftValue);
 		SmartDashboard.putNumber( "Right Motor out: ", rightValue);
+		SmartDashboard.putNumber("Left side a", leftTalonSRXA.get());
+		SmartDashboard.putNumber("Left side b", leftTalonSRXB.get());
+		SmartDashboard.putNumber("right side a", rightTalonSRXA.get());
+		SmartDashboard.putNumber("right side B", rightTalonSRXB.get());
 		
 		// Enable breaking if the joystick value for a side is within the deadzone
 		/*leftTalonSRXA.setNeutralMode(leftValue==0 ? NeutralMode.Brake : NeutralMode.Coast);
@@ -107,11 +114,6 @@ public class DriveTrainSubsystem extends Subsystem {
     // to be set to slaves of the talon A on their side
     public DriveTrainSubsystem() {
 		super();
-		leftTalonSRXB.follow(leftTalonSRXA);
-		//leftTalonSRXC.follow(leftTalonSRXA);
-		rightTalonSRXB.follow(rightTalonSRXA);
-		//rightTalonSRXC.follow(rightTalonSRXA);
-		rightTalonSRXB.follow(rightTalonSRXA);
 	}
 }
 

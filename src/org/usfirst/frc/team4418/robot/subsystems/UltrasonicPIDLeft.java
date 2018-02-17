@@ -32,7 +32,7 @@ public class UltrasonicPIDLeft extends PIDSubsystem {
     protected void usePIDOutput(double output) {
         // Use output to drive your system, like a motor
         // e.g. yourMotor.set(output);
-    	Robot.driveTrain.leftTalonSRXA.set(output);
-    	Robot.driveTrain.leftTalonSRXB.set(output);
+    	Robot.driveTrain.left.set(output);
+    	Robot.driveTrain.left.set(output);
     }
 }
