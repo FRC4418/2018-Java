@@ -17,6 +17,7 @@ import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
 import org.usfirst.frc.team4418.robot.commands.AutonomousCommands;
 import org.usfirst.frc.team4418.robot.commands.TeleopCommands;
+import org.usfirst.frc.team4418.robot.subsystems.AutoPhotoElectricSubsystem;
 import org.usfirst.frc.team4418.robot.subsystems.CompressorSubsystem;
 import org.usfirst.frc.team4418.robot.subsystems.DriveTrainSubsystem;
 import org.usfirst.frc.team4418.robot.subsystems.EncoderSubsystem;
@@ -40,18 +41,20 @@ import org.usfirst.frc.team4418.robot.subsystems.GyroToAnglePID;
 
 public class Robot extends TimedRobot {
 	// Create objects for each subsystem
-	public static final DriveTrainSubsystem driveTrain = new DriveTrainSubsystem(); //Create public DriveTrain
-	public static final CompressorSubsystem compressor = new CompressorSubsystem(); //Create public Compressor
-	public static final GearShiftSubsystem gearShifter = new GearShiftSubsystem(); //Create public GearShifter
-	public static final UltrasonicSubsystem ultrasonic = new UltrasonicSubsystem(); //Create public Ultrasonic
-	public static final EncoderSubsystem encoders = new EncoderSubsystem(); //Create public encoders
-	public static final InfraRedSubsystem infraRed = new InfraRedSubsystem(); //Create public InfraRed
-	public static final GyroSubsystem gyroSys = new GyroSubsystem(); //Create public GyroScope
-	public static final FeedCylinderSubsystem feedCylinder = new FeedCylinderSubsystem(); //Create public FeedCylinder
-	public static final IntakeSubsystem intake = new IntakeSubsystem(); //Create public Intake
-	public static final GyroToAnglePID gyroPID = new GyroToAnglePID();
-	public static final ShooterAngle shootAngle = new ShooterAngle();
-	public static final UltrasonicSubsystem2 ultrasonic2 = new UltrasonicSubsystem2();
+	public static final DriveTrainSubsystem driveTrain = new DriveTrainSubsystem(); //Create public DriveTrain.
+	public static final CompressorSubsystem compressor = new CompressorSubsystem(); //Create public Compressor.
+	public static final GearShiftSubsystem gearShifter = new GearShiftSubsystem(); //Create public GearShifter.
+	public static final UltrasonicSubsystem ultrasonic = new UltrasonicSubsystem(); //Create public Ultrasonic.
+	public static final EncoderSubsystem encoders = new EncoderSubsystem(); //Create public encoders.
+	public static final InfraRedSubsystem infraRed = new InfraRedSubsystem(); //Create public InfraRed.
+	public static final GyroSubsystem gyroSys = new GyroSubsystem(); //Create public GyroScope.
+	public static final FeedCylinderSubsystem feedCylinder = new FeedCylinderSubsystem(); //Create public FeedCylinder.
+	public static final IntakeSubsystem intake = new IntakeSubsystem(); //Create public Intake.
+	public static final GyroToAnglePID gyroPID = new GyroToAnglePID(); //Create public gyro-angle.
+	public static final ShooterAngle shootAngle = new ShooterAngle(); //Create public Shooter-angle.
+	public static final UltrasonicSubsystem2 ultrasonic2 = new UltrasonicSubsystem2(); //Create public Ultrasonic.
+	public static final AutoPhotoElectricSubsystem AuotoPhotoElectric = new AutoPhotoElectricSubsystem(); //Create public Autonomous PhotoElectric.
+	
 	
 	public static OI m_oi;
 	Command teleCommand;
