@@ -23,6 +23,18 @@ public class FMSCall extends Command {
     	Robot.driverPos = Robot.autoChooser.getSelected();
     	Robot.gameData = DriverStation.getInstance().getGameSpecificMessage();
     	Robot.switchOrScale = Robot.switchChooser.getSelected();
+    	int retries = 100;
+        while (Robot.gameData.length() < 2 && retries > 0) {
+            DriverStation.reportError("Gamedata is " + Robot.gameData + " retrying " + retries, false);
+            try {
+                Thread.sleep(5);
+                Robot.gameData = DriverStation.getInstance().getGameSpecificMessage();
+                if (Robot.gameData==null) { Robot.gameData = ""; }
+            } catch (Exception e) {
+            }
+            retries--;
+        }
+        DriverStation.reportError("gameData before parse: " + Robot.gameData, false);
     }
 
     // Called repeatedly when this Command is scheduled to run
@@ -34,11 +46,7 @@ public class FMSCall extends Command {
 
     // Make this return true when this Command no longer needs to run execute()
     protected boolean isFinished() {
-        if(Robot.driverPos!=null&&Robot.gameData!=null&&Robot.switchOrScale!=null) {
-        	return true;
-        }else {
-        	return false;
-        }
+        return true;
     }
 
     // Called once after isFinished returns true
