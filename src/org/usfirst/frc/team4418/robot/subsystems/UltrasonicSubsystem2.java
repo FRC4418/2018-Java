@@ -1,9 +1,5 @@
 package org.usfirst.frc.team4418.robot.subsystems;
 
-import org.usfirst.frc.team4418.robot.RobotMap;
-import org.usfirst.frc.team4418.robot.commands.UltrasonicCommand2;
-
-import edu.wpi.first.wpilibj.Ultrasonic;
 import edu.wpi.first.wpilibj.command.Subsystem;
 
 /**

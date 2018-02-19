@@ -54,6 +54,15 @@ public class DriveTrainSubsystem extends Subsystem {
 		driveTrain.tankDrive(leftValue, rightValue, false);
 	}
 	
+	public void spin(double speed) {
+		left.set(speed);
+		right.set(speed);
+	}
+	public void straight(double speed) {
+		left.set(-speed);
+		right.set(speed);
+	}
+	
 	// Set all motors to break mode
 	public void brake() {
 		leftTalonSRXA.setNeutralMode(NeutralMode.Brake);

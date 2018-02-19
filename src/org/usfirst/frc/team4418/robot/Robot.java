@@ -17,7 +17,6 @@ import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
 import org.usfirst.frc.team4418.robot.commands.AutonomousCommands;
 import org.usfirst.frc.team4418.robot.commands.TeleopCommands;
-import org.usfirst.frc.team4418.robot.subsystems.AutoPhotoElectricSubsystem;
 import org.usfirst.frc.team4418.robot.subsystems.CompressorSubsystem;
 import org.usfirst.frc.team4418.robot.subsystems.DriveTrainSubsystem;
 import org.usfirst.frc.team4418.robot.subsystems.EncoderPID;
@@ -30,6 +29,7 @@ import org.usfirst.frc.team4418.robot.subsystems.InfraredSubsystem;
 import org.usfirst.frc.team4418.robot.subsystems.GyroSubsystem;
 import org.usfirst.frc.team4418.robot.subsystems.IntakeSubsystem;
 import org.usfirst.frc.team4418.robot.subsystems.PhotoElectricSubsystem;
+import org.usfirst.frc.team4418.robot.subsystems.PhotoElectricSubsystem2;
 import org.usfirst.frc.team4418.robot.subsystems.ShooterAngle;
 import org.usfirst.frc.team4418.robot.subsystems.UltrasonicPIDLeft;
 import org.usfirst.frc.team4418.robot.subsystems.UltrasonicPIDRight;
@@ -60,11 +60,11 @@ public class Robot extends TimedRobot {
 	public static final EncoderPID encoderPID = new EncoderPID();
 	public static final UltrasonicPIDLeft leftBackPID = new UltrasonicPIDLeft();
 	public static final UltrasonicPIDRight rightBackPID = new UltrasonicPIDRight();
-	public static SendableChooser<String> autoChooser = new SendableChooser<String>();
-	public static final AutoPhotoElectricSubsystem AuotoPhotoElectric = new AutoPhotoElectricSubsystem(); //Create public Autonomous PhotoElectric.
+	public static final PhotoElectricSubsystem photoElectric = new PhotoElectricSubsystem();
+	public static final PhotoElectricSubsystem2 photoElectric2 = new PhotoElectricSubsystem2();
 	
 	public static SendableChooser<String> switchChooser = new SendableChooser<String>();
-	public static final PhotoElectricSubsystem photoElectric = new PhotoElectricSubsystem();
+	public static SendableChooser<String> autoChooser = new SendableChooser<String>();
 	
 	public static OI m_oi;
 	Command teleCommand;

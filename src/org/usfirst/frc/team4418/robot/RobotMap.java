@@ -24,8 +24,8 @@ public class RobotMap {
 			leftTankDrive_axis = 1,
 	
 			gearShift_button = 1, //Button to shift between high and low gear on the gear boxes
-			intake_button = 3,
-			feedChange_button = 2;
+			intake_button = 2,
+			shoot_button = 3;
 	
 	// Declare Talon SRX IDs
 	public static int
@@ -72,14 +72,14 @@ public class RobotMap {
 	// Declare the infrared ID
 	public static int infrared_analog_ID = 3;
 	
+	public static int photoElectric_analog_ID = 2;
+	
 	public static int
 			intakeInSolenoid_PCM_ID = 4,
 			intakeOutSolenoid_PCM_ID = 5;
 	public static int 
 			feedShootSolenoid_PCM_ID = 2,
 			feedLoadSolenoid_PCM_ID = 3;
-	
-	public static int photoElectric = 2;
 	
 	public static int shootUp = 6,
 			shootDown = 7;
