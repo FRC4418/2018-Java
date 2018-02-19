@@ -61,6 +61,8 @@ public class RobotMap {
 	
 	public static int irPort = 3;
 	
+	public static int photoElectric = 2;
+	
 	public static int shootUp = 6,
 			shootDown = 7;
 	
