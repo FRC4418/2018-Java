@@ -17,14 +17,15 @@ import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 public class DriveTrainSubsystem extends Subsystem {
 
     // Create objects for the drive train subsystem
-	WPI_TalonSRX leftTalonSRXA = new WPI_TalonSRX(RobotMap.leftTalonSRXAID),
-			leftTalonSRXB = new WPI_TalonSRX(RobotMap.leftTalonSRXBID),
-			//leftTalonSRXC = new WPI_TalonSRX(RobotMap.leftTalonSRXCID),
-			rightTalonSRXA = new WPI_TalonSRX(RobotMap.rightTalonSRXAID),
-			rightTalonSRXB = new WPI_TalonSRX(RobotMap.rightTalonSRXBID);
-	SpeedControllerGroup left = new SpeedControllerGroup(leftTalonSRXA, leftTalonSRXB);
-	SpeedControllerGroup right = new SpeedControllerGroup(rightTalonSRXA, rightTalonSRXB);
-	DifferentialDrive driveTrain = new DifferentialDrive(left, right);
+	WPI_TalonSRX leftTalonSRXA = new WPI_TalonSRX(RobotMap.leftTalonSRXA_CAN_ID), //Create all TalonSRXs
+			leftTalonSRXB = new WPI_TalonSRX(RobotMap.leftTalonSRXB_CAN_ID),
+			rightTalonSRXA = new WPI_TalonSRX(RobotMap.rightTalonSRXA_CAN_ID),
+			rightTalonSRXB = new WPI_TalonSRX(RobotMap.rightTalonSRXB_CAN_ID);
+	
+	SpeedControllerGroup left = new SpeedControllerGroup(leftTalonSRXA, leftTalonSRXB), //Group the left and right sides together
+			right = new SpeedControllerGroup(rightTalonSRXA, rightTalonSRXB);
+	
+	DifferentialDrive driveTrain = new DifferentialDrive(left, right); //Create the drivetrain
 	
 	// Create variables for the drive train subsystem
 	private double joystickDeadzone = 0.05;
@@ -32,82 +33,58 @@ public class DriveTrainSubsystem extends Subsystem {
 	// Tank drive control with added features
 	public void tankDrive(Joystick driverJoystick) {
 		// Apply a custom curve to the joystick's values and apply a deadzone
-		double leftValue = inputMap(driverJoystick.getRawAxis(RobotMap.leftWheelAxis));
-		double rightValue = inputMap(driverJoystick.getRawAxis(RobotMap.rightWheelAxis));
+		double leftValue = inputMap(driverJoystick.getRawAxis(RobotMap.leftTankDrive_axis));
+		double rightValue = inputMap(driverJoystick.getRawAxis(RobotMap.rightTankDrive_axis));
 		
 		// Enable breaking if the joystick value for a side is within the deadzone
-		/*leftTalonSRXA.setNeutralMode(leftValue == 0 ? NeutralMode.Brake : NeutralMode.Coast);
-		rightTalonSRXA.setNeutralMode(rightValue == 0 ? NeutralMode.Brake : NeutralMode.Coast);*/
-		SmartDashboard.putNumber( "Left Motor out: ", leftValue);
-		SmartDashboard.putNumber( "Right Motor out: ", rightValue);
-		SmartDashboard.putNumber("Left side a", leftTalonSRXA.get());
-		SmartDashboard.putNumber("Left side b", leftTalonSRXB.get());
-		SmartDashboard.putNumber("right side a", rightTalonSRXA.get());
-		SmartDashboard.putNumber("right side B", rightTalonSRXB.get());
+		leftTalonSRXA.setNeutralMode(leftValue == 0 ? NeutralMode.Brake : NeutralMode.Coast);
+		leftTalonSRXB.setNeutralMode(leftValue == 0 ? NeutralMode.Brake : NeutralMode.Coast);
+		rightTalonSRXA.setNeutralMode(rightValue == 0 ? NeutralMode.Brake : NeutralMode.Coast);
+		rightTalonSRXB.setNeutralMode(rightValue == 0 ? NeutralMode.Brake : NeutralMode.Coast);
 		
-		// Enable breaking if the joystick value for a side is within the deadzone
-		/*leftTalonSRXA.setNeutralMode(leftValue==0 ? NeutralMode.Brake : NeutralMode.Coast);
-		rightTalonSRXA.setNeutralMode(rightValue==0 ? NeutralMode.Brake : NeutralMode.Coast);
-		leftTalonSRXB.setNeutralMode(leftValue==0 ? NeutralMode.Brake : NeutralMode.Coast);
-		rightTalonSRXB.setNeutralMode(rightValue==0 ? NeutralMode.Brake : NeutralMode.Coast);
-		leftTalonSRXC.setNeutralMode(leftValue==0 ? NeutralMode.Brake : NeutralMode.Coast);
-		rightTalonSRXC.setNeutralMode(rightValue==0 ? NeutralMode.Brake : NeutralMode.Coast);
-		*/		
+		SmartDashboard.putNumber( "Left Drive Train Value", leftValue);
+		SmartDashboard.putNumber( "Right Drive Train Value", rightValue);
+		SmartDashboard.putNumber("Left Drive Train Motor A", leftTalonSRXA.get());
+		SmartDashboard.putNumber("Left Drive Train Motor B", leftTalonSRXB.get());
+		SmartDashboard.putNumber("Right Drive Train Motor A", rightTalonSRXA.get());
+		SmartDashboard.putNumber("Right Drive Train Motor B", rightTalonSRXB.get());
+				
 		// Tank drive using the values previously calculated 
 		// and disabling squared inputs since the curve was already applied
 		driveTrain.tankDrive(leftValue, rightValue, false);
 	}
 	
+	// Set all motors to break mode
 	public void brake() {
 		leftTalonSRXA.setNeutralMode(NeutralMode.Brake);
 		rightTalonSRXA.setNeutralMode(NeutralMode.Brake);
 		leftTalonSRXB.setNeutralMode(NeutralMode.Brake);
 		rightTalonSRXB.setNeutralMode(NeutralMode.Brake);
-		//leftTalonSRXC.setNeutralMode(NeutralMode.Brake);
-		//rightTalonSRXC.setNeutralMode(NeutralMode.Brake);
 	}
 	
+	// Set all motors to coast mode
 	public void coast() {
 		leftTalonSRXA.setNeutralMode(NeutralMode.Coast);
 		rightTalonSRXA.setNeutralMode(NeutralMode.Coast);
 		leftTalonSRXB.setNeutralMode(NeutralMode.Coast);
 		rightTalonSRXB.setNeutralMode(NeutralMode.Coast);
-		//leftTalonSRXC.setNeutralMode(NeutralMode.Coast);
-		//rightTalonSRXC.setNeutralMode(NeutralMode.Coast);
-	}
-	/*
-	public void arcadeDrive(Joystick driverJoystick) {
-		// Apply a custom curve to the joystick's values and apply a deadzone
-		double speed = inputMap(driverJoystick.getRawAxis(1));
-		double rotation = inputMap(driverJoystick.getRawAxis(0));
-		
-		// Enable breaking if the joystick value for a side is within the deadzone
-		leftTalonSRXA.setNeutralMode(NeutralMode.Brake);
-		rightTalonSRXA.setNeutralMode(NeutralMode.Brake);
-		
-		// Arcade drive using the values previously calculated 
-		// and disabling squared inputs since the curve was already applied
-		driveTrain.arcadeDrive(speed, -rotation);
 	}
 	
-	*/
-	// Stop the drive train from receiving input
+	// Stop driving
 	public void stopDrive() {
 		driveTrain.curvatureDrive(0, 0, false);
 	}
 	
 	//Apply a custom curve to joystick values and apply a deadzone
 	public double inputMap(double value) {
-		// Apply the custom curve
-		// Square the inputs
-		//value = Math.signum(value)*value*value;
+		// Apply the custom curves
+		value = Math.signum(value)*Math.abs(2.542735043*value*value*value-3.316433566*value*value+1.783139083*value+0.0181118881);
 		
 		// Apply the deadzone if the value is within 0 +/- the value of joystickDeadzone
 		return Math.abs(value) >= joystickDeadzone ? value : 0;
 	}
 	
     public void initDefaultCommand() {
-        // Set the default command to teleop driving
     }
     
     // Override the default constructor to allow for talons B and C of both sides

@@ -11,7 +11,7 @@ public class UltrasonicPIDLeft extends PIDSubsystem {
 
     // Initialize your subsystem here
     public UltrasonicPIDLeft() {
-    	super("UltrasonicPIDLeft", 2, 0, 0);
+    	super("UltrasonicPIDLeft", .5, 0, 0);
     	setAbsoluteTolerance(.5);
     	getPIDController().setOutputRange(-100.0f, 100.0f);
     	getPIDController().setContinuous(false);
@@ -26,13 +26,13 @@ public class UltrasonicPIDLeft extends PIDSubsystem {
         // Return your input value for the PID loop
         // e.g. a sensor, like a potentiometer:
         // yourPot.getAverageVoltage() / kYourMaxVoltage;
-        return Robot.ultrasonic2.getRangeInch();
+        return Robot.ultrasonic.getRangeInchUltra2();
     }
 
     protected void usePIDOutput(double output) {
         // Use output to drive your system, like a motor
         // e.g. yourMotor.set(output);
-    	Robot.driveTrain.left.set(output);
-    	Robot.driveTrain.left.set(output);
+    	Robot.driveTrain.left.set(output/100f);
+    	//Robot.driveTrain.left.set(output);
     }
 }

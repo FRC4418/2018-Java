@@ -17,7 +17,7 @@ public class FeedCylinderSubsystem extends Subsystem {
     // Put methods for controlling this subsystem
     // here. Call these from Commands.
 
-	public static DoubleSolenoid feedCylinder = new DoubleSolenoid(RobotMap.feedShoot,RobotMap.feedDefault);
+	public static DoubleSolenoid feedCylinder = new DoubleSolenoid(RobotMap.feedShootSolenoid_PCM_ID,RobotMap.feedLoadSolenoid_PCM_ID);
 	public Value getPosition() {
     	return feedCylinder.get();
     }

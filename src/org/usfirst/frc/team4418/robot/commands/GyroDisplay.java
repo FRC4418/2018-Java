@@ -14,7 +14,7 @@ public class GyroDisplay extends Command {
         // Use requires() here to declare subsystem dependencies
         // eg. requires(chassis);
     	super("Super Gyro Display");
-    	requires(Robot.gyroSys);
+    	requires(Robot.gyro);
     }
 
     // Called just before this Command runs the first time
@@ -23,7 +23,7 @@ public class GyroDisplay extends Command {
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
-    	SmartDashboard.putNumber("Gyro Angle", Robot.gyroSys.getAngle());
+    	SmartDashboard.putNumber("Gyro Angle", Robot.gyro.getAngle());
     }
 
     // Make this return true when this Command no longer needs to run execute()

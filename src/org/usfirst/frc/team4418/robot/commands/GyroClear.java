@@ -12,12 +12,12 @@ public class GyroClear extends Command {
     public GyroClear() {
         // Use requires() here to declare subsystem dependencies
         // eg. requires(chassis);
-    	requires(Robot.gyroSys);
+    	requires(Robot.gyro);
     }
 
     // Called just before this Command runs the first time
     protected void initialize() {
-    	Robot.gyroSys.clear();
+    	Robot.gyro.clear();
     }
 
 	@Override

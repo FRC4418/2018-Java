@@ -27,9 +27,12 @@ public class AutonomousCommands extends CommandGroup {
         // e.g. if Command1 requires chassis, and Command2 requires arm,
         // a CommandGroup containing them would require both the chassis and the
         // arm.
-    	addSequential(new FMSCall());
-    	addSequential(new DistancePID(210.0));
-    	addSequential(new AutoToAngle(90.0));
+    	//addSequential(new FMSCall()); ---------------------------------------------------------------------------------------------------------------------------------=====
+    	addSequential(new DistancePID(200));
+    	addSequential(new AutoToAngle(90));
+    	//addSequential(new BackupPID());
+    	//addSequential(new DistancePID(210.0));
+    	//addSequential(new AutoToAngle(90.0));
     	/*if(Robot.gameData.length() > 0) {
     		if(Robot.switchOrScale=="Switch") {
 	    		if(Robot.gameData.charAt(0)=='L') {

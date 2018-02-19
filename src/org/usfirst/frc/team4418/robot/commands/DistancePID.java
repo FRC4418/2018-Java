@@ -17,12 +17,14 @@ public class DistancePID extends Command {
     	Robot.encoderPID.setSetpointRelative(relSet);
     	Robot.encoderPID.setAbsoluteTolerance(.5);
     	//Robot.driveTrain.brake();
+    	Robot.gyro.clear();
     	Robot.encoderPID.enable();
     	Robot.driveTrain.brake();
     }
 
     // Called just before this Command runs the first time
     protected void initialize() {
+    	Robot.gyro.clear();
     	Robot.encoders.reset();
     	Robot.encoderPID.getPIDController().reset();
     	Robot.encoderPID.enable();

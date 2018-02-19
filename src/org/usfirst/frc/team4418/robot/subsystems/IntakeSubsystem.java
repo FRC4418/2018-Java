@@ -15,7 +15,7 @@ public class IntakeSubsystem extends Subsystem {
 		super();
 		intakeSolenoid.set(DoubleSolenoid.Value.kOff);
 	}
-	public static DoubleSolenoid intakeSolenoid = new DoubleSolenoid(RobotMap.intakeOut,RobotMap.intakeIn);
+	public static DoubleSolenoid intakeSolenoid = new DoubleSolenoid(RobotMap.intakeOutSolenoid_PCM_ID,RobotMap.intakeInSolenoid_PCM_ID);
     // Put methods for controlling this subsystem
     // here. Call these from Commands.
 	public Value getIntake() {
