@@ -31,7 +31,7 @@ public class GyroToAnglePID extends PIDSubsystem {
         // Return your input value for the PID loop
         // e.g. a sensor, like a potentiometer:
         // yourPot.getAverageVoltage() / kYourMaxVoltage;
-        return Robot.gyroSys.getAngle();
+        return Robot.gyro.getAngle();
     }
 
     protected void usePIDOutput(double output) {

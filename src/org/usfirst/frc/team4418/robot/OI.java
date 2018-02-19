@@ -30,9 +30,9 @@ public class OI {
 	
 	public static Joystick joystick1 = new Joystick(1);
 	// Create buttons
-	private static Button feedCylinderButton = new JoystickButton(joystick0,RobotMap.feedChange);
-	private static Button gearShiftButton = new JoystickButton(joystick0,RobotMap.gearShift); //GearShift Button
-	private static Button intakeButton = new JoystickButton(joystick0,RobotMap.intakeButton);
+	private static Button feedCylinderButton = new JoystickButton(joystick0,RobotMap.feedChange_button);
+	private static Button gearShiftButton = new JoystickButton(joystick0,RobotMap.gearShift_button); //GearShift Button
+	private static Button intakeButton = new JoystickButton(joystick0,RobotMap.intake_button);
 	/*public static Button getGearShiftButton() {
 		return gearShiftButton;
 	}*/

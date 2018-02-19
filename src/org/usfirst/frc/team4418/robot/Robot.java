@@ -26,7 +26,7 @@ import org.usfirst.frc.team4418.robot.subsystems.FeedCylinderSubsystem;
 import org.usfirst.frc.team4418.robot.subsystems.GearShiftSubsystem;
 import org.usfirst.frc.team4418.robot.subsystems.UltrasonicSubsystem;
 import org.usfirst.frc.team4418.robot.subsystems.UltrasonicSubsystem2;
-import org.usfirst.frc.team4418.robot.subsystems.InfraRedSubsystem;
+import org.usfirst.frc.team4418.robot.subsystems.InfraredSubsystem;
 import org.usfirst.frc.team4418.robot.subsystems.GyroSubsystem;
 import org.usfirst.frc.team4418.robot.subsystems.IntakeSubsystem;
 import org.usfirst.frc.team4418.robot.subsystems.PhotoElectricSubsystem;
@@ -50,8 +50,8 @@ public class Robot extends TimedRobot {
 	public static final GearShiftSubsystem gearShifter = new GearShiftSubsystem(); //Create public GearShifter
 	public static final UltrasonicSubsystem ultrasonic = new UltrasonicSubsystem(); //Create public Ultrasonic
 	public static final EncoderSubsystem encoders = new EncoderSubsystem(); //Create public encoders
-	public static final InfraRedSubsystem infraRed = new InfraRedSubsystem(); //Create public InfraRed
-	public static final GyroSubsystem gyroSys = new GyroSubsystem(); //Create public GyroScope
+	public static final InfraredSubsystem infrared = new InfraredSubsystem(); //Create public InfraRed
+	public static final GyroSubsystem gyro = new GyroSubsystem(); //Create public GyroScope
 	public static final FeedCylinderSubsystem feedCylinder = new FeedCylinderSubsystem(); //Create public FeedCylinder
 	public static final IntakeSubsystem intake = new IntakeSubsystem(); //Create public Intake
 	public static final GyroToAnglePID gyroPID = new GyroToAnglePID();
@@ -89,7 +89,7 @@ public class Robot extends TimedRobot {
 		
 		// Initialize camera server
 		CameraServer.getInstance().startAutomaticCapture();
-		gyroSys.calibrate();
+		gyro.calibrate();
     	
     	autoChooser.addDefault("Straight", "Straight");
     	autoChooser.addObject("Position One (left)", "Position One (left)");

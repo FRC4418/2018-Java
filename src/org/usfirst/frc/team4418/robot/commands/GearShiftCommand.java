@@ -25,7 +25,6 @@ public class GearShiftCommand extends Command {
     	} else {
     		Robot.gearShifter.highGear();
     	}
-    	isFinished = true;
     }
 
     // Called repeatedly when this Command is scheduled to run
@@ -34,7 +33,7 @@ public class GearShiftCommand extends Command {
 
     // Make this return true when this Command no longer needs to run execute()
     protected boolean isFinished() {
-        return isFinished;
+        return true; //End after one run
     }
 
     // Called once after isFinished returns true

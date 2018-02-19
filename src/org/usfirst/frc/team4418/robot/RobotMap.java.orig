@@ -79,10 +79,12 @@ public class RobotMap {
 			feedShootSolenoid_PCM_ID = 2,
 			feedLoadSolenoid_PCM_ID = 3;
 	
+<<<<<<< HEAD
 	public static int photoElectric = 2;
 	
 	public static int shootUp = 6,
 			shootDown = 7;
+=======
 	public static int 
 			shootUpwardsSolenoid_PCM_ID = 6,
 			shootDownwardsSolenoid_PCM_ID = 7;
@@ -90,6 +92,7 @@ public class RobotMap {
 	public static int
 			gearShiftLowGearSolenoid_PCM_ID = 0,
 			gearShiftHighGearSolenoid_PCM_ID = 1;
+>>>>>>> ScrimmageCode
 	
 	// If you are using multiple modules, make sure to define both the port
 	// number and the module. For example you with a rangefinder:

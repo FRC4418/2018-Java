@@ -11,7 +11,7 @@ import edu.wpi.first.wpilibj.command.Subsystem;
  */
 public class ShooterAngle extends Subsystem {
 	
-	public static DoubleSolenoid shootAngle = new DoubleSolenoid(RobotMap.shootUp, RobotMap.shootDown);
+	public static DoubleSolenoid shootAngle = new DoubleSolenoid(RobotMap.shootUpwardsSolenoid_PCM_ID, RobotMap.shootDownwardsSolenoid_PCM_ID);
 	
 	public ShooterAngle() {
 		super();

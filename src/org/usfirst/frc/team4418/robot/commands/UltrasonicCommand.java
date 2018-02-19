@@ -25,10 +25,15 @@ public class UltrasonicCommand extends Command {
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
-    	if(Robot.ultrasonic.getRangeInch() != 0) {
-    		u_value = Robot.ultrasonic.getRangeInch();
+    	if(Robot.ultrasonic.getRangeInchUltra1() != 0) {
+    		u_value = Robot.ultrasonic.getRangeInchUltra1();
     	}
-    	SmartDashboard.putNumber("Range: ", u_value);    	
+    	SmartDashboard.putNumber("Range: ", u_value);
+    	//SmartDashboard.putNumber("Test Range: ", Robot.ultrasonic.getRangeInchUltra1());
+    	if(Robot.ultrasonic.getRangeInchUltra2() != 0) {
+    		u_value = Robot.ultrasonic.getRangeInchUltra2();
+    	}
+    	SmartDashboard.putNumber("Range2: ", u_value);
     }
 
     // Make this return true when this Command no longer needs to run execute()

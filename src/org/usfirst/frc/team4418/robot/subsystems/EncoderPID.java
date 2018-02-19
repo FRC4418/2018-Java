@@ -20,7 +20,7 @@ public class EncoderPID extends PIDSubsystem {
     	setAbsoluteTolerance(1);
     	getPIDController().setOutputRange(-100.0f, 100.0f);
     	getPIDController().setContinuous(false);
-    	Robot.gyroSys.clear();
+    	
     	Robot.driveTrain.brake();
     }
 
@@ -44,7 +44,7 @@ public class EncoderPID extends PIDSubsystem {
     	}else if(output <-1) {
     		output=-1;
     	}
-    	double anglePct = Robot.gyroSys.getAngle()/90;
+    	double anglePct = Robot.gyro.getAngle()/90;
     	Robot.driveTrain.leftTalonSRXA.set(-output+anglePct);
     	//Robot.driveTrain.leftTalonSRXB.set(output-anglePct);
     	Robot.driveTrain.rightTalonSRXA.set(output+anglePct);
