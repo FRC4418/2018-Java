@@ -61,21 +61,10 @@ public class Robot extends TimedRobot {
 	public static final UltrasonicPIDLeft leftBackPID = new UltrasonicPIDLeft();
 	public static final UltrasonicPIDRight rightBackPID = new UltrasonicPIDRight();
 	public static SendableChooser<String> autoChooser = new SendableChooser<String>();
+	public static final AutoPhotoElectricSubsystem AuotoPhotoElectric = new AutoPhotoElectricSubsystem(); //Create public Autonomous PhotoElectric.
+	
 	public static SendableChooser<String> switchChooser = new SendableChooser<String>();
 	public static final PhotoElectricSubsystem photoElectric = new PhotoElectricSubsystem();
-	public static final DriveTrainSubsystem driveTrain = new DriveTrainSubsystem(); //Create public DriveTrain.
-	public static final CompressorSubsystem compressor = new CompressorSubsystem(); //Create public Compressor.
-	public static final GearShiftSubsystem gearShifter = new GearShiftSubsystem(); //Create public GearShifter.
-	public static final UltrasonicSubsystem ultrasonic = new UltrasonicSubsystem(); //Create public Ultrasonic.
-	public static final EncoderSubsystem encoders = new EncoderSubsystem(); //Create public encoders.
-	public static final InfraRedSubsystem infraRed = new InfraRedSubsystem(); //Create public InfraRed.
-	public static final GyroSubsystem gyroSys = new GyroSubsystem(); //Create public GyroScope.
-	public static final FeedCylinderSubsystem feedCylinder = new FeedCylinderSubsystem(); //Create public FeedCylinder.
-	public static final IntakeSubsystem intake = new IntakeSubsystem(); //Create public Intake.
-	public static final GyroToAnglePID gyroPID = new GyroToAnglePID(); //Create public gyro-angle.
-	public static final ShooterAngle shootAngle = new ShooterAngle(); //Create public Shooter-angle.
-	public static final UltrasonicSubsystem2 ultrasonic2 = new UltrasonicSubsystem2(); //Create public Ultrasonic.
-	public static final AutoPhotoElectricSubsystem AuotoPhotoElectric = new AutoPhotoElectricSubsystem(); //Create public Autonomous PhotoElectric.
 	
 	public static OI m_oi;
 	Command teleCommand;
