@@ -31,7 +31,7 @@ public class OI {
 	// Create buttons
 	
 	private static Button gearShiftButton = new JoystickButton(joystick0,RobotMap.gearShift);//GearShift Button
-	private static Button launcherButton = new JoystickButton(joystick0,RobotMap.launcherButton);
+	public static Button launcherButton = new JoystickButton(joystick0,RobotMap.launcherButton);
 	/*public static Button getGearShiftButton() {
 		return gearShiftButton;
 	}*/
@@ -39,6 +39,6 @@ public class OI {
 	
 	public OI() {
 		gearShiftButton.whenPressed(new GearShiftCommand());
-		launcherButton.whileHeld(new LauncherCommand());
+		launcherButton.whenPressed(new LauncherCommand(600));
 	}
 }

@@ -5,12 +5,11 @@ import edu.wpi.first.wpilibj.command.PIDSubsystem;
 /**
  *
  */
-public class LauncherPIDSubsystem extends PIDSubsystem {
+public class RearRightSubsystem extends PIDSubsystem {
 
     // Initialize your subsystem here
-    public LauncherPIDSubsystem() {
-    	super("LauncherPIDSubsystem", 2.0, 0.0, 0.0);
-    	setAbsoluteTolerance(0.1);
+    public RearRightSubsystem() {
+    	super("RearRightSubsystem", 2.0, 0.0, 0.0);
     	getPIDController().setOutputRange(-1f, 1f);
         // Use these to get going:
         // setSetpoint() -  Sets where the PID controller should move the system
@@ -25,7 +24,7 @@ public class LauncherPIDSubsystem extends PIDSubsystem {
     }
 
     protected double returnPIDInput() {
-    	return FrontLeftMotor.leftFrontEncoder.getRate();
+    	return RearRightMotor.rightRearEncoder.getRate();
         // Return your input value for the PID loop
         // e.g. a sensor, like a potentiometer:
         // yourPot.getAverageVoltage() / kYourMaxVoltage;
@@ -33,10 +32,8 @@ public class LauncherPIDSubsystem extends PIDSubsystem {
     }
 
     protected void usePIDOutput(double output) {
+    	RearRightMotor.rightRearMotor.set(output);
     	
-    	RearLeftMotor.leftRearMotor.set(output);
-    	FrontRightMotor.rightFrontMotor.set(-output);
-    	RearRightMotor.rightRearMotor.set(-output);
     	
     	
         // Use output to drive your system, like a motor
