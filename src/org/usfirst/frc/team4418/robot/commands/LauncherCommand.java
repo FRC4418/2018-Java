@@ -12,6 +12,8 @@ public class LauncherCommand extends Command {
     public LauncherCommand(double RPMSetpoint) {
     	requires(Robot.frontLeftPID);
     	requires(Robot.rearLeftPID);
+    	requires(Robot.frontRightPID);
+    	requires(Robot.rearRightPID);
         // Use requires() here to declare subsystem dependencies
         // eg. requires(chassis);
     	Robot.frontLeftPID.getPIDController().reset();
