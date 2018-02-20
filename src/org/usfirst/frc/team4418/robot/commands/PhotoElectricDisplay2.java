@@ -1,38 +1,29 @@
 package org.usfirst.frc.team4418.robot.commands;
 
-import org.usfirst.frc.team4418.robot.Robot;
 import edu.wpi.first.wpilibj.command.Command;
+import org.usfirst.frc.team4418.robot.Robot;
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
-/**
- *
- */
-public class IntakeCommand extends Command {
+public class PhotoElectricDisplay2 extends Command {
 
-    public IntakeCommand() {
+    public PhotoElectricDisplay2() {
         // Use requires() here to declare subsystem dependencies
         // eg. requires(chassis);
-    	super ("Intake");
-    	requires(Robot.intake);
+    	requires(Robot.photoElectric2);
     }
 
-    public boolean isFinished = false;
     // Called just before this Command runs the first time
     protected void initialize() {
-    	if (Robot.intake.isOut()) {
-    		Robot.intake.extendIn();
-    	} else {
-    		Robot.intake.extendOut();
-    	}
-    	isFinished = true;
     }
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
+    	SmartDashboard.putNumber("Brightness Value", Robot.photoElectric2.getVoltage() );
     }
 
     // Make this return true when this Command no longer needs to run execute()
     protected boolean isFinished() {
-        return isFinished;
+        return false;
     }
 
     // Called once after isFinished returns true

@@ -39,7 +39,7 @@ public class RobotMap {
 			rightShooterTalonSRXA_CAN_ID = 35,
 			rightShooterTalonSRXB_CAN_ID = 36,
 			
-			intakeLeftTslonSRX_CAN_ID = 40, //Intake motors
+			intakeLeftTalonSRX_CAN_ID = 40, //Intake motors
 			intakeRightTalonSRX_CAN_ID =41,
 			intakeLiftTalonSRX_CAN_ID = 45,
 			
@@ -73,6 +73,7 @@ public class RobotMap {
 	public static int infrared_analog_ID = 3;
 	
 	public static int photoElectric_analog_ID = 2;
+	public static int photoElectric2_analog_ID = 1;
 	
 	public static int
 			intakeInSolenoid_PCM_ID = 4,

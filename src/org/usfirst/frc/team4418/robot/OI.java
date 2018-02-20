@@ -7,7 +7,6 @@
 
 package org.usfirst.frc.team4418.robot;
 
-import org.usfirst.frc.team4418.robot.commands.FeedShiftCommand;
 import org.usfirst.frc.team4418.robot.commands.GearShiftCommand;
 import org.usfirst.frc.team4418.robot.commands.IntakeCommand;
 import org.usfirst.frc.team4418.robot.commands.ShootGroup;

@@ -18,7 +18,7 @@ public class EncoderPID extends PIDSubsystem {
         // enable() - Enables the PID controller.
     	super("EncoderPID", 2.0, 0.0, 0.0);
     	setAbsoluteTolerance(1);
-    	getPIDController().setOutputRange(-100.0f, 100.0f);
+    	//getPIDController().setOutputRange(-100.0f, 100.0f);
     	getPIDController().setContinuous(false);
     	
     	Robot.driveTrain.brake();
@@ -46,9 +46,9 @@ public class EncoderPID extends PIDSubsystem {
     	}
     	double anglePct = Robot.gyro.getAngle()/90;
     	Robot.driveTrain.leftTalonSRXA.set(-output+anglePct);
-    	//Robot.driveTrain.leftTalonSRXB.set(output-anglePct);
+    	Robot.driveTrain.leftTalonSRXB.set(-output+anglePct);
     	Robot.driveTrain.rightTalonSRXA.set(output+anglePct);
-    	//Robot.driveTrain.rightTalonSRXB.set(-output-anglePct);
+    	Robot.driveTrain.rightTalonSRXB.set(output+anglePct);
     	SmartDashboard.putNumber("Left a PID out", Robot.driveTrain.leftTalonSRXA.get());
     	SmartDashboard.putNumber("left b PID out", Robot.driveTrain.leftTalonSRXB.get());
     	SmartDashboard.putNumber("right a PID out", Robot.driveTrain.rightTalonSRXA.get());

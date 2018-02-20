@@ -17,6 +17,7 @@ import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
 import org.usfirst.frc.team4418.robot.commands.AutonomousCommands;
 import org.usfirst.frc.team4418.robot.commands.TeleopCommands;
+import org.usfirst.frc.team4418.robot.subsystems.AccelerometerSubsystem;
 import org.usfirst.frc.team4418.robot.subsystems.CompressorSubsystem;
 import org.usfirst.frc.team4418.robot.subsystems.DriveTrainSubsystem;
 import org.usfirst.frc.team4418.robot.subsystems.EncoderPID;
@@ -62,13 +63,16 @@ public class Robot extends TimedRobot {
 	public static final UltrasonicPIDRight rightBackPID = new UltrasonicPIDRight();
 	public static final PhotoElectricSubsystem photoElectric = new PhotoElectricSubsystem();
 	public static final PhotoElectricSubsystem2 photoElectric2 = new PhotoElectricSubsystem2();
+	public static final AccelerometerSubsystem accel = new AccelerometerSubsystem();
 	
 	public static SendableChooser<String> switchChooser = new SendableChooser<String>();
 	public static SendableChooser<String> autoChooser = new SendableChooser<String>();
 	
+	public static boolean autoStop = false;
+	
 	public static OI m_oi;
 	Command teleCommand;
-	Command autoCommand;
+	static Command autoCommand;
 	
 	public static String driverPos;
 	public static String gameData;
