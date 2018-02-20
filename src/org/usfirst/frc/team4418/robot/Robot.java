@@ -17,17 +17,23 @@ import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
 import org.usfirst.frc.team4418.robot.commands.AutonomousCommands;
 import org.usfirst.frc.team4418.robot.commands.TeleopCommands;
+import org.usfirst.frc.team4418.robot.subsystems.AccelerometerSubsystem;
 import org.usfirst.frc.team4418.robot.subsystems.CompressorSubsystem;
 import org.usfirst.frc.team4418.robot.subsystems.DriveTrainSubsystem;
+import org.usfirst.frc.team4418.robot.subsystems.EncoderPID;
 import org.usfirst.frc.team4418.robot.subsystems.EncoderSubsystem;
 import org.usfirst.frc.team4418.robot.subsystems.FeedCylinderSubsystem;
 import org.usfirst.frc.team4418.robot.subsystems.GearShiftSubsystem;
 import org.usfirst.frc.team4418.robot.subsystems.UltrasonicSubsystem;
 import org.usfirst.frc.team4418.robot.subsystems.UltrasonicSubsystem2;
-import org.usfirst.frc.team4418.robot.subsystems.InfraRedSubsystem;
+import org.usfirst.frc.team4418.robot.subsystems.InfraredSubsystem;
 import org.usfirst.frc.team4418.robot.subsystems.GyroSubsystem;
 import org.usfirst.frc.team4418.robot.subsystems.IntakeSubsystem;
+import org.usfirst.frc.team4418.robot.subsystems.PhotoElectricSubsystem;
+import org.usfirst.frc.team4418.robot.subsystems.PhotoElectricSubsystem2;
 import org.usfirst.frc.team4418.robot.subsystems.ShooterAngle;
+import org.usfirst.frc.team4418.robot.subsystems.UltrasonicPIDLeft;
+import org.usfirst.frc.team4418.robot.subsystems.UltrasonicPIDRight;
 import org.usfirst.frc.team4418.robot.subsystems.GyroToAnglePID;
 
 /**
@@ -45,18 +51,34 @@ public class Robot extends TimedRobot {
 	public static final GearShiftSubsystem gearShifter = new GearShiftSubsystem(); //Create public GearShifter
 	public static final UltrasonicSubsystem ultrasonic = new UltrasonicSubsystem(); //Create public Ultrasonic
 	public static final EncoderSubsystem encoders = new EncoderSubsystem(); //Create public encoders
-	public static final InfraRedSubsystem infraRed = new InfraRedSubsystem(); //Create public InfraRed
-	public static final GyroSubsystem gyroSys = new GyroSubsystem(); //Create public GyroScope
+	public static final InfraredSubsystem infrared = new InfraredSubsystem(); //Create public InfraRed
+	public static final GyroSubsystem gyro = new GyroSubsystem(); //Create public GyroScope
 	public static final FeedCylinderSubsystem feedCylinder = new FeedCylinderSubsystem(); //Create public FeedCylinder
 	public static final IntakeSubsystem intake = new IntakeSubsystem(); //Create public Intake
 	public static final GyroToAnglePID gyroPID = new GyroToAnglePID();
 	public static final ShooterAngle shootAngle = new ShooterAngle();
 	public static final UltrasonicSubsystem2 ultrasonic2 = new UltrasonicSubsystem2();
+	public static final EncoderPID encoderPID = new EncoderPID();
+	public static final UltrasonicPIDLeft leftBackPID = new UltrasonicPIDLeft();
+	public static final UltrasonicPIDRight rightBackPID = new UltrasonicPIDRight();
+	public static final PhotoElectricSubsystem photoElectric = new PhotoElectricSubsystem();
+	public static final PhotoElectricSubsystem2 photoElectric2 = new PhotoElectricSubsystem2();
+	public static final AccelerometerSubsystem accel = new AccelerometerSubsystem();
+	
+	public static SendableChooser<String> switchChooser = new SendableChooser<String>();
+	public static SendableChooser<String> autoChooser = new SendableChooser<String>();
+	
+	public static boolean autoStop = false;
 	
 	public static OI m_oi;
 	Command teleCommand;
-	Command autoCommand;
-	SendableChooser<Command> m_chooser = new SendableChooser<>();
+	static Command autoCommand;
+	
+	public static String driverPos;
+	public static String gameData;
+	public static String switchOrScale;
+	
+	//SendableChooser<Command> m_chooser = new SendableChooser<>();
 
 	/**
 	 * This function is run when the robot is first started up and should be
@@ -67,14 +89,31 @@ public class Robot extends TimedRobot {
 		m_oi = new OI();
 		//m_chooser.addDefault("Default Auto", new ExampleCommand());
 		// chooser.addObject("My Auto", new MyAutoCommand());
-		SmartDashboard.putData("Auto mode", m_chooser);
+		//SmartDashboard.putData("Auto mode", m_chooser);
 		
 		// Initialize camera server
 		CameraServer.getInstance().startAutomaticCapture();
-		gyroSys.calibrate();
+		gyro.calibrate();
+    	
+    	autoChooser.addDefault("Straight", "Straight");
+    	autoChooser.addObject("Position One (left)", "Position One (left)");
+    	autoChooser.addObject("Position Two (middle)", "Position Two (middle)");
+    	autoChooser.addObject("Position Three (right)", "Position Three (right)");
+    	
+    	switchChooser.addDefault("Switch", "Switch");
+    	switchChooser.addObject("Scale", "Scale");
+    	
+    	SmartDashboard.putData("1", autoChooser);
+    	SmartDashboard.putData("2", switchChooser);
+    	
+    	
 		autoCommand = new AutonomousCommands();
 		teleCommand = new TeleopCommands();
-		//driveTrain.coast();
+		driveTrain.brake();
+		gyroPID.disable();
+		encoderPID.disable();
+		leftBackPID.disable();
+		rightBackPID.disable();
 	}
 
 	/**
@@ -111,9 +150,12 @@ public class Robot extends TimedRobot {
 		 * = new MyAutoCommand(); break; case "Default Auto": default:
 		 * autonomousCommand = new ExampleCommand(); break; }
 		 */
-
 		// schedule the autonomous command (example)
 		if(teleCommand!=null) {
+	    	/*Robot.encoderPID.disable();
+	    	Robot.gyroPID.disable();
+	    	Robot.leftBackPID.disable();
+	    	Robot.rightBackPID.disable();*/
 			teleCommand.cancel();
 		}
 		if(autoCommand!=null) {
@@ -127,6 +169,7 @@ public class Robot extends TimedRobot {
 	@Override
 	public void autonomousPeriodic() {
 		Scheduler.getInstance().run();
+		//System.out.println("Running auto");
 	}
 
 	@Override
@@ -137,6 +180,10 @@ public class Robot extends TimedRobot {
 		// this line or comment it out.
 		if (autoCommand != null) {
 			autoCommand.cancel();
+	    	/*Robot.encoderPID.disable();
+	    	Robot.gyroPID.disable();
+	    	Robot.leftBackPID.disable();
+	    	Robot.rightBackPID.disable();*/
 		}
 		if(teleCommand != null) {
 			teleCommand.start();

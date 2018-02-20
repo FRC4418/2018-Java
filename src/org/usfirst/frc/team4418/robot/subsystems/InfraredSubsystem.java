@@ -9,9 +9,9 @@ import edu.wpi.first.wpilibj.command.Subsystem;
 /**
  *
  */
-public class InfraRedSubsystem extends Subsystem {
+public class InfraredSubsystem extends Subsystem {
 
-	AnalogInput infrared = new AnalogInput(RobotMap.irPort);
+	AnalogInput infrared = new AnalogInput(RobotMap.infrared_analog_ID);
 	public double getInfraredCM () {
 		return (Math.pow((((-26.4525 / (35.9049 * infrared.getVoltage())) + 63.7668) / 110.898), -8.71341) - 124.635);
 	}

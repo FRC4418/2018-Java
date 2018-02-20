@@ -1,5 +1,6 @@
 package org.usfirst.frc.team4418.robot.commands;
 
+import org.usfirst.frc.team4418.robot.Robot;
 import edu.wpi.first.wpilibj.command.CommandGroup;
 
 /**
@@ -24,6 +25,55 @@ public class AutonomousCommands extends CommandGroup {
         // e.g. if Command1 requires chassis, and Command2 requires arm,
         // a CommandGroup containing them would require both the chassis and the
         // arm.
-    	addSequential(new AutoToAngle());
+    	addSequential(new FMSCall());
+   		if(Robot.switchOrScale=="Switch") {
+    		if(Robot.gameData.charAt(0)=='L') {
+    			if(Robot.driverPos=="Straight") {
+    				addSequential(new DistancePID(250.0));
+    			}else if(Robot.driverPos == "Position One (left)") {
+    				addSequential(new DistancePID(111));
+    				addSequential(new ShootGroup());
+    			}else if(Robot.driverPos == "Position Two (middle)") {
+    				addSequential(new DistancePID(111));
+    			}else if(Robot.driverPos=="Position Three (right)") {
+    				addSequential(new DistancePID(111));
+    			}
+    		}else {
+    			if(Robot.driverPos=="Straight") {
+    				addSequential(new DistancePID(250.0));
+    			}else if(Robot.driverPos == "Position One (left)") {
+    				addSequential(new DistancePID(111));
+    			}else if(Robot.driverPos == "Position Two (middle)") {
+    				addSequential(new DistancePID(111));
+    			}else if(Robot.driverPos=="Position Three (right)") {
+    				addSequential(new DistancePID(111));
+    				addSequential(new ShootGroup());
+    			}
+    		}
+   		}else if(Robot.switchOrScale=="Scale") {
+   			if(Robot.gameData.charAt(0)=='L') {
+    			if(Robot.driverPos=="Straight") {
+    				addSequential(new DistancePID(251));
+    			}else if(Robot.driverPos == "Position One (left)") {
+    				addSequential(new DistancePID(251));
+    				addSequential(new LineupGroup());
+    			}else if(Robot.driverPos == "Position Two (middle)") {
+    				addSequential(new DistancePID(111));
+    			}else if(Robot.driverPos=="Position Three (right)") {
+    				addSequential(new DistancePID(251));
+    			}
+    		}else {
+    			if(Robot.driverPos=="Straight") {
+    				addSequential(new DistancePID(251));
+    			}else if(Robot.driverPos == "Position One (left)") {
+    				addSequential(new DistancePID(251));
+    			}else if(Robot.driverPos == "Position Two (middle)") {
+    				addSequential(new DistancePID(111));
+    			}else if(Robot.driverPos=="Position Three (right)") {
+    				addSequential(new DistancePID(251));
+    				addSequential(new LineupGroup());
+    			}
+    		}
+   		}
     }
 }

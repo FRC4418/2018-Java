@@ -1,8 +1,8 @@
 package org.usfirst.frc.team4418.robot.subsystems;
 
 import org.usfirst.frc.team4418.robot.RobotMap;
+
 import edu.wpi.first.wpilibj.DoubleSolenoid;
-import edu.wpi.first.wpilibj.DoubleSolenoid.Value;
 import edu.wpi.first.wpilibj.command.Subsystem;
 
 /**
@@ -14,20 +14,12 @@ public class GearShiftSubsystem extends Subsystem {
 		gearShifterSolenoid.set(DoubleSolenoid.Value.kOff);
 	}
 	
-	public static DoubleSolenoid gearShifterSolenoid = new DoubleSolenoid(RobotMap.gearShiftHigh,RobotMap.gearShiftLow);
+	public static DoubleSolenoid gearShifterSolenoid = new DoubleSolenoid(RobotMap.gearShiftLowGearSolenoid_PCM_ID,RobotMap.gearShiftHighGearSolenoid_PCM_ID);
 	
 
-	public Value getGear() {
-    	return gearShifterSolenoid.get();
-    }
-	
 	public boolean isHighGear() {
-		return getGear()==DoubleSolenoid.Value.kForward;
-	}
-    
-	public boolean isLowGear() {
-		return getGear()==DoubleSolenoid.Value.kReverse;
-	}
+    	return DoubleSolenoid.Value.kForward==gearShifterSolenoid.get();
+    }
 	
     public void highGear() {
     	gearShifterSolenoid.set(DoubleSolenoid.Value.kForward);

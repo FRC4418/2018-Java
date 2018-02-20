@@ -25,6 +25,7 @@ public class EncoderShuffleboardCommand extends Command {
     	//double[] encoderValues = {,Robot.encoders.getRightEncoder()}; //Store encoder values to an array
     	SmartDashboard.putNumber("Left Encoder", Robot.encoders.getLeftEncoder()); //Send encoder values array to shuffleboard
     	SmartDashboard.putNumber("Right Encoder", Robot.encoders.getRightEncoder()); //Send encoder values array to shuffleboard
+    	SmartDashboard.putNumber("Avg Encoder", Robot.encoders.getAvgEncoder());
     }
 
     // Make this return true when this Command no longer needs to run execute()

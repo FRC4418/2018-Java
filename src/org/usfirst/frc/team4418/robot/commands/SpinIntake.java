@@ -7,23 +7,21 @@ import edu.wpi.first.wpilibj.command.Command;
 /**
  *
  */
-public class GearShiftCommand extends Command {
+public class SpinIntake extends Command {
 
-    public GearShiftCommand() {
+    public SpinIntake() {
+    	super();
+    	requires(Robot.intake);
         // Use requires() here to declare subsystem dependencies
         // eg. requires(chassis);
-    	super("GearShifter");
-    	requires(Robot.gearShifter);
     }
-    
-    public boolean isFinished = false;
 
     // Called just before this Command runs the first time
     protected void initialize() {
-    	if (Robot.gearShifter.isHighGear()) {
-    		Robot.gearShifter.lowGear();
+    	if (Robot.intake.isSpin()) {
+    		Robot.intake.stopSpin();
     	} else {
-    		Robot.gearShifter.highGear();
+    		Robot.intake.startSpin();
     	}
     }
 
@@ -33,7 +31,7 @@ public class GearShiftCommand extends Command {
 
     // Make this return true when this Command no longer needs to run execute()
     protected boolean isFinished() {
-        return true; //End after one run
+        return true;
     }
 
     // Called once after isFinished returns true

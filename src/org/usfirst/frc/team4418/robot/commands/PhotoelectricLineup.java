@@ -1,29 +1,26 @@
 package org.usfirst.frc.team4418.robot.commands;
 
 import org.usfirst.frc.team4418.robot.Robot;
-
 import edu.wpi.first.wpilibj.command.Command;
 
-/**
- *
- */
-public class GearShiftCommand extends Command {
-
-    public GearShiftCommand() {
+public class PhotoelectricLineup extends Command {
+    public PhotoelectricLineup() {
         // Use requires() here to declare subsystem dependencies
         // eg. requires(chassis);
-    	super("GearShifter");
-    	requires(Robot.gearShifter);
+    	requires(Robot.photoElectric);
     }
-    
-    public boolean isFinished = false;
 
     // Called just before this Command runs the first time
     protected void initialize() {
-    	if (Robot.gearShifter.isHighGear()) {
-    		Robot.gearShifter.lowGear();
-    	} else {
-    		Robot.gearShifter.highGear();
+    	while(Robot.photoElectric.getVoltage()<3) {
+    		Robot.driveTrain.straight(.5);
+    	}
+    	while(Robot.photoElectric2.getVoltage()<3) {
+	    	if(Robot.gameData.charAt(1)=='L') {
+	    		Robot.driveTrain.spin(.5);
+	    	}else if(Robot.gameData.charAt(1)=='R') {
+	    		Robot.driveTrain.spin(-.5);
+	    	}
     	}
     }
 
@@ -33,7 +30,7 @@ public class GearShiftCommand extends Command {
 
     // Make this return true when this Command no longer needs to run execute()
     protected boolean isFinished() {
-        return true; //End after one run
+        return true;
     }
 
     // Called once after isFinished returns true

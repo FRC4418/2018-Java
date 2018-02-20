@@ -12,15 +12,15 @@ import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
  */
 public class EncoderSubsystem extends Subsystem {
 
-	static Encoder leftEnc = new Encoder(RobotMap.leftEncoderA,RobotMap.leftEncoderB);
-	static Encoder rightEnc = new Encoder(RobotMap.rightEncoderA,RobotMap.rightEncoderB,true);
+	static Encoder leftEnc = new Encoder(RobotMap.leftEncoderA_DIO_ID,RobotMap.leftEncoderB_DIO_ID);
+	static Encoder rightEnc = new Encoder(RobotMap.rightEncoderA_DIO_ID,RobotMap.rightEncoderB_DIO_ID, true);
 	
     // Put methods for controlling this subsystem
     // here. Call these from Commands.
 	public EncoderSubsystem() {
 		//Actually set the values
-		double rpp = ( (1/RobotMap.ticksPerRevolution) / RobotMap.gearRatio ); //Math for revolutions per pulse
-		double dpp =  rpp * (Math.PI * RobotMap.wheelDiameter); //Math for distance per pulse
+		double rpp = ( (1/RobotMap.driveEncoderTicksPerRevolution) / RobotMap.driveEncoderGearRatio ); //Math for revolutions per pulse
+		double dpp =  rpp * (Math.PI * RobotMap.driveEncoderWheelDiameter); //Math for distance per pulse
 		SmartDashboard.putNumber("distance per pulse", dpp);
 		//Set distances per pulse for each encoder
 		leftEnc.setDistancePerPulse(dpp);
@@ -28,6 +28,7 @@ public class EncoderSubsystem extends Subsystem {
 		//Set time between pulses before robot is considered stopped
 		leftEnc.setMaxPeriod(.1);
 		rightEnc.setMaxPeriod(.1);
+		
 	}
 	
 	//Helper function to convert units for getters
@@ -55,7 +56,7 @@ public class EncoderSubsystem extends Subsystem {
 		return convertUnitsFromInches(units,inches);
 	}
 	public double getLeftEncoder() {
-		return leftEnc.getDistance()*Math.PI;
+		return leftEnc.getDistance();
 	}
 	
 	//Get the right encoder value in the specified units (optional)
@@ -64,7 +65,7 @@ public class EncoderSubsystem extends Subsystem {
 		return convertUnitsFromInches(units,inches);
 	}
 	public double getRightEncoder() {
-		return rightEnc.getDistance()*Math.PI;
+		return rightEnc.getDistance();
 	}
 	
 	//Get the average of the encoder values in the specified units (optional)

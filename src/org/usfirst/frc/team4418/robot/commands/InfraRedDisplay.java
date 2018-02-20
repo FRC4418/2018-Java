@@ -13,7 +13,7 @@ public class InfraRedDisplay extends Command {
     public InfraRedDisplay() {
         // Use requires() here to declare subsystem dependencies
         // eg. requires(chassis);
-    	requires(Robot.infraRed);
+    	requires(Robot.infrared);
     }
 
     // Called just before this Command runs the first time
@@ -22,7 +22,7 @@ public class InfraRedDisplay extends Command {
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
-    	SmartDashboard.putNumber("IR distance", Robot.infraRed.getInfraredCM() );
+    	SmartDashboard.putNumber("IR distance", Robot.infrared.getInfraredCM() );
     }
 
     // Make this return true when this Command no longer needs to run execute()

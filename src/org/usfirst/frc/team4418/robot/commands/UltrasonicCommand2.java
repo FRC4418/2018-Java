@@ -16,7 +16,7 @@ public class UltrasonicCommand2 extends Command {
         // Use requires() here to declare subsystem dependencies
         // eg. requires(chassis);
     	super("ultrasonic2");
-    	requires(Robot.ultrasonic2);
+    	//requires(Robot.ultrasonic2);
     }
 
     // Called just before this Command runs the first time
@@ -25,8 +25,10 @@ public class UltrasonicCommand2 extends Command {
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
-    	if(Robot.ultrasonic2.getRangeInch() != 0) {
-    		u_value = Robot.ultrasonic2.getRangeInch();
+    	if(Robot.ultrasonic.getRangeInchUltra2() != 0) {
+    		u_value = Robot.ultrasonic.getRangeInchUltra2();
+    
+    		
     	}
     	SmartDashboard.putNumber("Range2: ", u_value);    	
     }

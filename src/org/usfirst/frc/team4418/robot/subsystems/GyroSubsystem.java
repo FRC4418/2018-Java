@@ -16,7 +16,7 @@ public class GyroSubsystem extends Subsystem {
     // here. Call these from Commands.
 	//AnalogInput gyro = new AnalogInput(RobotMap.gyroPort);
 	
-	private Gyro gyro = new AnalogGyro(RobotMap.gyroPort);
+	private Gyro gyro = new AnalogGyro(RobotMap.gyro_analog_ID);
 	
 	public double getAngle() {
 		double angle = gyro.getAngle();
