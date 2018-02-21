@@ -14,23 +14,30 @@ import edu.wpi.first.wpilibj.command.Scheduler;
 //import edu.wpi.first.wpilibj.command.Subsystem;
 import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
+
+<<<<<<< HEAD
 import org.usfirst.frc.team4418.robot.commands.AutonomousCommands;
 import org.usfirst.frc.team4418.robot.commands.TeleopCommands;
 import org.usfirst.frc.team4418.robot.subsystems.AccelerometerSubsystem;
+=======
 //import org.usfirst.frc.team4418.robot.subsystems.ArcadeSubsystem;
+>>>>>>> Launcher-Motors
 import org.usfirst.frc.team4418.robot.subsystems.CompressorSubsystem;
 import org.usfirst.frc.team4418.robot.subsystems.DriveTrainSubsystem;
 import org.usfirst.frc.team4418.robot.subsystems.EncoderPID;
 import org.usfirst.frc.team4418.robot.subsystems.EncoderSubsystem;
 import org.usfirst.frc.team4418.robot.subsystems.FeedCylinderSubsystem;
 import org.usfirst.frc.team4418.robot.subsystems.GearShiftSubsystem;
+<<<<<<< HEAD
 import org.usfirst.frc.team4418.robot.subsystems.UltrasonicSubsystem;
 import org.usfirst.frc.team4418.robot.subsystems.UltrasonicSubsystem2;
 import org.usfirst.frc.team4418.robot.subsystems.InfraredSubsystem;
+=======
 import org.usfirst.frc.team4418.robot.subsystems.InfraRedSubsystem;
 import org.usfirst.frc.team4418.robot.subsystems.FrontLeftMotor;
 import org.usfirst.frc.team4418.robot.subsystems.LauncherPIDSubsystem;
 //import org.usfirst.frc.team4418.robot.subsystems.LauncherSubsystem;
+>>>>>>> Launcher-Motors
 import org.usfirst.frc.team4418.robot.subsystems.GyroSubsystem;
 import org.usfirst.frc.team4418.robot.subsystems.IntakeSubsystem;
 import org.usfirst.frc.team4418.robot.subsystems.PhotoElectricSubsystem;
@@ -51,6 +58,7 @@ import org.usfirst.frc.team4418.robot.subsystems.GyroToAnglePID;
 public class Robot extends TimedRobot {
 	// Create objects for each subsystem
 	public static final DriveTrainSubsystem driveTrain = new DriveTrainSubsystem(); //Create public DriveTrain
+<<<<<<< HEAD
 	public static final CompressorSubsystem compressor = new CompressorSubsystem(); //Create public Compressor
 	public static final GearShiftSubsystem gearShifter = new GearShiftSubsystem(); //Create public GearShifter
 	public static final UltrasonicSubsystem ultrasonic = new UltrasonicSubsystem(); //Create public Ultrasonic
@@ -73,7 +81,7 @@ public class Robot extends TimedRobot {
 	public static SendableChooser<String> autoChooser = new SendableChooser<String>();
 	
 	public static boolean autoStop = false;
-
+=======
 	//public static final ArcadeSubsystem arcadeDriveTrain = new ArcadeSubsystem(); //Create public arcadeDriveTrain
 	public static final CompressorSubsystem compressor = new CompressorSubsystem(); //Create public Compressor
 	public static final GearShiftSubsystem gearShifter = new GearShiftSubsystem(); //Create public GearShifter
@@ -81,6 +89,7 @@ public class Robot extends TimedRobot {
 	public static final GyroSubsystem gyroSys = new GyroSubsystem(); //Create public gyroscope 
 	public static final LauncherPIDSubsystem launcherPID = new LauncherPIDSubsystem();//Create public LauncherPID
 	public static final FrontLeftMotor launcherEncoder = new FrontLeftMotor();//Create public LauncherEncoder
+>>>>>>> Launcher-Motors
 	
 	public static OI m_oi;
 	Command teleCommand;
