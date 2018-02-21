@@ -27,9 +27,6 @@ import org.usfirst.frc.team4418.robot.subsystems.GearShiftSubsystem;
 import org.usfirst.frc.team4418.robot.subsystems.UltrasonicSubsystem;
 import org.usfirst.frc.team4418.robot.subsystems.UltrasonicSubsystem2;
 import org.usfirst.frc.team4418.robot.subsystems.InfraredSubsystem;
-import org.usfirst.frc.team4418.robot.subsystems.InfraRedSubsystem;
-import org.usfirst.frc.team4418.robot.subsystems.FrontLeftMotor;
-import org.usfirst.frc.team4418.robot.subsystems.LauncherPIDSubsystem;
 //import org.usfirst.frc.team4418.robot.subsystems.LauncherSubsystem;
 import org.usfirst.frc.team4418.robot.subsystems.GyroSubsystem;
 import org.usfirst.frc.team4418.robot.subsystems.IntakeSubsystem;
@@ -51,8 +48,6 @@ import org.usfirst.frc.team4418.robot.subsystems.GyroToAnglePID;
 public class Robot extends TimedRobot {
 	// Create objects for each subsystem
 	public static final DriveTrainSubsystem driveTrain = new DriveTrainSubsystem(); //Create public DriveTrain
-	public static final CompressorSubsystem compressor = new CompressorSubsystem(); //Create public Compressor
-	public static final GearShiftSubsystem gearShifter = new GearShiftSubsystem(); //Create public GearShifter
 	public static final UltrasonicSubsystem ultrasonic = new UltrasonicSubsystem(); //Create public Ultrasonic
 	public static final EncoderSubsystem encoders = new EncoderSubsystem(); //Create public encoders
 	public static final InfraredSubsystem infrared = new InfraredSubsystem(); //Create public InfraRed
@@ -68,19 +63,15 @@ public class Robot extends TimedRobot {
 	public static final PhotoElectricSubsystem photoElectric = new PhotoElectricSubsystem();
 	public static final PhotoElectricSubsystem2 photoElectric2 = new PhotoElectricSubsystem2();
 	public static final AccelerometerSubsystem accel = new AccelerometerSubsystem();
+	//public static final ArcadeSubsystem arcadeDriveTrain = new ArcadeSubsystem(); //Create public arcadeDriveTrain
+	public static final CompressorSubsystem compressor = new CompressorSubsystem(); //Create public Compressor
+	public static final GearShiftSubsystem gearShifter = new GearShiftSubsystem(); //Create public GearShifter
+	public static final GyroSubsystem gyroSys = new GyroSubsystem(); //Create public gyroscope 
 	
 	public static SendableChooser<String> switchChooser = new SendableChooser<String>();
 	public static SendableChooser<String> autoChooser = new SendableChooser<String>();
 	
 	public static boolean autoStop = false;
-
-	//public static final ArcadeSubsystem arcadeDriveTrain = new ArcadeSubsystem(); //Create public arcadeDriveTrain
-	public static final CompressorSubsystem compressor = new CompressorSubsystem(); //Create public Compressor
-	public static final GearShiftSubsystem gearShifter = new GearShiftSubsystem(); //Create public GearShifter
-	public static final InfraRedSubsystem infraRed = new InfraRedSubsystem();
-	public static final GyroSubsystem gyroSys = new GyroSubsystem(); //Create public gyroscope 
-	public static final LauncherPIDSubsystem launcherPID = new LauncherPIDSubsystem();//Create public LauncherPID
-	public static final FrontLeftMotor launcherEncoder = new FrontLeftMotor();//Create public LauncherEncoder
 	
 	public static OI m_oi;
 	Command teleCommand;
