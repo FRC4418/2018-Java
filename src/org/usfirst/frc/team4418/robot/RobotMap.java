@@ -25,7 +25,9 @@ public class RobotMap {
 	
 			gearShift_button = 1, //Button to shift between high and low gear on the gear boxes
 			intake_button = 2,
-			shoot_button = 3;
+			shoot_button = 3,
+			triggerIntake_button = 4,
+			lineup_button = 5;
 	
 	// Declare Talon SRX IDs
 	public static int

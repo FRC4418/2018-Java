@@ -48,6 +48,17 @@ public class IntakeSubsystem extends Subsystem {
     	intakeLeftTalonSRX.set(0);
     	intakeRightTalonSRX.set(0);
     }
+    public boolean isSpin() {
+    	return intakeLeftTalonSRX.get()!=0.0;
+    }
+    public void stopSpin() {
+    	intakeLeftTalonSRX.set(0);
+    	intakeRightTalonSRX.set(0);
+    }
+    public void startSpin() {
+    	intakeLeftTalonSRX.set(.7);
+    	intakeRightTalonSRX.set(-.7);
+    }
     public void initDefaultCommand() {
         // Set the default command for a subsystem here.
         //setDefaultCommand(new MySpecialCommand());
