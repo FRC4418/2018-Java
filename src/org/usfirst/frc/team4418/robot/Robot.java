@@ -16,26 +16,7 @@ import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import org.usfirst.frc.team4418.robot.commands.AutonomousCommands;
 import org.usfirst.frc.team4418.robot.commands.TeleopCommands;
-import org.usfirst.frc.team4418.robot.subsystems.AccelerometerSubsystem;
-//import org.usfirst.frc.team4418.robot.subsystems.ArcadeSubsystem;
-import org.usfirst.frc.team4418.robot.subsystems.CompressorSubsystem;
-import org.usfirst.frc.team4418.robot.subsystems.DriveTrainSubsystem;
-import org.usfirst.frc.team4418.robot.subsystems.EncoderPID;
-import org.usfirst.frc.team4418.robot.subsystems.EncoderSubsystem;
-import org.usfirst.frc.team4418.robot.subsystems.FeedCylinderSubsystem;
-import org.usfirst.frc.team4418.robot.subsystems.GearShiftSubsystem;
-import org.usfirst.frc.team4418.robot.subsystems.UltrasonicSubsystem;
-import org.usfirst.frc.team4418.robot.subsystems.UltrasonicSubsystem2;
-import org.usfirst.frc.team4418.robot.subsystems.InfraredSubsystem;
-//import org.usfirst.frc.team4418.robot.subsystems.LauncherSubsystem;
-import org.usfirst.frc.team4418.robot.subsystems.GyroSubsystem;
-import org.usfirst.frc.team4418.robot.subsystems.IntakeSubsystem;
-import org.usfirst.frc.team4418.robot.subsystems.PhotoElectricSubsystem;
-import org.usfirst.frc.team4418.robot.subsystems.PhotoElectricSubsystem2;
-import org.usfirst.frc.team4418.robot.subsystems.ShooterAngle;
-import org.usfirst.frc.team4418.robot.subsystems.UltrasonicPIDLeft;
-import org.usfirst.frc.team4418.robot.subsystems.UltrasonicPIDRight;
-import org.usfirst.frc.team4418.robot.subsystems.GyroToAnglePID;
+import org.usfirst.frc.team4418.robot.subsystems.*;
 
 /**
  * The VM is configured to automatically run this class, and to call the
@@ -50,7 +31,6 @@ public class Robot extends TimedRobot {
 	public static final DriveTrainSubsystem driveTrain = new DriveTrainSubsystem(); //Create public DriveTrain
 	public static final UltrasonicSubsystem ultrasonic = new UltrasonicSubsystem(); //Create public Ultrasonic
 	public static final EncoderSubsystem encoders = new EncoderSubsystem(); //Create public encoders
-	public static final InfraredSubsystem infrared = new InfraredSubsystem(); //Create public InfraRed
 	public static final GyroSubsystem gyro = new GyroSubsystem(); //Create public GyroScope
 	public static final FeedCylinderSubsystem feedCylinder = new FeedCylinderSubsystem(); //Create public FeedCylinder
 	public static final IntakeSubsystem intake = new IntakeSubsystem(); //Create public Intake
@@ -67,6 +47,12 @@ public class Robot extends TimedRobot {
 	public static final CompressorSubsystem compressor = new CompressorSubsystem(); //Create public Compressor
 	public static final GearShiftSubsystem gearShifter = new GearShiftSubsystem(); //Create public GearShifter
 	public static final GyroSubsystem gyroSys = new GyroSubsystem(); //Create public gyroscope 
+	public static final FrontLeftSubsystem frontLeftPID = new FrontLeftSubsystem();//Create public LauncherPID
+	public static final RearLeftSubsystem rearLeftPID = new RearLeftSubsystem();
+	public static final FrontRightSubsystem frontRightPID = new FrontRightSubsystem();
+	public static final RearRightSubsystem rearRightPID = new RearRightSubsystem();
+	public static final InfraredSubsystem infrared = new InfraredSubsystem();
+	public static final Shooter shooter = new Shooter();
 	
 	public static SendableChooser<String> switchChooser = new SendableChooser<String>();
 	public static SendableChooser<String> autoChooser = new SendableChooser<String>();

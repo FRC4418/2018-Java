@@ -1,7 +1,6 @@
 package org.usfirst.frc.team4418.robot.commands;
-
-import edu.wpi.first.wpilibj.command.Command;
 import org.usfirst.frc.team4418.robot.Robot;
+import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
 public class PhotoElectricDisplay extends Command {
@@ -14,6 +13,7 @@ public class PhotoElectricDisplay extends Command {
 
     // Called just before this Command runs the first time
     protected void initialize() {
+    	
     }
 
     // Called repeatedly when this Command is scheduled to run

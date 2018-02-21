@@ -36,7 +36,7 @@ public class OI {
 	private static Button gearShiftButton = new JoystickButton(joystick0,RobotMap.gearShift_button); //GearShift Button
 	private static Button triggerIntakeButton = new JoystickButton(joystick0,RobotMap.triggerIntake_button);
 	private static Button intakeButton = new JoystickButton(joystick0,RobotMap.intake_button);
-	private static Button shootButton = new JoystickButton(joystick0,RobotMap.shoot_button);
+	public static Button shootButton = new JoystickButton(joystick0,RobotMap.shoot_button);
 	private static Button lineupButton = new JoystickButton(joystick0,RobotMap.lineup_button);
 	private static Button angleShootButton = new JoystickButton(joystick0,RobotMap.angleShoot_button);
 	/*public static Button getGearShiftButton() {
