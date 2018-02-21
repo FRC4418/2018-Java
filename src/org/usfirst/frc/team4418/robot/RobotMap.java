@@ -94,11 +94,6 @@ public class RobotMap {
 	public static int
 			gearShiftLowGearSolenoid_PCM_ID = 0,
 			gearShiftHighGearSolenoid_PCM_ID = 1;
-	public static int launcherButton = 2,
-			leftFrontMotor = 31,
-			leftRearMotor = 11,
-			rightFrontMotor = 33,
-			rightRearMotor = 32;
 	
 	// If you are using multiple modules, make sure to define both the port
 	// number and the module. For example you with a rangefinder:
