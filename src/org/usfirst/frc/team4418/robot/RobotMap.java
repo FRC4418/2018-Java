@@ -27,7 +27,8 @@ public class RobotMap {
 			intake_button = 2,
 			shoot_button = 3,
 			triggerIntake_button = 4,
-			lineup_button = 5;
+			lineup_button = 5,
+			angleShoot_button = 6;
 	
 	// Declare Talon SRX IDs
 	public static int

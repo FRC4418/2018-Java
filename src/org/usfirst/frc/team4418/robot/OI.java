@@ -12,6 +12,7 @@ import org.usfirst.frc.team4418.robot.commands.IntakeCommand;
 import org.usfirst.frc.team4418.robot.commands.LineupGroup;
 import org.usfirst.frc.team4418.robot.commands.ShootGroup;
 import org.usfirst.frc.team4418.robot.commands.SpinIntake;
+import org.usfirst.frc.team4418.robot.commands.shootAngleCommand;
 
 import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.buttons.Button;
@@ -37,6 +38,7 @@ public class OI {
 	private static Button intakeButton = new JoystickButton(joystick0,RobotMap.intake_button);
 	private static Button shootButton = new JoystickButton(joystick0,RobotMap.shoot_button);
 	private static Button lineupButton = new JoystickButton(joystick0,RobotMap.lineup_button);
+	private static Button angleShootButton = new JoystickButton(joystick0,RobotMap.angleShoot_button);
 	/*public static Button getGearShiftButton() {
 		return gearShiftButton;
 	}*/
@@ -47,5 +49,6 @@ public class OI {
 		intakeButton.whenPressed(new SpinIntake());
 		shootButton.whenPressed(new ShootGroup());
 		lineupButton.whenPressed(new LineupGroup());
+		angleShootButton.whenPressed(new shootAngleCommand());
 	}
 }
