@@ -10,6 +10,8 @@ import edu.wpi.first.wpilibj.command.Command;
  */
 public class LauncherCommand extends Command {
     
+	int runs = 0;
+	
     public LauncherCommand(double RPMSetpoint) {
     	requires(Robot.frontLeftPID);
     	requires(Robot.rearLeftPID);
@@ -59,15 +61,21 @@ public class LauncherCommand extends Command {
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
+    	runs+=1;
     }
 
     // Make this return true when this Command no longer needs to run execute()
     protected boolean isFinished() {
-        return OI.shootButton.get();
+        return runs>50;
     }
 
     // Called once after isFinished returns true
     protected void end() {
+    }
+
+    // Called when another command which requires one or more of the same
+    // subsystems is scheduled to run
+    protected void interrupted() {
     	Robot.frontLeftPID.disable();
     	Robot.frontLeftPID.getPIDController().reset();
     	
@@ -79,11 +87,5 @@ public class LauncherCommand extends Command {
     	
     	Robot.rearRightPID.disable();
     	Robot.rearRightPID.getPIDController().reset();
-    }
-
-    // Called when another command which requires one or more of the same
-    // subsystems is scheduled to run
-    protected void interrupted() {
-    	end();
     }
 }

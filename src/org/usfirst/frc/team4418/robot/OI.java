@@ -7,6 +7,7 @@
 
 package org.usfirst.frc.team4418.robot;
 
+import org.usfirst.frc.team4418.robot.commands.FeedShiftCommand;
 import org.usfirst.frc.team4418.robot.commands.GearShiftCommand;
 import org.usfirst.frc.team4418.robot.commands.IntakeCommand;
 import org.usfirst.frc.team4418.robot.commands.LineupGroup;
@@ -39,6 +40,7 @@ public class OI {
 	public static Button shootButton = new JoystickButton(joystick0,RobotMap.shoot_button);
 	private static Button lineupButton = new JoystickButton(joystick0,RobotMap.lineup_button);
 	private static Button angleShootButton = new JoystickButton(joystick0,RobotMap.angleShoot_button);
+	private static Button feedButton = new JoystickButton(joystick0,RobotMap.feed_button);
 	/*public static Button getGearShiftButton() {
 		return gearShiftButton;
 	}*/
@@ -48,6 +50,7 @@ public class OI {
 		triggerIntakeButton.whenPressed(new IntakeCommand());
 		intakeButton.whenPressed(new SpinIntake());
 		shootButton.whenPressed(new ShootGroup());
+		feedButton.whenPressed(new FeedShiftCommand());
 		lineupButton.whenPressed(new LineupGroup());
 		angleShootButton.whenPressed(new shootAngleCommand());
 	}

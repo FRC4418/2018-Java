@@ -58,6 +58,7 @@ public class Robot extends TimedRobot {
 	public static SendableChooser<String> autoChooser = new SendableChooser<String>();
 	
 	public static boolean autoStop = false;
+	public static boolean shootStop = false;
 	
 	public static OI m_oi;
 	Command teleCommand;

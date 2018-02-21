@@ -11,5 +11,7 @@ public class LineupGroup extends CommandGroup {
     	addSequential(new PhotoelectricLineup());
     	addSequential(new BackupPID());
     	addSequential(new ShootGroup());
+    	addSequential(new FeedShiftCommand());
+    	addSequential(new FeedShiftCommand());
     }
 }
