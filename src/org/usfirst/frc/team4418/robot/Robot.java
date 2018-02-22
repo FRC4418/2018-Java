@@ -46,7 +46,6 @@ public class Robot extends TimedRobot {
 	//public static final ArcadeSubsystem arcadeDriveTrain = new ArcadeSubsystem(); //Create public arcadeDriveTrain
 	public static final CompressorSubsystem compressor = new CompressorSubsystem(); //Create public Compressor
 	public static final GearShiftSubsystem gearShifter = new GearShiftSubsystem(); //Create public GearShifter
-	public static final GyroSubsystem gyroSys = new GyroSubsystem(); //Create public gyroscope 
 	public static final FrontLeftSubsystem frontLeftPID = new FrontLeftSubsystem();//Create public LauncherPID
 	public static final RearLeftSubsystem rearLeftPID = new RearLeftSubsystem();
 	public static final FrontRightSubsystem frontRightPID = new FrontRightSubsystem();
@@ -84,6 +83,8 @@ public class Robot extends TimedRobot {
 		// Initialize camera server
 		CameraServer.getInstance().startAutomaticCapture();
 		gyro.calibrate();
+		encoders.reset();
+		gyro.clear();
     	
     	autoChooser.addDefault("Straight", "Straight");
     	autoChooser.addObject("Position One (left)", "Position One (left)");
@@ -99,7 +100,7 @@ public class Robot extends TimedRobot {
     	
 		autoCommand = new AutonomousCommands();
 		teleCommand = new TeleopCommands();
-		driveTrain.brake();
+		driveTrain.coast();
 		gyroPID.disable();
 		encoderPID.disable();
 		leftBackPID.disable();
@@ -113,7 +114,9 @@ public class Robot extends TimedRobot {
 	 */
 	@Override
 	public void disabledInit() {
-		
+		driveTrain.coast();
+		encoders.reset();
+		gyro.clear();
 	}
 
 	@Override
@@ -133,7 +136,9 @@ public class Robot extends TimedRobot {
 	 * to the switch structure below with additional strings & commands.
 	 */
 	@Override
-	public void autonomousInit() {		
+	public void autonomousInit() {	
+		encoders.reset();
+		gyro.clear();
 		/*
 		 * String autoSelected = SmartDashboard.getString("Auto Selector",
 		 * "Default"); switch(autoSelected) { case "My Auto": autonomousCommand
@@ -159,6 +164,7 @@ public class Robot extends TimedRobot {
 	@Override
 	public void autonomousPeriodic() {
 		Scheduler.getInstance().run();
+		SmartDashboard.putNumber("auto periodic motor", driveTrain.getLeftA());
 		//System.out.println("Running auto");
 	}
 
@@ -185,7 +191,7 @@ public class Robot extends TimedRobot {
 	 */
 	@Override
 	public void teleopPeriodic() {
-		
+		SmartDashboard.putNumber("tele periodic motor", driveTrain.getLeftA());
 		Scheduler.getInstance().run();
 	}
 

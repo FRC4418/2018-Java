@@ -71,13 +71,13 @@ public class RobotMap {
 			ultrasonic1Echo_DIO_ID = 7;
 	
 	// Declare the gyro ID
-	public static int gyro_analog_ID = 0;
+	public static int gyro_analog_ID = 1;
 
 	// Declare the infrared ID
-	public static int infrared_analog_ID = 3;
+	public static int infrared_analog_ID = 4;
 	
-	public static int photoElectric_analog_ID = 2;
-	public static int photoElectric2_analog_ID = 1;
+	public static int photoElectric_analog_ID = 3;
+	public static int photoElectric2_analog_ID = 2;
 	
 	public static int
 			intakeInSolenoid_PCM_ID = 4,

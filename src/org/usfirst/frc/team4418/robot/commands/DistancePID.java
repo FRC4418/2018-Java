@@ -23,12 +23,12 @@ public class DistancePID extends Command {
     	}else {
     		Robot.encoders.reset();
     		Robot.encoderPID.getPIDController().reset();
-    		Robot.encoderPID.setSetpointRelative(relSet);
+    		Robot.encoderPID.setSetpoint(relSet);
     		Robot.encoderPID.setAbsoluteTolerance(.5);
     		//Robot.driveTrain.brake();
     		Robot.gyro.clear();
     		Robot.encoderPID.enable();
-    		Robot.driveTrain.brake();
+    		Robot.driveTrain.coast();
     	}
     }
 
@@ -44,7 +44,6 @@ public class DistancePID extends Command {
     		for(int i = 0; i < xValues.length; i++) {
     			xValues[i]=0.0;
     		}
-    		DriverStation.reportWarning("Started Distance Drive", false);
     	}
     }
 
@@ -66,8 +65,7 @@ public class DistancePID extends Command {
 
     // Make this return true when this Command no longer needs to run execute()
     protected boolean isFinished() {
-    	DriverStation.reportWarning("Finished Distance Drive", false);
-    	return Robot.encoderPID.getPIDController().onTarget()||finished||Robot.autoStop;
+    	return false;//Robot.encoderPID.getPIDController().onTarget()||finished||Robot.autoStop;
     }
 
     // Called once after isFinished returns true
@@ -79,7 +77,7 @@ public class DistancePID extends Command {
     // Called when another command which requires one or more of the same
     // subsystems is scheduled to run
     protected void interrupted() {
-    	end();
+    	//end();
     }
     private double average(Double[] arrToAvg) {
 		double sum = 0;

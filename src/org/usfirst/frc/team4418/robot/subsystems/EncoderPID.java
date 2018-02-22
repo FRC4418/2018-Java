@@ -16,12 +16,12 @@ public class EncoderPID extends PIDSubsystem {
         // setSetpoint() -  Sets where the PID controller should move the system
         //                  to
         // enable() - Enables the PID controller.
-    	super("EncoderPID", 2.0, 0.0, 0.0);
+    	super("EncoderPID", 1.0, 0.0, 0.0);
     	setAbsoluteTolerance(1);
-    	//getPIDController().setOutputRange(-100.0f, 100.0f);
+    	getPIDController().setOutputRange(-1.0, 1.0);
     	getPIDController().setContinuous(false);
     	
-    	Robot.driveTrain.brake();
+    	Robot.driveTrain.coast();
     }
 
     public void initDefaultCommand() {
@@ -39,16 +39,16 @@ public class EncoderPID extends PIDSubsystem {
     protected void usePIDOutput(double output) {
         // Use output to drive your system, like a motor
         // e.g. yourMotor.set(output)
-    	if(output>1) {
+    	/*if(output>1) {
     		output=1;
     	}else if(output <-1) {
     		output=-1;
-    	}
+    	}*/
     	double anglePct = Robot.gyro.getAngle()/90;
-    	Robot.driveTrain.leftTalonSRXA.set(-output+anglePct);
-    	Robot.driveTrain.leftTalonSRXB.set(-output+anglePct);
-    	Robot.driveTrain.rightTalonSRXA.set(output+anglePct);
-    	Robot.driveTrain.rightTalonSRXB.set(output+anglePct);
+    	Robot.driveTrain.leftTalonSRXA.set(-output);//-output+anglePct);
+    	Robot.driveTrain.leftTalonSRXB.set(-output);//-output+anglePct);
+    	Robot.driveTrain.rightTalonSRXA.set(output);//output+anglePct);
+    	Robot.driveTrain.rightTalonSRXB.set(output);//output+anglePct);
     	SmartDashboard.putNumber("Left a PID out", Robot.driveTrain.leftTalonSRXA.get());
     	SmartDashboard.putNumber("left b PID out", Robot.driveTrain.leftTalonSRXB.get());
     	SmartDashboard.putNumber("right a PID out", Robot.driveTrain.rightTalonSRXA.get());

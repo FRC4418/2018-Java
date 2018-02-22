@@ -1,6 +1,7 @@
 package org.usfirst.frc.team4418.robot.subsystems;
 
 import org.usfirst.frc.team4418.robot.RobotMap;
+import org.usfirst.frc.team4418.robot.commands.displayMotors;
 
 import com.ctre.phoenix.motorcontrol.NeutralMode;
 import com.ctre.phoenix.motorcontrol.can.WPI_TalonSRX;
@@ -37,10 +38,10 @@ public class DriveTrainSubsystem extends Subsystem {
 		double rightValue = inputMap(driverJoystick.getRawAxis(RobotMap.rightTankDrive_axis));
 		
 		// Enable breaking if the joystick value for a side is within the deadzone
-		leftTalonSRXA.setNeutralMode(leftValue == 0 ? NeutralMode.Brake : NeutralMode.Coast);
-		leftTalonSRXB.setNeutralMode(leftValue == 0 ? NeutralMode.Brake : NeutralMode.Coast);
-		rightTalonSRXA.setNeutralMode(rightValue == 0 ? NeutralMode.Brake : NeutralMode.Coast);
-		rightTalonSRXB.setNeutralMode(rightValue == 0 ? NeutralMode.Brake : NeutralMode.Coast);
+		leftTalonSRXA.setNeutralMode(leftValue == 0 ? NeutralMode.Coast : NeutralMode.Coast);
+		leftTalonSRXB.setNeutralMode(leftValue == 0 ? NeutralMode.Coast : NeutralMode.Coast);
+		rightTalonSRXA.setNeutralMode(rightValue == 0 ? NeutralMode.Coast : NeutralMode.Coast);
+		rightTalonSRXB.setNeutralMode(rightValue == 0 ? NeutralMode.Coast : NeutralMode.Coast);
 		
 		SmartDashboard.putNumber( "Left Drive Train Value", leftValue);
 		SmartDashboard.putNumber( "Right Drive Train Value", rightValue);
@@ -52,6 +53,22 @@ public class DriveTrainSubsystem extends Subsystem {
 		// Tank drive using the values previously calculated 
 		// and disabling squared inputs since the curve was already applied
 		driveTrain.tankDrive(leftValue, rightValue, false);
+	}
+	
+	public double getLeftA() {
+		return leftTalonSRXA.get();
+	}
+	
+	public double getLeftB() {
+		return leftTalonSRXB.get();
+	}
+	
+	public double getRightA() {
+		return rightTalonSRXA.get();
+	}
+	
+	public double getRightB() {
+		return rightTalonSRXB.get();
 	}
 	
 	public void spin(double speed) {
@@ -94,6 +111,7 @@ public class DriveTrainSubsystem extends Subsystem {
 	}
 	
     public void initDefaultCommand() {
+    	setDefaultCommand(new displayMotors());
     }
     
     // Override the default constructor to allow for talons B and C of both sides
