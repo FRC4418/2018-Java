@@ -52,6 +52,7 @@ public class Robot extends TimedRobot {
 	public static final RearRightSubsystem rearRightPID = new RearRightSubsystem();
 	public static final InfraredSubsystem infrared = new InfraredSubsystem();
 	public static final Shooter shooter = new Shooter();
+	public static final IntakeMotorSubsystem intakeMotor = new IntakeMotorSubsystem();
 	
 	public static SendableChooser<String> switchChooser = new SendableChooser<String>();
 	public static SendableChooser<String> autoChooser = new SendableChooser<String>();
