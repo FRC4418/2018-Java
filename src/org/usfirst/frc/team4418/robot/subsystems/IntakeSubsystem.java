@@ -22,6 +22,7 @@ public class IntakeSubsystem extends Subsystem {
 	}
 	public static WPI_TalonSRX intakeLeftTalonSRX = new WPI_TalonSRX(RobotMap.intakeLeftTalonSRX_CAN_ID);
 	public static WPI_TalonSRX intakeRightTalonSRX = new WPI_TalonSRX(RobotMap.intakeRightTalonSRX_CAN_ID);
+	public static WPI_TalonSRX intakeLiftTalonSRX = new WPI_TalonSRX(RobotMap.intakeLiftTalonSRX_CAN_ID);
 	public static DoubleSolenoid intakeSolenoid = new DoubleSolenoid(RobotMap.intakeOutSolenoid_PCM_ID,RobotMap.intakeInSolenoid_PCM_ID);
     // Put methods for controlling this subsystem
     // here. Call these from Commands.
@@ -39,14 +40,10 @@ public class IntakeSubsystem extends Subsystem {
 	
     public void extendOut() {
     	intakeSolenoid.set(DoubleSolenoid.Value.kForward);
-    	intakeLeftTalonSRX.set(.8);
-    	intakeRightTalonSRX.set(-.8);
     }
     
     public void extendIn() {
     	intakeSolenoid.set(DoubleSolenoid.Value.kReverse);
-    	intakeLeftTalonSRX.set(0);
-    	intakeRightTalonSRX.set(0);
     }
     public boolean isSpin() {
     	return intakeLeftTalonSRX.get()!=0.0;
@@ -58,6 +55,10 @@ public class IntakeSubsystem extends Subsystem {
     public void startSpin() {
     	intakeLeftTalonSRX.set(.7);
     	intakeRightTalonSRX.set(-.7);
+    }
+    public void reverseSpin() {
+    	intakeLeftTalonSRX.set(-.7);
+    	intakeRightTalonSRX.set(.7);
     }
     public void initDefaultCommand() {
         // Set the default command for a subsystem here.

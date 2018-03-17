@@ -7,22 +7,16 @@ import edu.wpi.first.wpilibj.command.Command;
 /**
  *
  */
-public class SpinIntake extends Command {
+public class Outtake extends Command {
 
-    public SpinIntake() {
-    	super();
-    	requires(Robot.intake);
+    public Outtake() {
         // Use requires() here to declare subsystem dependencies
         // eg. requires(chassis);
     }
 
     // Called just before this Command runs the first time
     protected void initialize() {
-    	if (Robot.intake.isSpin()) {
-    		Robot.intake.stopSpin();
-    	} else {
-    		Robot.intake.startSpin();
-    	}
+    	Robot.intake.reverseSpin();
     }
 
     // Called repeatedly when this Command is scheduled to run
@@ -31,7 +25,7 @@ public class SpinIntake extends Command {
 
     // Make this return true when this Command no longer needs to run execute()
     protected boolean isFinished() {
-        return true;
+        return false;
     }
 
     // Called once after isFinished returns true

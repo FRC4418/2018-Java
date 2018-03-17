@@ -33,17 +33,7 @@ public class TerminateAuto extends Command {
 
     // Called once after isFinished returns true
     protected void end() {
-    	Robot.frontLeftPID.disable();
-    	Robot.frontLeftPID.getPIDController().reset();
     	
-    	Robot.rearLeftPID.disable();
-    	Robot.rearLeftPID.getPIDController().reset();
-    	
-    	Robot.frontRightPID.disable();
-    	Robot.frontRightPID.getPIDController().reset();
-    	
-    	Robot.rearRightPID.disable();
-    	Robot.rearRightPID.getPIDController().reset();
     }
 
     // Called when another command which requires one or more of the same

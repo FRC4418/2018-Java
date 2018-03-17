@@ -33,9 +33,7 @@ public class AutonomousCommands extends CommandGroup {
     				addSequential(new DistancePID(250.0));
     			}else if(Robot.driverPos == "Position One (left)") {
     				addSequential(new DistancePID(111));
-    				addSequential(new ShootGroup());
-    				addSequential(new FeedShiftCommand());
-    				addSequential(new FeedShiftCommand());
+    				addSequential(new Outtake());
     			}else if(Robot.driverPos == "Position Two (middle)") {
     				addSequential(new DistancePID(111));
     			}else if(Robot.driverPos=="Position Three (right)") {
@@ -50,10 +48,8 @@ public class AutonomousCommands extends CommandGroup {
     				addSequential(new DistancePID(111));
     			}else if(Robot.driverPos=="Position Three (right)") {
     				addSequential(new DistancePID(111));
-    				addSequential(new ShootGroup());
-    				addSequential(new FeedShiftCommand());
-    				addSequential(new FeedShiftCommand());
-    			}
+    				addSequential(new Outtake());
+       			}
     		}
    		}else if(Robot.switchOrScale=="Scale") {
    			if(Robot.gameData.charAt(0)=='L') {
@@ -61,7 +57,6 @@ public class AutonomousCommands extends CommandGroup {
     				addSequential(new DistancePID(251));
     			}else if(Robot.driverPos == "Position One (left)") {
     				addSequential(new DistancePID(251));
-    				addSequential(new LineupGroup());
     			}else if(Robot.driverPos == "Position Two (middle)") {
     				addSequential(new DistancePID(111));
     			}else if(Robot.driverPos=="Position Three (right)") {
@@ -76,7 +71,6 @@ public class AutonomousCommands extends CommandGroup {
     				addSequential(new DistancePID(111));
     			}else if(Robot.driverPos=="Position Three (right)") {
     				addSequential(new DistancePID(251));
-    				addSequential(new LineupGroup());
     			}
     		}
    		}

@@ -29,30 +29,14 @@ import org.usfirst.frc.team4418.robot.subsystems.*;
 public class Robot extends TimedRobot {
 	// Create objects for each subsystem
 	public static final DriveTrainSubsystem driveTrain = new DriveTrainSubsystem(); //Create public DriveTrain
-	public static final UltrasonicSubsystem ultrasonic = new UltrasonicSubsystem(); //Create public Ultrasonic
 	public static final EncoderSubsystem encoders = new EncoderSubsystem(); //Create public encoders
 	public static final GyroSubsystem gyro = new GyroSubsystem(); //Create public GyroScope
-	public static final FeedCylinderSubsystem feedCylinder = new FeedCylinderSubsystem(); //Create public FeedCylinder
 	public static final IntakeSubsystem intake = new IntakeSubsystem(); //Create public Intake
 	public static final GyroToAnglePID gyroPID = new GyroToAnglePID();
-	public static final ShooterAngle shootAngle = new ShooterAngle();
-	public static final UltrasonicSubsystem2 ultrasonic2 = new UltrasonicSubsystem2();
 	public static final EncoderPID encoderPID = new EncoderPID();
-	public static final UltrasonicPIDLeft leftBackPID = new UltrasonicPIDLeft();
-	public static final UltrasonicPIDRight rightBackPID = new UltrasonicPIDRight();
-	public static final PhotoElectricSubsystem photoElectric = new PhotoElectricSubsystem();
-	public static final PhotoElectricSubsystem2 photoElectric2 = new PhotoElectricSubsystem2();
 	public static final AccelerometerSubsystem accel = new AccelerometerSubsystem();
-	//public static final ArcadeSubsystem arcadeDriveTrain = new ArcadeSubsystem(); //Create public arcadeDriveTrain
 	public static final CompressorSubsystem compressor = new CompressorSubsystem(); //Create public Compressor
 	public static final GearShiftSubsystem gearShifter = new GearShiftSubsystem(); //Create public GearShifter
-	public static final FrontLeftSubsystem frontLeftPID = new FrontLeftSubsystem();//Create public LauncherPID
-	public static final RearLeftSubsystem rearLeftPID = new RearLeftSubsystem();
-	public static final FrontRightSubsystem frontRightPID = new FrontRightSubsystem();
-	public static final RearRightSubsystem rearRightPID = new RearRightSubsystem();
-	public static final InfraredSubsystem infrared = new InfraredSubsystem();
-	public static final Shooter shooter = new Shooter();
-	public static final IntakeMotorSubsystem intakeMotor = new IntakeMotorSubsystem();
 	
 	public static SendableChooser<String> switchChooser = new SendableChooser<String>();
 	public static SendableChooser<String> autoChooser = new SendableChooser<String>();
@@ -104,8 +88,6 @@ public class Robot extends TimedRobot {
 		driveTrain.coast();
 		gyroPID.disable();
 		encoderPID.disable();
-		leftBackPID.disable();
-		rightBackPID.disable();
 	}
 
 	/**

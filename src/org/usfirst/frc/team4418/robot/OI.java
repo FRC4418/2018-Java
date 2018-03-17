@@ -7,15 +7,11 @@
 
 package org.usfirst.frc.team4418.robot;
 
-import org.usfirst.frc.team4418.robot.commands.FeedShiftCommand;
 import org.usfirst.frc.team4418.robot.commands.GearShiftCommand;
-import org.usfirst.frc.team4418.robot.commands.IntakeCommand;
-import org.usfirst.frc.team4418.robot.commands.IntakeMotorCommand1;
-import org.usfirst.frc.team4418.robot.commands.IntakeMotorCommand2;
-import org.usfirst.frc.team4418.robot.commands.LineupGroup;
-import org.usfirst.frc.team4418.robot.commands.ShootGroup;
-import org.usfirst.frc.team4418.robot.commands.SpinIntake;
-import org.usfirst.frc.team4418.robot.commands.shootAngleCommand;
+import org.usfirst.frc.team4418.robot.commands.LiftIntake;
+import org.usfirst.frc.team4418.robot.commands.LowerIntake;
+import org.usfirst.frc.team4418.robot.commands.Outtake;
+import org.usfirst.frc.team4418.robot.commands.Intake;
 
 import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.buttons.Button;
@@ -37,27 +33,19 @@ public class OI {
 	public static Joystick joystick1 = new Joystick(1);
 	// Create buttons
 	private static Button gearShiftButton = new JoystickButton(joystick0,RobotMap.gearShift_button); //GearShift Button
-	private static Button triggerIntakeButton = new JoystickButton(joystick0,RobotMap.triggerIntake_button);
 	private static Button intakeButton = new JoystickButton(joystick0,RobotMap.intake_button);
-	public static Button shootButton = new JoystickButton(joystick0,RobotMap.shoot_button);
-	private static Button lineupButton = new JoystickButton(joystick0,RobotMap.lineup_button);
-	private static Button angleShootButton = new JoystickButton(joystick0,RobotMap.angleShoot_button);
-	private static Button feedButton = new JoystickButton(joystick0,RobotMap.feed_button);
-	private static Button intakeButton1 = new JoystickButton(joystick0,RobotMap.intakeButton1);
-	private static Button intakeButton2 = new JoystickButton(joystick0,RobotMap.intakeButton2);
+	private static Button outtakeButton = new JoystickButton(joystick0,RobotMap.outtake_button);
+	private static Button liftIntakeButton = new JoystickButton(joystick0,RobotMap.liftIntake_button);
+	private static Button lowerIntakeButton = new JoystickButton(joystick0,RobotMap.lowerIntake_button);
 	/*public static Button getGearShiftButton() {
 		return gearShiftButton;
 	}*/
 	
 	public OI() {
 		gearShiftButton.whenPressed(new GearShiftCommand());
-		triggerIntakeButton.whenPressed(new IntakeCommand());
-		intakeButton.whenPressed(new SpinIntake());
-		shootButton.whenPressed(new ShootGroup());
-		feedButton.whenPressed(new FeedShiftCommand());
-		lineupButton.whenPressed(new LineupGroup());
-		angleShootButton.whenPressed(new shootAngleCommand());
-		intakeButton1.whileHeld(new IntakeMotorCommand1());
-		intakeButton2.whileHeld(new IntakeMotorCommand2());
+		intakeButton.whenPressed(new Intake());
+		outtakeButton.whenPressed(new Outtake());
+		liftIntakeButton.whileHeld(new LiftIntake());
+		lowerIntakeButton.whileHeld(new LowerIntake());
 	}
 }
