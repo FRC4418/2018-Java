@@ -7,14 +7,15 @@ import edu.wpi.first.wpilibj.command.PIDSubsystem;
 /**
  *
  */
-public class UltrasonicPIDLeft extends PIDSubsystem {
+public class DriveDistancePIDSubsystem extends PIDSubsystem {
 
     // Initialize your subsystem here
-    public UltrasonicPIDLeft() {
-    	super("UltrasonicPIDLeft", .5, 0, 0);
-    	setAbsoluteTolerance(.5);
-    	getPIDController().setOutputRange(-100.0f, 100.0f);
-    	getPIDController().setContinuous(false);
+    public DriveDistancePIDSubsystem() {
+        // Use these to get going:
+        // setSetpoint() -  Sets where the PID controller should move the system
+        //                  to
+        // enable() - Enables the PID controller.
+    	super("Drive Distance PID", 1.0, 0.0, 0.0);
     }
 
     public void initDefaultCommand() {
@@ -26,13 +27,12 @@ public class UltrasonicPIDLeft extends PIDSubsystem {
         // Return your input value for the PID loop
         // e.g. a sensor, like a potentiometer:
         // yourPot.getAverageVoltage() / kYourMaxVoltage;
-        return Robot.ultrasonic.getRangeInchUltra2();
+        return Robot.driveTrain.getLeftEncoder();
     }
 
     protected void usePIDOutput(double output) {
         // Use output to drive your system, like a motor
         // e.g. yourMotor.set(output);
-    	Robot.driveTrain.left.set(output/100f);
-    	//Robot.driveTrain.left.set(output);
+    	Robot.driveTrain.tankDrive(-output, output);
     }
 }

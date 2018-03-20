@@ -1,12 +1,13 @@
 package org.usfirst.frc.team4418.robot.subsystems;
 
 import org.usfirst.frc.team4418.robot.RobotMap;
+import org.usfirst.frc.team4418.robot.commands.IntakeElevationCommand;
 
 import com.ctre.phoenix.motorcontrol.NeutralMode;
 import com.ctre.phoenix.motorcontrol.can.WPI_TalonSRX;
 
 import edu.wpi.first.wpilibj.DoubleSolenoid;
-import edu.wpi.first.wpilibj.DoubleSolenoid.Value;
+import edu.wpi.first.wpilibj.Talon;
 import edu.wpi.first.wpilibj.command.Subsystem;
 
 /**
@@ -14,54 +15,64 @@ import edu.wpi.first.wpilibj.command.Subsystem;
  */
 public class IntakeSubsystem extends Subsystem {
 
+	// Setup ------------------------------------------------------------------------------------------------------------------------------------------------------
+	private static final WPI_TalonSRX leftTalon = new WPI_TalonSRX(RobotMap.intakeLeftTalonSRX_CAN_ID),
+			rightTalon = new WPI_TalonSRX(RobotMap.intakeRightTalonSRX_CAN_ID);
+	private static final Talon elevationTalon = new Talon(0);
+	private static final DoubleSolenoid armSolenoids = new DoubleSolenoid(RobotMap.intakeOutSolenoid_PCM_ID, RobotMap.intakeInSolenoid_PCM_ID);
+	private static boolean intakeMode = false; // When false, act as intake, when true, act as outtake
+	
 	public IntakeSubsystem() {
 		super();
-		intakeSolenoid.set(DoubleSolenoid.Value.kOff);
-		intakeLeftTalonSRX.setNeutralMode(NeutralMode.Brake);
-		intakeRightTalonSRX.setNeutralMode(NeutralMode.Brake);
-	}
-	public static WPI_TalonSRX intakeLeftTalonSRX = new WPI_TalonSRX(RobotMap.intakeLeftTalonSRX_CAN_ID);
-	public static WPI_TalonSRX intakeRightTalonSRX = new WPI_TalonSRX(RobotMap.intakeRightTalonSRX_CAN_ID);
-	public static DoubleSolenoid intakeSolenoid = new DoubleSolenoid(RobotMap.intakeOutSolenoid_PCM_ID,RobotMap.intakeInSolenoid_PCM_ID);
-    // Put methods for controlling this subsystem
-    // here. Call these from Commands.
-	public Value getIntake() {
-    	return intakeSolenoid.get();
-    }
-	
-	public boolean isOut() {
-		return getIntake()==DoubleSolenoid.Value.kForward;
-	}
-    
-	public boolean isIn() {
-		return getIntake()==DoubleSolenoid.Value.kReverse;
+		setArmPosition(false);
 	}
 	
-    public void extendOut() {
-    	intakeSolenoid.set(DoubleSolenoid.Value.kForward);
-    	intakeLeftTalonSRX.set(.8);
-    	intakeRightTalonSRX.set(-.8);
-    }
+	public void initDefaultCommand() {
+		setDefaultCommand(new IntakeElevationCommand());
+	}
     
-    public void extendIn() {
-    	intakeSolenoid.set(DoubleSolenoid.Value.kReverse);
-    	intakeLeftTalonSRX.set(0);
-    	intakeRightTalonSRX.set(0);
-    }
-    public boolean isSpin() {
-    	return intakeLeftTalonSRX.get()!=0.0;
-    }
-    public void stopSpin() {
-    	intakeLeftTalonSRX.set(0);
-    	intakeRightTalonSRX.set(0);
-    }
-    public void startSpin() {
-    	intakeLeftTalonSRX.set(.7);
-    	intakeRightTalonSRX.set(-.7);
-    }
-    public void initDefaultCommand() {
-        // Set the default command for a subsystem here.
-        //setDefaultCommand(new MySpecialCommand());
-    }
+	
+	// Intake Motors ------------------------------------------------------------------------------------------------------------------------------------------------------
+	
+	public void runIntake() {
+		leftTalon.set(1 * (intakeMode ? (-1) : 1));
+		rightTalon.set(-1 * (intakeMode ? (-1) : 1));
+	}
+	
+	public void stopIntakeMotors() {
+		leftTalon.set(0);
+		rightTalon.set(0);
+	}
+	
+	public void setIntakeMode(boolean mode) {
+		intakeMode = mode;
+	}
+	
+	public boolean getIntakeMode() {
+		return intakeMode;
+	}
+	
+	
+	// Elevation Motor ------------------------------------------------------------------------------------------------------------------------------------------------------
+	
+	public void runElevationMotor(double value) {
+		/*if(value == 0) {
+			elevationTalon.setNeutralMode(NeutralMode.Brake);
+		} else {
+			elevationTalon.setNeutralMode(NeutralMode.Coast);
+		}*/
+		elevationTalon.set(value);
+	}
+	
+	
+	// Arm Solenoids ------------------------------------------------------------------------------------------------------------------------------------------------------
+	
+	public void setArmPosition(boolean position) {
+		armSolenoids.set(position ? DoubleSolenoid.Value.kForward : DoubleSolenoid.Value.kReverse);
+	}
+	
+	public boolean getArmPosition() {
+		return armSolenoids.get() == DoubleSolenoid.Value.kForward;
+	}
 }
 

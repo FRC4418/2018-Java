@@ -1,20 +1,18 @@
 package org.usfirst.frc.team4418.robot.commands;
 
+import org.usfirst.frc.team4418.robot.OI;
 import org.usfirst.frc.team4418.robot.Robot;
 
 import edu.wpi.first.wpilibj.command.Command;
-import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
 /**
  *
  */
-public class GyroDisplay extends Command {
+public class IntakeElevationCommand extends Command {
 
-    public GyroDisplay() {
-        // Use requires() here to declare subsystem dependencies
-        // eg. requires(chassis);
-    	super("Super Gyro Display");
-    	requires(Robot.gyro);
+    public IntakeElevationCommand() {
+    	super("Intake Elevation");
+    	requires(Robot.intake);
     }
 
     // Called just before this Command runs the first time
@@ -23,7 +21,7 @@ public class GyroDisplay extends Command {
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
-    	SmartDashboard.putNumber("Gyro Angle", Robot.gyro.getAngle());
+    	Robot.intake.runElevationMotor(OI.secondaryJoystick.getRawAxis(0));
     }
 
     // Make this return true when this Command no longer needs to run execute()
@@ -33,10 +31,12 @@ public class GyroDisplay extends Command {
 
     // Called once after isFinished returns true
     protected void end() {
+    	Robot.intake.runElevationMotor(0);
     }
 
     // Called when another command which requires one or more of the same
     // subsystems is scheduled to run
     protected void interrupted() {
+    	end();
     }
 }

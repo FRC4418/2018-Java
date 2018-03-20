@@ -7,20 +7,15 @@ import edu.wpi.first.wpilibj.command.Command;
 /**
  *
  */
-public class StartCompressorCommand extends Command {
+public class FeedToShootPositionCommand extends Command {
 
-    public StartCompressorCommand() {
-        // Initialize the start compressor command
-    	super("StartCompressor");
-    	
-    	// Set required subsystems
-    	requires(Robot.compressor);
+    public FeedToShootPositionCommand() {
+        super("Feed to Shooting Position");
     }
 
     // Called just before this Command runs the first time
     protected void initialize() {
-    	// Enable the compressor
-    	Robot.compressor.enableCompressor();
+    	Robot.shooter.setFeedPosition(true);
     }
 
     // Called repeatedly when this Command is scheduled to run
@@ -29,19 +24,15 @@ public class StartCompressorCommand extends Command {
 
     // Make this return true when this Command no longer needs to run execute()
     protected boolean isFinished() {
-        return false;
+        return timeSinceInitialized() > 5;
     }
 
     // Called once after isFinished returns true
     protected void end() {
-    	// Disable the compressor
-    	Robot.compressor.disableCompressor();
     }
 
     // Called when another command which requires one or more of the same
     // subsystems is scheduled to run
     protected void interrupted() {
-    	// Ensure that if the compressor is interrupted it disables
-    	end();
     }
 }

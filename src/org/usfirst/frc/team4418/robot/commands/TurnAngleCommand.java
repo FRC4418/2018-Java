@@ -1,19 +1,15 @@
 package org.usfirst.frc.team4418.robot.commands;
 
-import org.usfirst.frc.team4418.robot.Robot;
-
 import edu.wpi.first.wpilibj.command.Command;
-import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
 /**
  *
  */
-public class EncoderShuffleboardCommand extends Command {
+public class TurnAngleCommand extends Command {
 
-    public EncoderShuffleboardCommand() {
+    public TurnAngleCommand(int angle) {
         // Use requires() here to declare subsystem dependencies
         // eg. requires(chassis);
-    	requires(Robot.encoders);
     }
 
     // Called just before this Command runs the first time
@@ -22,10 +18,6 @@ public class EncoderShuffleboardCommand extends Command {
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
-    	//double[] encoderValues = {,Robot.encoders.getRightEncoder()}; //Store encoder values to an array
-    	SmartDashboard.putNumber("Left Encoder", Robot.encoders.getLeftEncoder()); //Send encoder values array to shuffleboard
-    	SmartDashboard.putNumber("Right Encoder", Robot.encoders.getRightEncoder()); //Send encoder values array to shuffleboard
-    	SmartDashboard.putNumber("Avg Encoder", Robot.encoders.getAvgEncoder());
     }
 
     // Make this return true when this Command no longer needs to run execute()

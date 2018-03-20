@@ -7,37 +7,32 @@ import edu.wpi.first.wpilibj.command.Command;
 /**
  *
  */
-public class BackupPID extends Command {
+public class RunShooterCommand extends Command {
 
-    public BackupPID() {
+    public RunShooterCommand() {
         // Use requires() here to declare subsystem dependencies
         // eg. requires(chassis);
+    	super("Running Shooter");
+    	requires(Robot.shooter);
     }
 
     // Called just before this Command runs the first time
     protected void initialize() {
-    	Robot.leftBackPID.setSetpoint(4.0);
-    	Robot.leftBackPID.getPIDController().reset();
-    	Robot.rightBackPID.setSetpoint(4.0);
-    	Robot.rightBackPID.getPIDController().reset();
-    	//Robot.driveTrain.brake();
-    	Robot.leftBackPID.enable();
-    	Robot.rightBackPID.enable();
     }
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
-    	
+    	Robot.shooter.runShooter();
     }
 
     // Make this return true when this Command no longer needs to run execute()
     protected boolean isFinished() {
-        return Robot.leftBackPID.getPIDController().onTarget()&&Robot.rightBackPID.getPIDController().onTarget();
+        return false;
     }
 
     // Called once after isFinished returns true
     protected void end() {
-    	Robot.gyroPID.disable();
+    	Robot.shooter.stopShooter();
     }
 
     // Called when another command which requires one or more of the same

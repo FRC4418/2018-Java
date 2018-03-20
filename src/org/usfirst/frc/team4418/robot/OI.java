@@ -7,48 +7,46 @@
 
 package org.usfirst.frc.team4418.robot;
 
-import org.usfirst.frc.team4418.robot.commands.GearShiftCommand;
-import org.usfirst.frc.team4418.robot.commands.IntakeCommand;
-import org.usfirst.frc.team4418.robot.commands.LineupGroup;
-import org.usfirst.frc.team4418.robot.commands.ShootGroup;
-import org.usfirst.frc.team4418.robot.commands.SpinIntake;
-import org.usfirst.frc.team4418.robot.commands.shootAngleCommand;
+import org.usfirst.frc.team4418.robot.commands.RunShooterCommand;
+import org.usfirst.frc.team4418.robot.commands.ToggleArmPositionCommand;
+import org.usfirst.frc.team4418.robot.commands.ToggleDriveDirectionCommand;
+import org.usfirst.frc.team4418.robot.commands.ToggleGearShiftCommand;
+import org.usfirst.frc.team4418.robot.commands.ToggleIntakeCommand;
+import org.usfirst.frc.team4418.robot.commands.ToggleIntakeModeCommand;
 
 import edu.wpi.first.wpilibj.Joystick;
-import edu.wpi.first.wpilibj.buttons.Button;
-import edu.wpi.first.wpilibj.buttons.JoystickButton;
+import edu.wpi.first.wpilibj.buttons.*;
 
 /**
  * This class is the glue that binds the controls on the physical operator
  * interface to the commands and command groups that allow control of the robot.
  */
 public class OI {
-	// Create the joysticks to be used for controlling the robot
-	private static Joystick joystick0 = new Joystick(0);
 	
-	// Create the methods to get joysticks for other parts of the robot
-	public static Joystick getDriverJoystick() {
-		return joystick0;
+	// Joysticks ------------------------------------------------------------------------------------------------------------------------------------------------------
+	public static final Joystick mainDriverJoystickLeft = new Joystick(RobotMap.mainJoystickLeft_ID), // Create the joysticks
+			mainDriverJoystickRight = new Joystick(RobotMap.mainJoystickRight_ID),
+			secondaryJoystick = new Joystick(RobotMap.secondaryJoystick_ID);
+	
+	
+	// Buttons ------------------------------------------------------------------------------------------------------------------------------------------------------
+	
+	private static final Button toggleGearShift = new JoystickButton(mainDriverJoystickRight, RobotMap.toggleGearShift_button), // Create the buttons
+			toggleDriveDirection = new JoystickButton(mainDriverJoystickLeft, RobotMap.toggleDriveDirection_button),
+			toggleShooterOnOff = new JoystickButton(secondaryJoystick, RobotMap.toggleShooterOnOff_button),
+			toggleIntakeMotors = new JoystickButton(secondaryJoystick, RobotMap.toggleIntakeMotors_button),
+			toggleIntakeArmPosition = new JoystickButton(secondaryJoystick, RobotMap.toggleIntakeArms_button),
+			toggleIntakeMode = new JoystickButton(secondaryJoystick, RobotMap.toggleIntakeMode_button);
+	
+	
+	
+	public OI() { // Assign functionality to the buttons
+		toggleGearShift.whenPressed(new ToggleGearShiftCommand()); // Toggle the gear shifter in the drive train subsystem
+		toggleDriveDirection.whenPressed(new ToggleDriveDirectionCommand()); // Toggle the direction of driving for the drive train subsystem
+		toggleShooterOnOff.toggleWhenPressed(new RunShooterCommand()); // Toggle the shooter on or off
+		toggleIntakeMotors.toggleWhenPressed(new ToggleIntakeCommand()); // Toggle the intake motors on or off
+		toggleIntakeArmPosition.whenPressed(new ToggleArmPositionCommand()); // Toggle the intake arm position
+		toggleIntakeMode.whenPressed(new ToggleIntakeModeCommand()); // Toggle the intake to an outtake
 	}
 	
-	public static Joystick joystick1 = new Joystick(1);
-	// Create buttons
-	private static Button gearShiftButton = new JoystickButton(joystick0,RobotMap.gearShift_button); //GearShift Button
-	private static Button triggerIntakeButton = new JoystickButton(joystick0,RobotMap.triggerIntake_button);
-	private static Button intakeButton = new JoystickButton(joystick0,RobotMap.intake_button);
-	private static Button shootButton = new JoystickButton(joystick0,RobotMap.shoot_button);
-	private static Button lineupButton = new JoystickButton(joystick0,RobotMap.lineup_button);
-	private static Button angleShootButton = new JoystickButton(joystick0,RobotMap.angleShoot_button);
-	/*public static Button getGearShiftButton() {
-		return gearShiftButton;
-	}*/
-	
-	public OI() {
-		gearShiftButton.whenPressed(new GearShiftCommand());
-		triggerIntakeButton.whenPressed(new IntakeCommand());
-		intakeButton.whenPressed(new SpinIntake());
-		shootButton.whenPressed(new ShootGroup());
-		lineupButton.whenPressed(new LineupGroup());
-		angleShootButton.whenPressed(new shootAngleCommand());
-	}
 }

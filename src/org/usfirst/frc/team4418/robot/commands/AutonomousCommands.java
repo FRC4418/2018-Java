@@ -1,7 +1,11 @@
 package org.usfirst.frc.team4418.robot.commands;
 
 import org.usfirst.frc.team4418.robot.Robot;
+import org.usfirst.frc.team4418.robot.RobotMap;
+
+import edu.wpi.first.wpilibj.DriverStation;
 import edu.wpi.first.wpilibj.command.CommandGroup;
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
 /**
  *
@@ -9,71 +13,46 @@ import edu.wpi.first.wpilibj.command.CommandGroup;
 public class AutonomousCommands extends CommandGroup {
 
     public AutonomousCommands() {
-        // Add Commands here:
-        // e.g. addSequential(new Command1());
-        //      addSequential(new Command2());
-        // these will run in order.
+    	addSequential(new GetFMSDataCommand()); // Get data from the FMS and drive station
+    	
 
-        // To run multiple commands at the same time,
-        // use addParallel()
-        // e.g. addParallel(new Command1());
-        //      addSequential(new Command2());
-        // Command1 and Command2 will run in parallel.
-
-        // A command group will require all of the subsystems that each member
-        // would require.
-        // e.g. if Command1 requires chassis, and Command2 requires arm,
-        // a CommandGroup containing them would require both the chassis and the
-        // arm.
-    	addSequential(new FMSCall());
-   		if(Robot.switchOrScale=="Switch") {
-    		if(Robot.gameData.charAt(0)=='L') {
-    			if(Robot.driverPos=="Straight") {
-    				addSequential(new DistancePID(250.0));
-    			}else if(Robot.driverPos == "Position One (left)") {
-    				addSequential(new DistancePID(111));
-    				addSequential(new ShootGroup());
-    			}else if(Robot.driverPos == "Position Two (middle)") {
-    				addSequential(new DistancePID(111));
-    			}else if(Robot.driverPos=="Position Three (right)") {
-    				addSequential(new DistancePID(111));
-    			}
-    		}else {
-    			if(Robot.driverPos=="Straight") {
-    				addSequential(new DistancePID(250.0));
-    			}else if(Robot.driverPos == "Position One (left)") {
-    				addSequential(new DistancePID(111));
-    			}else if(Robot.driverPos == "Position Two (middle)") {
-    				addSequential(new DistancePID(111));
-    			}else if(Robot.driverPos=="Position Three (right)") {
-    				addSequential(new DistancePID(111));
-    				addSequential(new ShootGroup());
-    			}
-    		}
-   		}else if(Robot.switchOrScale=="Scale") {
-   			if(Robot.gameData.charAt(0)=='L') {
-    			if(Robot.driverPos=="Straight") {
-    				addSequential(new DistancePID(251));
-    			}else if(Robot.driverPos == "Position One (left)") {
-    				addSequential(new DistancePID(251));
-    				addSequential(new LineupGroup());
-    			}else if(Robot.driverPos == "Position Two (middle)") {
-    				addSequential(new DistancePID(111));
-    			}else if(Robot.driverPos=="Position Three (right)") {
-    				addSequential(new DistancePID(251));
-    			}
-    		}else {
-    			if(Robot.driverPos=="Straight") {
-    				addSequential(new DistancePID(251));
-    			}else if(Robot.driverPos == "Position One (left)") {
-    				addSequential(new DistancePID(251));
-    			}else if(Robot.driverPos == "Position Two (middle)") {
-    				addSequential(new DistancePID(111));
-    			}else if(Robot.driverPos=="Position Three (right)") {
-    				addSequential(new DistancePID(251));
-    				addSequential(new LineupGroup());
-    			}
-    		}
-   		}
+    	
+    	if(Robot.autonomousTarget == "Cross Auto Line" || Robot.driverPosition == "Null" || (Robot.driverPosition == "Middle (2)" && Robot.autonomousTarget == "Scale")) { // If robot needs to cross the line, or not auto position was set... --------------------------------------------
+        	addSequential(new DriveDistanceCommand(140-RobotMap.robotLength_dimension-(int)(RobotMap.bumperWidth_dimension*2))); // Drive across the auto line
+        	
+        	
+        	
+        } else if(Robot.autonomousTarget == "Switch") { // If the robot is attempting to score in switch ----------------------------------------------------------------------------------------------------
+        	if(Robot.driverPosition == "Middle (2)") {
+        		addSequential(new DriveDistanceCommand(140-RobotMap.robotLength_dimension-(int)(RobotMap.bumperWidth_dimension*2))); // Drive across the auto line
+        	} else {
+        		addSequential(new DriveDistanceCommand((140-RobotMap.robotLength_dimension-(int)(RobotMap.bumperWidth_dimension*2)) + 56/2)); // Drive to halfway across the switch
+        		if(Robot.driverPosition == "Left (1)") { // Turn right 90 degrees if on the left
+        			addSequential(new TurnAngleCommand(90));
+        		} else {
+        			addSequential(new TurnAngleCommand(-90));
+        		}
+        	}
+        	addSequential(new SetShooterModeCommand(false)); // Set the shooter to shoot into the switch
+        	addParallel(new RunShooterCommand()); // Spin up the shooter and keep it running forever
+        	addSequential(new WaitForShooterToSpinUpCommand()); // Wait till the shooter is spun up
+        	addSequential(new FireShooterCommands()); // Shoot the cube
+        	addSequential(new StopShooterCommand()); // Stop the shooter
+        	
+        	
+        	
+        } else { // If the robot is scoring in the scale ----------------------------------------------------------------------------------------------------------------------------------------------------
+        	addSequential(new DriveDistanceCommand((300-RobotMap.robotLength_dimension-(int)(RobotMap.bumperWidth_dimension*2)) + 56/2)); // Drive to halfway across the scale
+        	if(Robot.driverPosition == "Left (1)") { // Turn right 90 degrees if on the left
+        		addSequential(new TurnAngleCommand(90));
+        	} else {
+        		addSequential(new TurnAngleCommand(-90));
+        	}
+        	addSequential(new SetShooterModeCommand(false)); // Set the shooter to shoot into the switch
+        	addParallel(new RunShooterCommand()); // Spin up the shooter and keep it running forever
+        	addSequential(new WaitForShooterToSpinUpCommand()); // Wait till the shooter is spun up
+        	addSequential(new FireShooterCommands()); // Shoot the cube
+        	addSequential(new StopShooterCommand()); // Stop the shooter
+        }
     }
 }

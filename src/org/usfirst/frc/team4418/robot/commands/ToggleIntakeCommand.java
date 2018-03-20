@@ -7,41 +7,35 @@ import edu.wpi.first.wpilibj.command.Command;
 /**
  *
  */
-public class GearShiftCommand extends Command {
+public class ToggleIntakeCommand extends Command {
 
-    public GearShiftCommand() {
-        // Use requires() here to declare subsystem dependencies
-        // eg. requires(chassis);
-    	super("GearShifter");
-    	requires(Robot.gearShifter);
+    public ToggleIntakeCommand() {
+        super("Running Intake");
+        //requires(Robot.intake);
     }
-    
-    public boolean isFinished = false;
 
     // Called just before this Command runs the first time
     protected void initialize() {
-    	if (Robot.gearShifter.isHighGear()) {
-    		Robot.gearShifter.lowGear();
-    	} else {
-    		Robot.gearShifter.highGear();
-    	}
     }
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
+    	Robot.intake.runIntake();
     }
 
     // Make this return true when this Command no longer needs to run execute()
     protected boolean isFinished() {
-        return true; //End after one run
+        return false;
     }
 
     // Called once after isFinished returns true
     protected void end() {
+    	Robot.intake.stopIntakeMotors();
     }
 
     // Called when another command which requires one or more of the same
     // subsystems is scheduled to run
     protected void interrupted() {
+    	end();
     }
 }

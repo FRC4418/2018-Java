@@ -17,21 +17,22 @@ public class RobotMap {
 	
 	// Declare jostick IDs
 	public static final int
-			mainJoystick_ID = 0, //Main driver joystick
-			secondaryJoystick_ID = 1, //Secondary driver joystick
+			mainJoystickLeft_ID = 0, //Main driver joystick
+			mainJoystickRight_ID = 1,
+			secondaryJoystick_ID = 2, //Secondary driver joystick
 			
 			rightTankDrive_axis = 5, //The axis on the main driver joystick used for driving
 			leftTankDrive_axis = 1,
 	
-			gearShift_button = 1, //Button to shift between high and low gear on the gear boxes
-			intake_button = 2,
-			shoot_button = 3,
-			triggerIntake_button = 4,
-			lineup_button = 5,
-			angleShoot_button = 6;
+			toggleGearShift_button = 1, //Button to shift between high and low gear on the gear boxes
+			toggleDriveDirection_button = 1, // Button to toggle which side of the robot is forward
+			toggleShooterOnOff_button = 1, // Button to toggle the shooter on and off
+			toggleIntakeMotors_button = 3, // Button to toggle intake motors on and off
+			toggleIntakeArms_button = 4, // Button to toggle intake arms in and out
+			toggleIntakeMode_button = 2; // Button to toggle the intake to an outtake
 	
 	// Declare Talon SRX IDs
-	public static int
+	public static final int
 			leftTalonSRXA_CAN_ID = 10, //Drive motors
 			leftTalonSRXB_CAN_ID = 11,
 			rightTalonSRXA_CAN_ID = 20,
@@ -58,11 +59,10 @@ public class RobotMap {
 			rightEncoderB_DIO_ID = 3;
 	public static final double //Declare variable for reading from the encoders
 			driveEncoderGearRatio = 5.4, //Drive shaft to encoder (NOT THE OTHER WAY AROUND)
-			driveEncoderTicksPerRevolution = 256,
-			driveEncoderWheelDiameter = 6; //inches
+			driveEncoderTicksPerRevolution = 256;
 	
 	// Declare ultrasonic IDs
-	public static int 
+	public static final int 
 			ultrasonic2Ping_DIO_ID = 8, //The first ultrasonic
 			ultrasonic2Echo_DIO_ID = 9,
 			
@@ -70,33 +70,34 @@ public class RobotMap {
 			ultrasonic1Echo_DIO_ID = 7;
 	
 	// Declare the gyro ID
-	public static int gyro_analog_ID = 0;
+	public static final int gyro_analog_ID = 0;
 
 	// Declare the infrared ID
-	public static int infrared_analog_ID = 3;
+	public static final int infrared_analog_ID = 3;
 	
-	public static int photoElectric_analog_ID = 2;
-	public static int photoElectric2_analog_ID = 1;
+	public static final int photoElectric_analog_ID = 2;
+	public static final int photoElectric2_analog_ID = 1;
 	
-	public static int
+	public static final int
 			intakeInSolenoid_PCM_ID = 4,
 			intakeOutSolenoid_PCM_ID = 5;
-	public static int 
+	public static final int 
 			feedShootSolenoid_PCM_ID = 2,
 			feedLoadSolenoid_PCM_ID = 3;
 	
-	public static int shootUp = 6,
+	public static final int shootUp = 6,
 			shootDown = 7;
-	public static int 
+	public static final int 
 			shootUpwardsSolenoid_PCM_ID = 6,
 			shootDownwardsSolenoid_PCM_ID = 7;
 	
-	public static int
+	public static final int
 			gearShiftLowGearSolenoid_PCM_ID = 0,
 			gearShiftHighGearSolenoid_PCM_ID = 1;
 	
-	// If you are using multiple modules, make sure to define both the port
-	// number and the module. For example you with a rangefinder:
-	// public static int rangefinderPort = 1;
-	// public static int rangefinderModule = 1;
+	public static final int wheelDiameter_dimension = 4, // The diameter of the robot's wheels
+			robotWidth_dimension = 33, // The length from side to side
+			robotLength_dimension = 22; // The length of the robot from front to back
+	public static final double bumperWidth_dimension = 3.5; // The width of the bumpers
+
 }
