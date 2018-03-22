@@ -20,6 +20,7 @@ import org.usfirst.frc.team4418.robot.subsystems.DriveTrainSubsystem;
 import org.usfirst.frc.team4418.robot.subsystems.IntakeSubsystem;
 import org.usfirst.frc.team4418.robot.subsystems.PowerDistributionBoardSubsystem;
 import org.usfirst.frc.team4418.robot.subsystems.ShooterSubsystem;
+import org.usfirst.frc.team4418.robot.subsystems.TurnAnglePIDSubsystem;
 
 /**
  * The VM is configured to automatically run this class, and to call the
@@ -31,6 +32,7 @@ import org.usfirst.frc.team4418.robot.subsystems.ShooterSubsystem;
 public class Robot extends TimedRobot {
 	public static final DriveTrainSubsystem driveTrain = new DriveTrainSubsystem();
 	public static final DriveDistancePIDSubsystem driveDistancePID = new DriveDistancePIDSubsystem();
+	public static final TurnAnglePIDSubsystem turnAnglePID = new TurnAnglePIDSubsystem();
 	public static final CompressorSubsystem compressor = new CompressorSubsystem();
 	public static final PowerDistributionBoardSubsystem pdb = new PowerDistributionBoardSubsystem();
 	public static final ShooterSubsystem shooter = new ShooterSubsystem();
