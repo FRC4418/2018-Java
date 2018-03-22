@@ -17,7 +17,7 @@ public class AutonomousCommands extends CommandGroup {
     	
 
     	
-    	if(Robot.autonomousTarget == "Cross Auto Line" || Robot.driverPosition == "Null" || (Robot.driverPosition == "Middle (2)" && Robot.autonomousTarget == "Scale")) { // If robot needs to cross the line, or not auto position was set... --------------------------------------------
+    	if(Robot.autonomousTarget == "Cross Auto Line" || Robot.driverPosition == "Null" || (Character.toUpperCase(Robot.gameData.charAt(0)) == 'R' && Robot.driverPosition == "Left 1") || ((Character.toUpperCase(Robot.gameData.charAt(0)) == 'L' && Robot.driverPosition == "Right 3"))) { // If robot needs to cross the line, or not auto position was set... --------------------------------------------
         	addSequential(new DriveDistanceCommand(140-RobotMap.robotLength_dimension-(int)(RobotMap.bumperWidth_dimension*2))); // Drive across the auto line
         	
         	
@@ -33,26 +33,10 @@ public class AutonomousCommands extends CommandGroup {
         			//addSequential(new TurnAngleCommand(-90)); Not necessary, but optional
         		}
         	}
-        	addSequential(new SetShooterModeCommand(false)); // Set the shooter to shoot into the switch
-        	addParallel(new RunShooterCommand()); // Spin up the shooter and keep it running forever
-        	addSequential(new WaitForShooterToSpinUpCommand()); // Wait till the shooter is spun up
-        	addSequential(new FireShooterCommands()); // Shoot the cube
-        	addSequential(new StopShooterCommand()); // Stop the shooter
+        	// Dispense cube
         	
         	
         	
-        } else { // If the robot is scoring in the scale ----------------------------------------------------------------------------------------------------------------------------------------------------
-        	addSequential(new DriveDistanceCommand((300-RobotMap.robotLength_dimension-(int)(RobotMap.bumperWidth_dimension*2)) + 56/2)); // Drive to halfway across the scale
-        	if(Robot.driverPosition == "Left (1)") { // Turn right 90 degrees if on the left
-        		//addSequential(new TurnAngleCommand(90)); Not\ necessary, but optional
-        	} else {
-        		//addSequential(new TurnAngleCommand(-90)); Not necessary, but optional
-        	}
-        	addSequential(new SetShooterModeCommand(false)); // Set the shooter to shoot into the switch
-        	addParallel(new RunShooterCommand()); // Spin up the shooter and keep it running forever
-        	addSequential(new WaitForShooterToSpinUpCommand()); // Wait till the shooter is spun up
-        	addSequential(new FireShooterCommands()); // Shoot the cube
-        	addSequential(new StopShooterCommand()); // Stop the shooter
         }
     }
 }

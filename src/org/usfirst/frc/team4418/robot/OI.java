@@ -7,7 +7,6 @@
 
 package org.usfirst.frc.team4418.robot;
 
-import org.usfirst.frc.team4418.robot.commands.RunShooterCommand;
 import org.usfirst.frc.team4418.robot.commands.ToggleArmPositionCommand;
 import org.usfirst.frc.team4418.robot.commands.ToggleDriveDirectionCommand;
 import org.usfirst.frc.team4418.robot.commands.ToggleGearShiftCommand;
@@ -33,7 +32,6 @@ public class OI {
 	
 	private static final Button toggleGearShift = new JoystickButton(mainDriverJoystickRight, RobotMap.toggleGearShift_button), // Create the buttons
 			toggleDriveDirection = new JoystickButton(mainDriverJoystickLeft, RobotMap.toggleDriveDirection_button),
-			toggleShooterOnOff = new JoystickButton(secondaryJoystick, RobotMap.toggleShooterOnOff_button),
 			toggleIntakeMotors = new JoystickButton(secondaryJoystick, RobotMap.toggleIntakeMotors_button),
 			toggleIntakeArmPosition = new JoystickButton(secondaryJoystick, RobotMap.toggleIntakeArms_button),
 			toggleIntakeMode = new JoystickButton(secondaryJoystick, RobotMap.toggleIntakeMode_button);
@@ -43,7 +41,6 @@ public class OI {
 	public OI() { // Assign functionality to the buttons
 		toggleGearShift.whenPressed(new ToggleGearShiftCommand()); // Toggle the gear shifter in the drive train subsystem
 		toggleDriveDirection.whenPressed(new ToggleDriveDirectionCommand()); // Toggle the direction of driving for the drive train subsystem
-		toggleShooterOnOff.toggleWhenPressed(new RunShooterCommand()); // Toggle the shooter on or off
 		toggleIntakeMotors.toggleWhenPressed(new ToggleIntakeCommand()); // Toggle the intake motors on or off
 		toggleIntakeArmPosition.whenPressed(new ToggleArmPositionCommand()); // Toggle the intake arm position
 		toggleIntakeMode.whenPressed(new ToggleIntakeModeCommand()); // Toggle the intake to an outtake

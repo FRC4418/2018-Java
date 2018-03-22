@@ -18,8 +18,6 @@ import org.usfirst.frc.team4418.robot.subsystems.CompressorSubsystem;
 import org.usfirst.frc.team4418.robot.subsystems.DriveDistancePIDSubsystem;
 import org.usfirst.frc.team4418.robot.subsystems.DriveTrainSubsystem;
 import org.usfirst.frc.team4418.robot.subsystems.IntakeSubsystem;
-import org.usfirst.frc.team4418.robot.subsystems.PowerDistributionBoardSubsystem;
-import org.usfirst.frc.team4418.robot.subsystems.ShooterSubsystem;
 import org.usfirst.frc.team4418.robot.subsystems.TurnAnglePIDSubsystem;
 
 /**
@@ -34,8 +32,6 @@ public class Robot extends TimedRobot {
 	public static final DriveDistancePIDSubsystem driveDistancePID = new DriveDistancePIDSubsystem();
 	public static final TurnAnglePIDSubsystem turnAnglePID = new TurnAnglePIDSubsystem();
 	public static final CompressorSubsystem compressor = new CompressorSubsystem();
-	public static final PowerDistributionBoardSubsystem pdb = new PowerDistributionBoardSubsystem();
-	public static final ShooterSubsystem shooter = new ShooterSubsystem();
 	public static final IntakeSubsystem intake = new IntakeSubsystem();
 	public static OI m_oi;
 	
@@ -69,7 +65,6 @@ public class Robot extends TimedRobot {
 		
 		autonomousTargetChooser.addDefault("Cross Auto Line", "Cross Auto Line"); // Have the driver select what action the robot is doing, defaulting to a safe option
 		autonomousTargetChooser.addObject("Switch", "Switch");
-		autonomousTargetChooser.addObject("Scale", "Scale");
 	}
 
 	/**
@@ -171,8 +166,6 @@ public class Robot extends TimedRobot {
 		SmartDashboard.putNumber("Acceleration X", driveTrain.getAccelerometeXValue());
 		SmartDashboard.putNumber("Acceleration Y", driveTrain.getAccelerometeYValue());
 		SmartDashboard.putNumber("Acceleration Z", driveTrain.getAccelerometeZValue());
-		SmartDashboard.putBoolean("Compressor Running", compressor.isCompressorRunning());
-		//SmartDashboard.putNumber("Power Used", pdb.getTotalEnergy());
 		SmartDashboard.putBoolean("Is Driving Forward?", driveTrain.getDriveDirection());
 		SmartDashboard.putNumber("FMS Reported Match Time", DriverStation.getInstance().getMatchTime());
 	}
@@ -180,6 +173,5 @@ public class Robot extends TimedRobot {
 	public void POST() { // Check for errors in boot up conditions and respond appropriately
 		// Clear sticky fauls on boot
 		compressor.clearStickyFaultsInPCM();
-		pdb.clearStickyFaultsInPDB();
 	}
 }

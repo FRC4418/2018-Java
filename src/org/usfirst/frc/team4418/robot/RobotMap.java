@@ -26,9 +26,8 @@ public class RobotMap {
 	
 			toggleGearShift_button = 1, //Button to shift between high and low gear on the gear boxes
 			toggleDriveDirection_button = 1, // Button to toggle which side of the robot is forward
-			toggleShooterOnOff_button = 1, // Button to toggle the shooter on and off
-			toggleIntakeMotors_button = 3, // Button to toggle intake motors on and off
-			toggleIntakeArms_button = 4, // Button to toggle intake arms in and out
+			toggleIntakeMotors_button = 1, // Button to toggle intake motors on and off
+			toggleIntakeArms_button = 3, // Button to toggle intake arms in and out
 			toggleIntakeMode_button = 2; // Button to toggle the intake to an outtake
 	
 	// Declare Talon SRX IDs
