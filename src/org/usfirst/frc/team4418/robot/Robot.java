@@ -10,6 +10,7 @@ package org.usfirst.frc.team4418.robot;
 import edu.wpi.first.wpilibj.DriverStation;
 import edu.wpi.first.wpilibj.TimedRobot;
 import edu.wpi.first.wpilibj.command.Command;
+import org.usfirst.frc.team4418.robot.commands.AutonomousCommands;
 import edu.wpi.first.wpilibj.command.Scheduler;
 import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
@@ -42,8 +43,8 @@ public class Robot extends TimedRobot {
 			autonomousTargetChooser = new SendableChooser<String>();
 	
 	
-
-	Command m_autonomousCommand;
+	Command AutonomousCommands = new AutonomousCommands();
+	
 	SendableChooser<Command> m_chooser = new SendableChooser<>();
 
 	/**
@@ -107,7 +108,7 @@ public class Robot extends TimedRobot {
 	 */
 	@Override
 	public void autonomousInit() {
-		m_autonomousCommand = m_chooser.getSelected();
+		//AutonomousCommands = m_chooser.getSelected();
 
 		/*
 		 * String autoSelected = SmartDashboard.getString("Auto Selector", "Default");
@@ -117,8 +118,8 @@ public class Robot extends TimedRobot {
 		 */
 
 		// schedule the autonomous command (example)
-		if (m_autonomousCommand != null) {
-			m_autonomousCommand.start();
+		if (AutonomousCommands != null) {
+			AutonomousCommands.start();
 		}
 	}
 
@@ -137,8 +138,8 @@ public class Robot extends TimedRobot {
 		// teleop starts running. If you want the autonomous to
 		// continue until interrupted by another command, remove
 		// this line or comment it out.
-		if (m_autonomousCommand != null) {
-			m_autonomousCommand.cancel();
+		if (AutonomousCommands != null) {
+			AutonomousCommands.cancel();
 		}
 	}
 

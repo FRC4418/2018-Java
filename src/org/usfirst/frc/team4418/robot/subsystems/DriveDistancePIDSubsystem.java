@@ -39,6 +39,7 @@ public class DriveDistancePIDSubsystem extends PIDSubsystem {
     protected void usePIDOutput(double output) {
         // Use output to drive your system, like a motor
         // e.g. yourMotor.set(output);
-    	Robot.driveTrain.tankDrive(-output+(Robot.driveTrain.getGyroValue()/startAngle), output+(Robot.driveTrain.getGyroValue()/startAngle));
+    	Robot.driveTrain.tankDrive(output+(Robot.driveTrain.getGyroValue()/startAngle), output+(Robot.driveTrain.getGyroValue()/startAngle));
+    	
     }
 }

@@ -27,6 +27,7 @@ public class DriveDistanceCommand extends Command {
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
+    	System.out.println("Functioning Auto");
     	SmartDashboard.putNumber("CurrentPIDError", Robot.driveDistancePID.getPIDController().getError());
     	
     }

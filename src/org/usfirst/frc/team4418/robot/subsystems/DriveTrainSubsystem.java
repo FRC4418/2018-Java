@@ -29,7 +29,7 @@ public class DriveTrainSubsystem extends Subsystem {
 			leftTalonB = new WPI_TalonSRX(RobotMap.leftTalonSRXB_CAN_ID),
 			rightTalonA = new WPI_TalonSRX(RobotMap.rightTalonSRXA_CAN_ID),
 			rightTalonB = new WPI_TalonSRX(RobotMap.rightTalonSRXB_CAN_ID);
-	private static boolean driveDirection = true; // Set the default direction the robot is driving, true is forward, false is backwards
+	private static boolean driveDirection = false; // Set the default direction the robot is driving, true is forward, false is backwards
 	private static double controllerDeadzone = 0.05; // Set the deadzone for the controller in tank drive
 	
 	private static final DoubleSolenoid gearShiftSolenoid = new DoubleSolenoid(RobotMap.gearShiftLowGearSolenoid_PCM_ID,RobotMap.gearShiftHighGearSolenoid_PCM_ID); // Create the double solenoids
@@ -86,7 +86,7 @@ public class DriveTrainSubsystem extends Subsystem {
 			rightValue = -tmpVal;
 		}
 		
-		tankDrive(leftValue, rightValue); // Pass the teleop enhanced values to the regular tank drive method
+		tankDrive(-leftValue, -rightValue); // Pass the teleop enhanced values to the regular tank drive method
 	}
 	
 	public void setBreakMode() { // Set the TalonSRXs to break when no value is given
