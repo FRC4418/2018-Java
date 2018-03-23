@@ -30,6 +30,8 @@ public class GetFMSDataCommand extends Command {
     	try {
         	Thread.sleep(5);
             Robot.gameData = DriverStation.getInstance().getGameSpecificMessage();
+            Robot.driverPosition = Robot.driverPositionChooser.getSelected();
+            Robot.autonomousTarget = Robot.autonomousTargetChooser.getSelected();
             if (Robot.gameData==null) { Robot.gameData = ""; }
     	} catch (Exception e) {}
     	retries--;
@@ -37,12 +39,15 @@ public class GetFMSDataCommand extends Command {
 
     // Make this return true when this Command no longer needs to run execute()
     protected boolean isFinished() {
-        return Robot.gameData.length() == 3 || retries <= 0;
+    	return Robot.gameData.length() == 3 || retries <= 0;
     }
 
     // Called once after isFinished returns true
     protected void end() {
-    	SmartDashboard.putString("Driver Position", Robot.driverPosition);
+    	DriverStation.reportError("Final Game Data: " + Robot.gameData, false);
+    	DriverStation.reportError("Final Driver Position: " + Robot.driverPosition, false);
+    	DriverStation.reportError("Final Switch/Scale: " + Robot.autonomousTarget, false);
+        SmartDashboard.putString("Driver Position", Robot.driverPosition);
     	SmartDashboard.putString("Game Message", Robot.gameData);
     	SmartDashboard.putString("Switch or Scale", Robot.autonomousTarget);
     }
@@ -50,5 +55,8 @@ public class GetFMSDataCommand extends Command {
     // Called when another command which requires one or more of the same
     // subsystems is scheduled to run
     protected void interrupted() {
+    	DriverStation.reportError("Final Game Data: " + Robot.gameData, false);
+    	DriverStation.reportError("Final Driver Position: " + Robot.driverPosition, false);
+    	DriverStation.reportError("Final Switch/Scale: " + Robot.autonomousTarget, false);
     }
 }

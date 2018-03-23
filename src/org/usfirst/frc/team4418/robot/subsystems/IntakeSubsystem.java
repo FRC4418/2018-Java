@@ -17,8 +17,8 @@ public class IntakeSubsystem extends Subsystem {
 
 	// Setup ------------------------------------------------------------------------------------------------------------------------------------------------------
 	private static final WPI_TalonSRX leftTalon = new WPI_TalonSRX(RobotMap.intakeLeftTalonSRX_CAN_ID),
-			rightTalon = new WPI_TalonSRX(RobotMap.intakeRightTalonSRX_CAN_ID);
-	private static final Talon elevationTalon = new Talon(0);
+			rightTalon = new WPI_TalonSRX(RobotMap.intakeRightTalonSRX_CAN_ID),
+			elevationTalon = new WPI_TalonSRX(RobotMap.intakeLiftTalonSRX_CAN_ID);
 	private static final DoubleSolenoid armSolenoids = new DoubleSolenoid(RobotMap.intakeOutSolenoid_PCM_ID, RobotMap.intakeInSolenoid_PCM_ID);
 	private static boolean intakeMode = false; // When false, act as intake, when true, act as outtake
 	

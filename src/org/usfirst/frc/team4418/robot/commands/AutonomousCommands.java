@@ -14,9 +14,9 @@ public class AutonomousCommands extends CommandGroup {
 
     public AutonomousCommands() {
     	addSequential(new GetFMSDataCommand()); // Get data from the FMS and drive station
-    	
+    	addSequential(new DriveForwardTimeCommand());
 
-    	
+    	/*
     	if(Robot.autonomousTarget == "Cross Auto Line" || Robot.driverPosition == "Null" || (Character.toUpperCase(Robot.gameData.charAt(0)) == 'R' && (Robot.driverPosition == "Left 1" || Robot.driverPosition == "Middle 2")) || ((Character.toUpperCase(Robot.gameData.charAt(0)) == 'L' && Robot.driverPosition == "Right 3"))) { // If robot needs to cross the line, or not auto position was set... --------------------------------------------
         	addSequential(new DriveDistanceCommand(140-RobotMap.robotLength_dimension-(int)(RobotMap.bumperWidth_dimension*2))); // Drive across the auto line
         	
@@ -37,6 +37,6 @@ public class AutonomousCommands extends CommandGroup {
         	
         	
         	
-        }
+        }*/
     }
 }

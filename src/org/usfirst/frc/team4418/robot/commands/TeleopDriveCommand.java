@@ -26,7 +26,7 @@ public class TeleopDriveCommand extends Command {
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
-    	Robot.driveTrain.teleopTankDrive(OI.mainDriverJoystickLeft.getRawAxis(1), OI.mainDriverJoystickRight.getRawAxis(1)); // Drive the robot in tank drive using two flight sim controllers
+    	Robot.driveTrain.teleopTankDrive(OI.mainDriverJoystickLeft.getRawAxis(1), -OI.mainDriverJoystickRight.getRawAxis(1)); // Drive the robot in tank drive using two flight sim controllers
     }
 
     // Make this return true when this Command no longer needs to run execute()
